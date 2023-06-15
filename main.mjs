@@ -21,12 +21,39 @@ const state = ui.createStore({
 	}
 });
 
+async function patch_localization(ctx) {
+	const lang_supported = ['en'];
+
+	const fetch_mod_localization = async (lang) => {
+		const fetch_lang = lang_supported.includes(lang) ? lang : 'en';
+
+		try {
+			const patch_lang = await ctx.loadData('lang/' + fetch_lang + '.json');
+			for (const [key, value] of Object.entries(patch_lang))
+				loadedLangJson[key] = value;
+		} catch (e) {
+			console.error('Failed to patch localization for %s (%s)', fetch_lang, e);
+		}
+	};
+
+	const orig_fetchLanguageJSON = globalThis.fetchLanguageJSON;
+	globalThis.fetchLanguageJSON = async (lang) => {
+		await orig_fetchLanguageJSON(lang);
+		await fetch_mod_localization(lang);
+	}
+
+	if (loadedLangJson !== undefined)
+		await fetch_mod_localization(setLang);
+}
+
 export async function setup(ctx) {
 	//console.log('SETUP CALLED');
 	console.log(ctx);
 	console.log(globalThis);
 	console.log(game);
 	console.log(state);
+
+	await patch_localization(ctx);
 
 	setInterval(() => {
 		state.set_skill_level(state.skill_level_current + 1);

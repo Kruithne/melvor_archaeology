@@ -1,6 +1,6 @@
-import fs from 'fs';
-import os from 'os';
-import path from 'path';
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
 
 function UIArchaeologyContainer() {
 	return {
@@ -46,8 +46,10 @@ const state = ui.createStore({
 		//const state = ctx.characterStorage.getItem('state');
 
 		const tmp_state_file = path.join(os.tmpdir(), 'archaeology_state.json');
+		if (!fs.existsSync(tmp_state_file))
+			return;
+		
 		const state = JSON.parse(fs.readFileSync(tmp_state_file, 'utf8'));
-
 		if (state) {
 			this.skill_xp = state.skill_xp;
 		}

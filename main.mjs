@@ -1,3 +1,7 @@
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+
 function UIArchaeologyContainer() {
 	return {
 		$template: '#template-kru-archaeology-container',
@@ -34,6 +38,33 @@ const state = ui.createStore({
 	/** Adds XP to the skill. */
 	add_xp(xp) {
 		this.skill_xp += xp;
+	},
+
+	/** Load the skill state from mod settings. */
+	load_state(ctx) {
+		// TODO: Swap this when mod is on mod.io
+		//const state = ctx.characterStorage.getItem('state');
+
+		const tmp_state_file = path.join(os.tmpdir(), 'archaeology_state.json');
+		const state = JSON.parse(fs.readFileSync(tmp_state_file, 'utf8'));
+
+		if (state) {
+			this.skill_xp = state.skill_xp;
+		}
+	},
+
+	/** Persist the skill state to mod settings. */
+	save_state(ctx) {
+		// TODO: Swap this when mod is on mod.io
+
+		const save_state = {
+			skill_xp: this.skill_xp
+		};
+
+		const tmp_state_file = path.join(os.tmpdir(), 'archaeology_state.json');
+		fs.writeFileSync(tmp_state_file, JSON.stringify(save_state));
+
+		//ctx.characterStorage.setItem('state', save_state);
 	}
 });
 
@@ -65,6 +96,16 @@ async function patch_localization(ctx) {
 		await fetch_mod_localization(setLang);
 }
 
+/** Patches the global saveData() fn so we can save our own state. */
+function patch_save_data(ctx) {
+	const fn_saveData = globalThis.saveData;
+
+	globalThis.saveData = () => {
+		state.save_state(ctx);
+		fn_saveData();
+	};
+}
+
 export async function setup(ctx) {
 	//console.log('SETUP CALLED');
 	console.log(ctx);
@@ -73,14 +114,14 @@ export async function setup(ctx) {
 	console.log(state);
 
 	await patch_localization(ctx);
+	patch_save_data(ctx);
 
 	setInterval(() => {
 		state.add_xp(50);
 	}, 1000);
 	
 	ctx.onCharacterLoaded(() => {
-		// Influence offline calculations.
-		//console.log('CHARACTER LOADED');
+		state.load_state(ctx);
 		game.bank.addItemByID('kru_archaeology:Archaeology_Shovel', 1, false, true);
 	});
 	

@@ -13,11 +13,27 @@ function UISidebarLevel() {
 }
 
 const state = ui.createStore({
-	skill_level_current: 1,
+	skill_xp: 0,
 	skill_level_max: 99,
 
-	set_skill_level: (level) => {
-		Math.min(Math.max(level, 1), state.skill_level_max);
+	/** Returns the current skill level. */
+	get skill_level() {
+		return Math.min(this.skill_level_max, exp.xpToLevel(this.skill_xp));
+	},
+
+	/** Returns the amount of XP required to reach the next level. */
+	get next_level_xp() {
+		return exp.level_to_xp(this.skill_level + 1);
+	},
+
+	/** Returns progress through the current level as a fraction. */
+	get current_level_frac() {
+		return (this.skill_xp - exp.level_to_xp(this.skill_level)) / (this.next_level_xp - exp.level_to_xp(this.skill_level));
+	},
+
+	/** Adds XP to the skill. */
+	add_xp(xp) {
+		this.skill_xp += xp;
 	}
 });
 
@@ -56,8 +72,8 @@ export async function setup(ctx) {
 	await patch_localization(ctx);
 
 	setInterval(() => {
-		state.set_skill_level(state.skill_level_current + 1);
-	}, 10000);
+		state.add_xp(50);
+	}, 1000);
 	
 	ctx.onCharacterLoaded(() => {
 		// Influence offline calculations.

@@ -1,12 +1,12 @@
-function UITestTemplate(props) {
+function UIArchaeologyContainer(props) {
 	return {
-		$template: '#kru-archaeology-test-template'
+		$template: '#template-kru-archaeology-container'
 	}
 }
 
 function UISidebarLevel(props) {
 	return {
-		$template: '#kru-archaeology-sidebar',
+		$template: '#template-kru-archaeology-sidebar',
 		state
 	}
 }
@@ -37,6 +37,6 @@ export async function setup(ctx) {
 		ui.create(UISidebarLevel(), document.querySelector('.kru-archaeology-sidebar-archaeology'));
 
 		const $main_container = document.getElementById('main-container');
-		ui.create(UITestTemplate(), $main_container);
+		ui.create(UIArchaeologyContainer(), $main_container);
 	});
 }

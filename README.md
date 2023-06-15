@@ -12,7 +12,7 @@ This is my submission for the [2023 Melvor Idle Mod Contest](https://store.steam
 - Avoid touching combat to prevent changing the balance of the game.
 
 ### Design Overview
-Archaeology is an idle gathering skill that allows you to set-up digsites in various locations. These digsites will generate items over time.
+Archaeology is an passive gathering skill that allows you to set-up digsites in various locations. These digsites will generate items over time.
 
 Digsites require an amount of gold and resource to set-up. The associated cost will be higher for the more valuable digsites. Only one digsite can be "active" at a time, in line with most active gathering skills.
 

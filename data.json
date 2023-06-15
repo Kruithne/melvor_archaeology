@@ -11,7 +11,7 @@
 				"hasGameGuide": false,
 				"canBeDefault": true,
 				"sidebarItem": {
-					"categoryID": "Non-Combat",
+					"categoryID": "Passive",
 					"icon": "assets/svg/archaeology.svg",
 					"itemClass": "kru-archaeology-sidebar-archaeology"
 				}

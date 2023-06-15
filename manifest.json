@@ -1,0 +1,9 @@
+{
+	"namespace": "kru_archaeology",
+	"setup": "main.mjs",
+	"load": [
+		"ui/templates.html",
+		"ui/style.css",
+		"data.json"
+	]
+}

@@ -1,0 +1,16 @@
+{
+	"$schema": "https://melvoridle.com/assets/schema/gameData.json",
+	"data": {
+		"pages": [
+			{
+				"id": "Archaeology",
+				"customName": "Archaeology",
+				"media": "assets/svg/archaeology.svg",
+				"containerID": "kru-archaeology-container",
+				"headerBgClass": "bg-archaeology",
+				"hasGameGuide": false,
+				"canBeDefault": true
+			}
+		]
+	}
+}

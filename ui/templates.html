@@ -42,9 +42,37 @@
 							</div>
 						</div>
 					</div>
-				</div></div>
+				</div>
 			</div>
-			<span><lang-string lang-id="KRU_ARCHAEOLOGY_SKILL_NAME"></lang-string></span>
+		</div>
+		<div class="row row-deck">
+			<div class="col-12 col-xl-6" v-for="digsite in state.content.digsites">
+				<div class="block block-rounded border-top border-archaeology border-4x ka-area">
+					<div class="ka-area-header">
+						<div class="ka-area-icon" data-ka-svg="digsite_desert"></div>
+						<span class="ka-area-title">{{ digsite.name }}</span>
+					</div>
+					<div class="ka-area-requirements">
+						<span>Requirements:</span>
+						<div class="ka-area-requirement">
+							<img class="skill-icon-xs" src="assets/media/skills/farming/farming.svg">
+							<span>Normal Logs</span>
+						</div>
+						<div class="ka-area-requirement">
+							<img class="skill-icon-xs" src="assets/media/skills/farming/farming.svg">
+							<span>Normal Logs</span>
+						</div>
+						<div class="ka-area-requirement">
+							<img class="skill-icon-xs" src="assets/media/skills/farming/farming.svg">
+							<span>Normal Logs</span>
+						</div>
+						<div class="ka-area-requirement">
+							<img class="skill-icon-xs" src="assets/media/skills/farming/farming.svg">
+							<span>Normal Logs</span>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</template>
 	

@@ -20,6 +20,18 @@ const state = ui.createStore({
 	skill_xp: 0,
 	skill_level_max: 99,
 
+	digsite_areas: [
+		{
+			name: 'Digsite Alpha'
+		},
+		{
+			name: 'Digsite Beta'
+		},
+		{
+			name: 'Digsite Gamma'
+		}
+	],
+
 	/** Returns the current skill level. */
 	get skill_level() {
 		return Math.min(this.skill_level_max, exp.xpToLevel(this.skill_xp));
@@ -80,7 +92,7 @@ async function patch_localization(ctx) {
 		const fetch_lang = lang_supported.includes(lang) ? lang : 'en';
 
 		try {
-			const patch_lang = await ctx.loadData('lang/' + fetch_lang + '.json');
+			const patch_lang = await ctx.loadData('data/lang/' + fetch_lang + '.json');
 			for (const [key, value] of Object.entries(patch_lang))
 				loadedLangJson[key] = value;
 		} catch (e) {
@@ -108,6 +120,27 @@ function patch_save_data(ctx) {
 	};
 }
 
+/** Loads SVG files referenced in the DOM. This is a workaround for the fact
+ * that assets referenced in a mods CSS file do not resolve correctly. */
+async function load_svg_assets(ctx) {
+	const $elements = document.querySelectorAll('[data-ka-svg]');
+	for (const $elem of $elements) {
+		const svg_path = 'assets/svg/' + $elem.getAttribute('data-ka-svg') + '.svg';
+		const svg_url = await ctx.getResourceUrl(svg_path);
+
+		$elem.style.backgroundImage = 'url(' + svg_url + ')';
+	}
+}
+
+/** Loads the mod-specific content and resolves the necessary */
+async function load_content(ctx) {
+	const content = await ctx.loadData('data/content.json');
+	
+	// TODO: Resolve the game data to reduce calls (ie item names, etc).
+
+	state.content = content;
+}
+
 export async function setup(ctx) {
 	//console.log('SETUP CALLED');
 	console.log(ctx);
@@ -117,6 +150,8 @@ export async function setup(ctx) {
 
 	await patch_localization(ctx);
 	patch_save_data(ctx);
+
+	await load_content(ctx);
 
 	ctx.onCharacterLoaded(() => {
 		state.load_state(ctx);
@@ -128,5 +163,7 @@ export async function setup(ctx) {
 
 		const $main_container = document.getElementById('main-container');
 		ui.create(UIArchaeologyContainer(), $main_container);
+
+		load_svg_assets(ctx);
 	});
 }

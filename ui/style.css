@@ -1,3 +1,54 @@
 .bg-archaeology {
 	background-color: #935632 !important;
 }
+
+.border-archaeology {
+	border-color: #935632 !important;
+}
+
+.ka-area {
+	min-height: 370px;
+}
+
+.ka-area-header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.ka-area-title {
+	font-size: 1.125rem;
+	font-weight: 600;
+}
+
+.ka-area-icon {
+	background: red;
+	width: 60px;
+	height: 60px;
+	margin: 15px;
+	border-radius: 5px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.ka-area-requirements {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 30px;
+}
+
+.ka-area-requirements > span {
+	margin-bottom: 10px;
+}
+
+.ka-area-requirement {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.ka-area-requirement > img {
+	margin-right: 10px;
+}

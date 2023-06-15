@@ -1,0 +1,26 @@
+{
+	"digsites": [
+		{
+			"name": "Digsite Alpha",
+			"unlock_cost": {
+				"items": {
+					"melvorD:Bones": 128,
+					"melvorD:Magic_Bones": 5
+				},
+				"gold": 5000,
+				"level": 10
+			}
+		},
+		{
+			"name": "Digsite Beta",
+			"unlock_cost": {
+				"items": {
+					"melvorD:Raw_Skeleton_Fish": 20,
+					"melvorD:Big_Bones": 2000
+				},
+				"gold": 50000,
+				"level": 32
+			}
+		}
+	]
+}

@@ -37,6 +37,9 @@ const state = ui.createStore({
 	}
 });
 
+/** Patches the global fetchLanguageJSON() fn so we can load and inject our own
+ * translations. This is a hackfix because I couldn't find a way for mods to load
+ * their own translations via data. */
 async function patch_localization(ctx) {
 	const lang_supported = ['en'];
 

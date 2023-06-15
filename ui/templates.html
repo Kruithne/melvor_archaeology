@@ -1,9 +1,53 @@
 <template id="template-kru-archaeology-container">
-	<div id="kru-archaeology-container">
-		<span>Hello, boys!</span>
-	</div>
-</template>
-
-<template id="template-kru-archaeology-sidebar">
-	<small>({{ state.skill_level_current }} / {{ state.skill_level_max }})</small>
-</template>
+	<div class="content d-none" id="kru-archaeology-container">
+		<div class="skill-info">
+			<div class="block block-rounded">
+				<div class="progress active mb-1 border border-top border-1x border-dark" style="height: 8px">
+					<div class="progress-bar bg-info" role="progressbar" style="width: 1.62822%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+				<div class="block-header text-center pt-0 pb-0">
+					<ul class="nav-main nav-main-horizontal nav-main-horizontal-override font-size-xs w-100">
+						<li class="m-1" style="min-width: 30%;"><span class="font-w600"><lang-string lang-id="MENU_TEXT_SKILL_LEVEL">Skil Level</lang-string></span> <span class="p-1 bg-success rounded font-w600" id="skill-progress-level-melvorD:Fishing">23 / 99</span></li>
+						<li class="m-1" style="min-width: 30%"><span class="font-w600"><lang-string lang-id="MENU_TEXT_SKILL XP">Skill XP</lang-string></span> <span class="p-1 bg-info rounded font-w600" id="skill-progress-xp-melvorD:Fishing">6,303 / 7,028</span><span class="text-danger d-none" id="adventure-mode-xp-limit-notice-melvorD:Fishing"><br><i class="fa fa-info-circle mr-1"></i>Non-Combat Skill Level Limit reached. Level up your Combat Level to continue earning Skill XP.</span></li>
+					</ul>
+				</div>
+				<div class="pl-1 pr-1">
+					<div class="row no-gutters">
+						<div class="col-12 col-lg-8">
+							<div class="media d-flex align-items-center push m-0">
+								<div class="m-1">
+									<img class="skill-icon-xs m-0" src="assets/media/main/mastery_pool.svg">
+								</div>
+								<div class="media-body">
+									<div class="font-size-sm">
+										<div class="progress active mr-1 mt-2 ml-1" style="height: 4px">
+											<div class="progress-bar bg-warning" role="progressbar" style="width: 0.858222%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+											</div>
+										</div>
+									</div>
+									<div class="font-w400">
+										<h5 class="font-w400 font-size-sm text-combat-smoke m-1"><small><span><span>98,695</span> / <span>11,500,000</span> (<span>0.86%</span>)</span> XP</small></h5>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-md-4">
+							<div class="ml-2 mr-2 text-right">
+								<button role="button" class="btn btn-sm btn-info m-1 font-size-xs">
+									<lang-string lang-id="MENU_TEXT_MASTERY_VIEW_CHECKPOINTS">View Checkpoints</lang-string>
+								</button>
+								<button role="button" class="btn btn-sm btn-success m-1 font-size-xs">
+									<lang-string lang-id="MENU_TEXT_MASTERY_SPEND_XP">Spend Mastery Pool XP</lang-string>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div></div>
+			</div>
+			<span>Hello, boys!</span>
+		</div>
+	</template>
+	
+	<template id="template-kru-archaeology-sidebar">
+		<small>({{ state.skill_level_current }} / {{ state.skill_level_max }})</small>
+	</template>

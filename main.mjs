@@ -1,10 +1,11 @@
-function UIArchaeologyContainer(props) {
+function UIArchaeologyContainer() {
 	return {
-		$template: '#template-kru-archaeology-container'
+		$template: '#template-kru-archaeology-container',
+		state
 	}
 }
 
-function UISidebarLevel(props) {
+function UISidebarLevel() {
 	return {
 		$template: '#template-kru-archaeology-sidebar',
 		state
@@ -26,6 +27,10 @@ export async function setup(ctx) {
 	console.log(globalThis);
 	console.log(game);
 	console.log(state);
+
+	setInterval(() => {
+		state.set_skill_level(state.skill_level_current + 1);
+	}, 10000);
 	
 	ctx.onCharacterLoaded(() => {
 		// Influence offline calculations.

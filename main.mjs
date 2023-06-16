@@ -15,7 +15,7 @@ function UISidebarLevel() {
 		state
 	}
 }
-
+const ctx = mod.getContext(import.meta);
 const state = ui.createStore({
 	skill_xp: 0,
 	skill_level_max: 99,
@@ -25,6 +25,17 @@ const state = ui.createStore({
 	/** Returns true if the given digsite is unlocked. */
 	is_digsite_unlocked(id) {
 		return this.unlocked_digsites.includes(id);
+	},
+
+	/** Get the URL for a requirement icon. */
+	get_requirement_icon(id) {
+		if (id === 'level')
+			return ctx.getResourceUrl('assets/svg/archaeology.svg');
+
+		if (id === 'gold')
+			return 'assets/media/main/coins.svg';
+
+		return game.items.getObjectByID(id).media;
 	},
 
 	/** Formats a digsite requirement into a human-readable string. */

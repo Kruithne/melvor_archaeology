@@ -49,6 +49,22 @@ const state = ui.createStore({
 		return formatNumber(value) + ' ' + get_localized_item_name(id);
 	},
 
+	/** Returns true if the digsite requirement is met by the player. */
+	is_requirement_met(id, value) {
+		if (id === 'level')
+			return this.skill_level >= value;
+
+		if (id === 'gold')
+			return game.gp.amount >= value;
+
+		return game.bank.getQty(game.items.getObjectByID(id)) >= value;
+	},
+
+	/** Returns the CSS class for the given requirement. */
+	get_requirement_class(id, value) {
+		return this.is_requirement_met(id, value) ? 'text-success' : 'text-danger';
+	},
+
 	/** Returns the current skill level. */
 	get skill_level() {
 		return Math.min(this.skill_level_max, exp.xpToLevel(this.skill_xp));

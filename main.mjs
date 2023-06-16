@@ -46,7 +46,7 @@ const state = ui.createStore({
 		if (id === 'gold')
 			return value;
 
-		return get_localized_item_name(id);
+		return value + ' ' + get_localized_item_name(id);
 	},
 
 	/** Returns the current skill level. */

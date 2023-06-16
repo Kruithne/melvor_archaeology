@@ -140,7 +140,7 @@ async function load_svg_assets(ctx) {
 	}
 }
 
-/** Loads the mod-specific content and resolves the necessary */
+/** Loads the mod-specific content and resolves the necessary localization. */
 async function load_content(ctx) {
 	const content = await ctx.loadData('data/content.json');
 

@@ -2,6 +2,8 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
+let current_tick = 0;
+
 const ctx = mod.getContext(import.meta);
 const state = ui.createStore({
 	skill_xp: 0,
@@ -94,7 +96,7 @@ const state = ui.createStore({
 
 		const save_state = {
 			skill_xp: this.skill_xp,
-			unlocked_digsites: this.unlocked_digsites
+			unlocked_digsites: this.unlocked_digsites,
 		};
 
 		const tmp_state_file = path.join(os.tmpdir(), 'archaeology_state.json');
@@ -103,6 +105,25 @@ const state = ui.createStore({
 		//ctx.characterStorage.setItem('state', save_state);
 	}
 });
+
+/** Called on every game tick. */
+function passiveTick() {
+	if (current_tick % TICKS_PER_SECOND === 0)
+		state.skill_xp += 50;
+
+	current_tick++;
+}
+
+function update_digsite_requirements() {
+	const requirements = document.querySelectorAll('.ka-area-requirement-string');
+	for (const requirement of requirements) {
+		const id = requirement.dataset.requireId;
+		const value = parseInt(requirement.dataset.requireValue);
+
+		requirement.classList.remove('text-success', 'text-danger');
+		requirement.classList.add(state.get_requirement_class(id, value));
+	}
+}
 
 /** Resolves a localized name for an item. */
 function get_localized_item_name(id) {
@@ -169,6 +190,7 @@ async function load_content(ctx) {
 
 	for (const digsite of content.digsites) {
 		digsite.name = getLangString(digsite.name);
+		digsite.unlocked = false;
 	}
 
 	state.content = content;
@@ -202,6 +224,7 @@ export async function setup(ctx) {
 	ctx.onCharacterLoaded(() => {
 		state.load_state(ctx);
 		game.bank.addItemByID('kru_archaeology:Archaeology_Shovel', 1, false, true);
+		game._passiveTickers.push({ passiveTick });
 	});
 	
 	ctx.onInterfaceReady(() => {
@@ -209,6 +232,18 @@ export async function setup(ctx) {
 
 		const $main_container = document.getElementById('main-container');
 		ui.create(UIArchaeologyContainer(), $main_container);
+
+		const $container = document.getElementById('kru-archaeology-container');
+		const observer = new MutationObserver((mutations) => {
+			for (const mutation of mutations) {
+				if (mutation.attributeName === 'class') {
+					if (!$container.classList.contains('d-none'))
+						update_digsite_requirements();
+				}
+			}
+		});
+
+		observer.observe($container, { attributes: true });
 
 		load_svg_assets(ctx);
 	});

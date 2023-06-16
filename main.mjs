@@ -54,6 +54,31 @@ const state = ui.createStore({
 		return this.is_requirement_met(id, value) ? 'text-success' : 'text-danger';
 	},
 
+	/** Unlocks a digsite. */
+	unlock_digsite(digsite) {
+		if (this.is_digsite_unlocked(digsite.id))
+			return;
+
+		for (const [r_id, r_value] of Object.entries(digsite.requirements)) {
+			if (!this.is_requirement_met(r_id, r_value)) {
+				notify_error('MOD_KA_TOAST_DIGSITE_REQUIREMENT');
+				return;
+			}
+		}
+
+		for (const [r_id, r_value] of Object.entries(digsite.requirements)) {
+			if (r_id === 'level')
+				continue;
+
+			if (r_id === 'gold')
+				game.gp.remove(r_value);
+			else
+				game.bank.removeItemQuantityByID(r_id, r_value);
+		}
+
+		this.unlocked_digsites.push(digsite.id);
+	},
+
 	/** Returns the current skill level. */
 	get skill_level() {
 		return Math.min(this.skill_level_max, exp.xpToLevel(this.skill_xp));
@@ -105,6 +130,11 @@ const state = ui.createStore({
 		//ctx.characterStorage.setItem('state', save_state);
 	}
 });
+
+/** Send an error notification to the player. */
+function notify_error(lang_id) {
+	game.notifications.createErrorNotification(lang_id, getLangString(lang_id));
+}
 
 /** Called on every game tick. */
 function passiveTick() {

@@ -58,6 +58,10 @@
 							<img class="skill-icon-xs" :src="state.get_requirement_icon(r_id)">
 							<span class="ka-area-requirement-string" :data-require-value="r_value" :data-require-id="r_id">{{ state.format_requirement_string(r_id, r_value) }}</span>
 						</div>
+						<button role="button" class="btn btn-sm btn-success m-1 mt-3" @click="state.unlock_digsite(digsite)">Construct Digsite</button>
+					</div>
+					<div v-else>
+						Unlocked!
 					</div>
 				</div>
 			</div>

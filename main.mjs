@@ -30,7 +30,7 @@ const state = ui.createStore({
 	/** Formats a digsite requirement into a human-readable string. */
 	format_requirement_string(id, value) {
 		if (id === 'level')
-			return  templateLangString('MENU_TEXT_LEVEL', { level: value });
+			return templateLangString('MENU_TEXT_LEVEL', { level: value });
 
 		if (id === 'gold')
 			return value;

@@ -152,7 +152,6 @@ async function load_content(ctx) {
 }
 
 export async function setup(ctx) {
-	//console.log('SETUP CALLED');
 	console.log(ctx);
 	console.log(globalThis);
 	console.log(game);

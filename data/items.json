@@ -1,0 +1,33 @@
+[
+	{
+		"id": "Archaeology_Shovel",
+		"name": "MOD_KA_ITEM_NAME_SHOVEL",
+		"category": "Combat",
+		"customDescription": "MOD_KA_ITEM_DESC_SHOVEL",
+		"type": "Weapon",
+		"media": "assets/svg/archaeology.svg",
+		"ignoreCompletion": false,
+		"obtainFromItemLog": false,
+		"golbinRaidExclusive": false,
+		"sellsFor": 5000,
+		"tier": "wooden",
+		"validSlots": ["Weapon"],
+		"occupiesSlots": [],
+		"equipRequirements": [
+		  {
+			"type": "SkillLevel",
+			"skillID": "melvorD:Attack",
+			"level": 1
+		  }
+		],
+		"equipmentStats": [
+		  { "key": "attackSpeed", "value": 2200 },
+		  { "key": "stabAttackBonus", "value": 4 },
+		  { "key": "slashAttackBonus", "value": 1 },
+		  { "key": "blockAttackBonus", "value": 4 },
+		  { "key": "meleeStrengthBonus", "value": 1 }
+		],
+		"itemType": "Weapon",
+		"attackType": "melee"
+	}
+]

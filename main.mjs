@@ -151,6 +151,24 @@ async function load_content(ctx) {
 	state.content = content;
 }
 
+/** Loads mod-specific items with localization. */
+async function load_items(ctx) {
+	// Items are loaded from data/items.json instead of being provided in
+	// the mod data.json because the latter does not support localization.
+
+	const items = await ctx.loadData('data/items.json');
+	ctx.gameData.buildPackage(pkg => {
+		for (const item of items) {
+			item.name = getLangString(item.name);
+
+			if (item.customDescription)
+				item.customDescription = getLangString(item.customDescription);
+
+			pkg.items.add(item);
+		}
+	}).add();
+}
+
 export async function setup(ctx) {
 	console.log(ctx);
 	console.log(globalThis);
@@ -160,6 +178,7 @@ export async function setup(ctx) {
 	await patch_localization(ctx);
 	patch_save_data(ctx);
 
+	await load_items(ctx);
 	await load_content(ctx);
 
 	ctx.onCharacterLoaded(() => {

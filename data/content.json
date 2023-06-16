@@ -1,7 +1,7 @@
 {
 	"digsites": [
 		{
-			"name": "Digsite Alpha",
+			"name": "MOD_KA_DIGSITE_ALPHA",
 			"unlock_cost": {
 				"items": {
 					"melvorD:Bones": 128,
@@ -12,7 +12,7 @@
 			}
 		},
 		{
-			"name": "Digsite Beta",
+			"name": "MOD_KA_DIGSITE_BETA",
 			"unlock_cost": {
 				"items": {
 					"melvorD:Raw_Skeleton_Fish": 20,

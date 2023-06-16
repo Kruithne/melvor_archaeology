@@ -135,8 +135,10 @@ async function load_svg_assets(ctx) {
 /** Loads the mod-specific content and resolves the necessary */
 async function load_content(ctx) {
 	const content = await ctx.loadData('data/content.json');
-	
-	// TODO: Resolve the game data to reduce calls (ie item names, etc).
+
+	for (const digsite of content.digsites) {
+		digsite.name = getLangString(digsite.name);
+	}
 
 	state.content = content;
 }

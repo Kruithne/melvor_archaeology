@@ -52,23 +52,11 @@
 						<div class="ka-area-icon" data-ka-svg="digsite_desert"></div>
 						<span class="ka-area-title">{{ digsite.name }}</span>
 					</div>
-					<div class="ka-area-requirements">
+					<div class="ka-area-requirements" v-if="!state.is_digsite_unlocked(digsite.id)">
 						<lang-string lang-id="MOD_KA_CONSTRUCTION_REQUIREMENTS">Construction Requirements:</lang-string>
-						<div class="ka-area-requirement">
+						<div class="ka-area-requirement" v-for="(r_value, r_id) in digsite.requirements">
 							<img class="skill-icon-xs" src="assets/media/skills/farming/farming.svg">
-							<span>Normal Logs</span>
-						</div>
-						<div class="ka-area-requirement">
-							<img class="skill-icon-xs" src="assets/media/skills/farming/farming.svg">
-							<span>Normal Logs</span>
-						</div>
-						<div class="ka-area-requirement">
-							<img class="skill-icon-xs" src="assets/media/skills/farming/farming.svg">
-							<span>Normal Logs</span>
-						</div>
-						<div class="ka-area-requirement">
-							<img class="skill-icon-xs" src="assets/media/skills/farming/farming.svg">
-							<span>Normal Logs</span>
+							<span>{{ state.format_requirement_string(r_id, r_value) }}</span>
 						</div>
 					</div>
 				</div>

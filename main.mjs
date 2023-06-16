@@ -20,17 +20,23 @@ const state = ui.createStore({
 	skill_xp: 0,
 	skill_level_max: 99,
 
-	digsite_areas: [
-		{
-			name: 'Digsite Alpha'
-		},
-		{
-			name: 'Digsite Beta'
-		},
-		{
-			name: 'Digsite Gamma'
-		}
-	],
+	unlocked_digsites: [],
+
+	/** Returns true if the given digsite is unlocked. */
+	is_digsite_unlocked(id) {
+		return this.unlocked_digsites.includes(id);
+	},
+
+	/** Formats a digsite requirement into a human-readable string. */
+	format_requirement_string(id, value) {
+		if (id === 'level')
+			return  templateLangString('MENU_TEXT_LEVEL', { level: value });
+
+		if (id === 'gold')
+			return value;
+
+		return getLangString('ITEM_NAME_' + id);
+	},
 
 	/** Returns the current skill level. */
 	get skill_level() {
@@ -63,7 +69,8 @@ const state = ui.createStore({
 		
 		const state = JSON.parse(fs.readFileSync(tmp_state_file, 'utf8'));
 		if (state) {
-			this.skill_xp = state.skill_xp;
+			this.skill_xp = state.skill_xp ?? 0;
+			this.unlocked_digsites = state.unlocked_digsites ?? [];
 		}
 	},
 
@@ -72,7 +79,8 @@ const state = ui.createStore({
 		// TODO: Swap this when mod is on mod.io
 
 		const save_state = {
-			skill_xp: this.skill_xp
+			skill_xp: this.skill_xp,
+			unlocked_digsites: this.unlocked_digsites
 		};
 
 		const tmp_state_file = path.join(os.tmpdir(), 'archaeology_state.json');

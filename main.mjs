@@ -44,9 +44,9 @@ const state = ui.createStore({
 			return templateLangString('MENU_TEXT_LEVEL', { level: value });
 
 		if (id === 'gold')
-			return value;
+			return formatNumber(value);
 
-		return value + ' ' + get_localized_item_name(id);
+		return formatNumber(value) + ' ' + get_localized_item_name(id);
 	},
 
 	/** Returns the current skill level. */

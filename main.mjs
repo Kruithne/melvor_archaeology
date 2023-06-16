@@ -2,19 +2,6 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-function UIArchaeologyContainer() {
-	return {
-		$template: '#template-kru-archaeology-container',
-		state
-	}
-}
-
-function UISidebarLevel() {
-	return {
-		$template: '#template-kru-archaeology-sidebar',
-		state
-	}
-}
 const ctx = mod.getContext(import.meta);
 const state = ui.createStore({
 	skill_xp: 0,
@@ -225,4 +212,18 @@ export async function setup(ctx) {
 
 		load_svg_assets(ctx);
 	});
+}
+
+function UIArchaeologyContainer() {
+	return {
+		$template: '#template-kru-archaeology-container',
+		state
+	}
+}
+
+function UISidebarLevel() {
+	return {
+		$template: '#template-kru-archaeology-sidebar',
+		state
+	}
 }

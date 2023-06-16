@@ -206,11 +206,6 @@ async function load_items(ctx) {
 }
 
 export async function setup(ctx) {
-	console.log(ctx);
-	console.log(globalThis);
-	console.log(game);
-	console.log(state);
-
 	await patch_localization(ctx);
 	patch_save_data(ctx);
 

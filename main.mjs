@@ -35,7 +35,7 @@ const state = ui.createStore({
 		if (id === 'gold')
 			return value;
 
-		return getLangString('ITEM_NAME_' + id);
+		return get_localized_item_name(id);
 	},
 
 	/** Returns the current skill level. */
@@ -89,6 +89,15 @@ const state = ui.createStore({
 		//ctx.characterStorage.setItem('state', save_state);
 	}
 });
+
+/** Resolves a localized name for an item. */
+function get_localized_item_name(id) {
+	const colon_index = id.indexOf(':');
+	if (colon_index !== -1)
+		id = id.substring(colon_index + 1);
+
+	return getLangString('ITEM_NAME_' + id);
+}
 
 /** Patches the global fetchLanguageJSON() fn so we can load and inject our own
  * translations. This is a hackfix because I couldn't find a way for mods to load

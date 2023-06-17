@@ -46,20 +46,23 @@
 			</div>
 		</div>
 		<div class="row row-deck">
-			<div class="col-4 col-xl-4" v-for="digsite in state.content.digsites">
+			<div class="col-4 col-xl-4" v-for="(digsite, digsite_id) in state.content.digsites">
 				<div class="block block-rounded border-top border-archaeology border-4x ka-area">
 					<div class="d-flex align-items-center">
 						<div class="ka-area-icon" data-ka-svg="digsite_desert"></div>
 						<span class="ka-area-title">{{ digsite.name }}</span>
 					</div>
 					<!-- Digsite Requirements -->
-					<div class="ka-col align-items-center justify-content-center mt-4" v-if="!state.is_digsite_unlocked(digsite.id)">
+					<div class="ka-col align-items-center justify-content-center mt-4" v-if="!digsite.state.unlocked">
 						<lang-string lang-id="MOD_KA_CONSTRUCTION_REQUIREMENTS">Construction Requirements:</lang-string>
 						<div class="d-flex align-items-center" v-for="(r_value, r_id) in digsite.requirements">
 							<img class="skill-icon-xs" :src="state.get_requirement_icon(r_id)">
 							<span class="ka-area-requirement-string" :data-require-value="r_value" :data-require-id="r_id">{{ state.format_requirement_string(r_id, r_value) }}</span>
 						</div>
+						<div class="text-center mt-2">
 							<button role="button" class="btn btn-sm btn-success m-1 mt-3" @click="state.unlock_digsite(digsite)">Construct Digsite</button>
+							<button role="button" class="btn btn-sm btn-info m-1" @click="state.debug_give_requirements(digsite)">Debug</button>
+						</div>
 					</div>
 					<div v-else>
 						<!-- Digsite Unlocked UI -->

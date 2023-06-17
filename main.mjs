@@ -9,13 +9,6 @@ const state = ui.createStore({
 	skill_xp: 0,
 	skill_level_max: 99,
 
-	unlocked_digsites: [],
-
-	/** Returns true if the given digsite is unlocked. */
-	is_digsite_unlocked(id) {
-		return this.unlocked_digsites.includes(id);
-	},
-
 	/** Get the URL for a requirement icon. */
 	get_requirement_icon(id) {
 		if (id === 'level')
@@ -76,7 +69,7 @@ const state = ui.createStore({
 
 	/** Unlocks a digsite. */
 	unlock_digsite(digsite) {
-		if (this.is_digsite_unlocked(digsite.id))
+		if (digsite.state.unlocked)
 			return;
 
 		for (const [r_id, r_value] of Object.entries(digsite.requirements)) {
@@ -96,7 +89,7 @@ const state = ui.createStore({
 				game.bank.removeItemQuantityByID(r_id, r_value);
 		}
 
-		this.unlocked_digsites.push(digsite.id);
+		digsite.state.unlocked = true;
 	},
 
 	/** Returns the current skill level. */
@@ -128,10 +121,19 @@ const state = ui.createStore({
 		if (!fs.existsSync(tmp_state_file))
 			return;
 		
-		const state = JSON.parse(fs.readFileSync(tmp_state_file, 'utf8'));
-		if (state) {
+		const save_state = JSON.parse(fs.readFileSync(tmp_state_file, 'utf8'));
+		if (save_state) {
 			this.skill_xp = state.skill_xp ?? 0;
-			this.unlocked_digsites = state.unlocked_digsites ?? [];
+			
+			if (save_state.digsites) {
+				for (const [digsite_id, digsite_data] of Object.entries(save_state.digsites)) {
+					const target_digsite = state.content.digsites[digsite_id];
+					if (!target_digsite)
+						continue;
+
+					target_digsite.state = digsite_data;
+				}
+			}
 		}
 	},
 
@@ -139,9 +141,13 @@ const state = ui.createStore({
 	save_state(ctx) {
 		// TODO: Swap this when mod is on mod.io
 
+		const digsites = {};
+		for (const [digsite_id, digsite_data] of Object.entries(state.content.digsites))
+			digsites[digsite_id] = digsite_data.state;
+
 		const save_state = {
 			skill_xp: this.skill_xp,
-			unlocked_digsites: this.unlocked_digsites,
+			digsites
 		};
 
 		const tmp_state_file = path.join(os.tmpdir(), 'archaeology_state.json');
@@ -243,9 +249,12 @@ async function load_svg_assets(ctx) {
 async function load_content(ctx) {
 	const content = await ctx.loadData('data/content.json');
 
-	for (const digsite of content.digsites) {
+	for (const digsite of Object.values(content.digsites)) {
 		digsite.name = getLangString(digsite.name);
-		digsite.unlocked = false;
+		digsite.state = {
+			active: false,
+			unlocked: false
+		};
 	}
 
 	state.content = content;

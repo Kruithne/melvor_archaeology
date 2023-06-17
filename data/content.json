@@ -1,7 +1,6 @@
 {
-	"digsites": [
-		{
-			"id": "digsite_alpha",
+	"digsites": {
+		"digsite_alpha": {
 			"name": "MOD_KA_DIGSITE_ALPHA",
 			"requirements": {
 				"level": 10,
@@ -10,8 +9,7 @@
 				"melvorD:Magic_Bones": 5
 			}
 		},
-		{
-			"id": "digsite_beta",
+		"digsite_beta": {
 			"name": "MOD_KA_DIGSITE_BETA",
 			"requirements": {
 				"level": 32,
@@ -20,5 +18,5 @@
 				"melvorD:Big_Bones": 2000
 			}
 		}
-	]
+	}
 }

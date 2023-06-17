@@ -46,28 +46,103 @@
 			</div>
 		</div>
 		<div class="row row-deck">
-			<div class="col-12 col-xl-6" v-for="digsite in state.content.digsites">
+			<div class="col-4 col-xl-4" v-for="digsite in state.content.digsites">
 				<div class="block block-rounded border-top border-archaeology border-4x ka-area">
-					<div class="ka-area-header">
+					<div class="d-flex align-items-center">
 						<div class="ka-area-icon" data-ka-svg="digsite_desert"></div>
 						<span class="ka-area-title">{{ digsite.name }}</span>
 					</div>
-					<div class="ka-area-requirements" v-if="!state.is_digsite_unlocked(digsite.id)">
+					<!-- Digsite Requirements -->
+					<div class="ka-col align-items-center justify-content-center mt-4" v-if="!state.is_digsite_unlocked(digsite.id)">
 						<lang-string lang-id="MOD_KA_CONSTRUCTION_REQUIREMENTS">Construction Requirements:</lang-string>
-						<div class="ka-area-requirement" v-for="(r_value, r_id) in digsite.requirements">
+						<div class="d-flex align-items-center" v-for="(r_value, r_id) in digsite.requirements">
 							<img class="skill-icon-xs" :src="state.get_requirement_icon(r_id)">
 							<span class="ka-area-requirement-string" :data-require-value="r_value" :data-require-id="r_id">{{ state.format_requirement_string(r_id, r_value) }}</span>
 						</div>
 						<button role="button" class="btn btn-sm btn-success m-1 mt-3" @click="state.unlock_digsite(digsite)">Construct Digsite</button>
 					</div>
 					<div v-else>
-						Unlocked!
+						<!-- Digsite Unlocked UI -->
+						<div class="ka-col">
+							<!-- Pristine Collection -->
+							<div class="ka-col align-items-center mb-2">
+								Pristine Collection
+								<div class="row">
+									<div class="bank-item no-bg btn-light pointer-enabled m-1 resize-32">
+										<img class="bank-img p-2 resize-32" src="assets/media/main/question.svg">
+									</div>
+									<div class="bank-item no-bg btn-light pointer-enabled m-1 resize-32">
+										<img class="bank-img p-2 resize-32" src="assets/media/main/question.svg">
+									</div>
+									<div class="bank-item no-bg btn-light pointer-enabled m-1 resize-32">
+										<img class="bank-img p-2 resize-32" src="assets/media/main/question.svg">
+									</div>
+									<div class="bank-item no-bg btn-light pointer-enabled m-1 resize-32">
+										<img class="bank-img p-2 resize-32" src="assets/media/main/question.svg">
+									</div>
+									<div class="bank-item no-bg btn-light pointer-enabled m-1 resize-32">
+										<img class="bank-img p-2 resize-32" src="assets/media/main/question.svg">
+									</div>
+								</div>
+							</div>
+							<!-- Icons -->
+							<div class="col-12 row justify-content-center gutters-tiny text-center mb-3">
+								<div class="bank-item no-bg btn-light pointer-enabled m-1 resize-32">
+									<img class="bank-img p-2 resize-32" src="assets/media/main/xp.svg">
+									<div class="font-size-sm text-white text-center">
+										<small class="badge-pill bg-secondary">5</small>
+									</div>
+								</div>
+								<div class="bank-item no-bg btn-light pointer-enabled m-1 resize-32">
+									<img class="bank-img p-2 resize-32" src="assets/media/main/mastery_header.svg">
+									<div class="font-size-sm text-white text-center">
+										<small class="badge-pill bg-secondary">435</small>
+									</div>
+								</div>
+								<div class="bank-item no-bg btn-light pointer-enabled m-1 resize-32">
+									<img class="bank-img p-2 resize-32" src="assets/media/main/mastery_pool.svg">
+									<div class="font-size-sm text-white text-center">
+										<small class="badge-pill bg-secondary">435</small>
+									</div>
+								</div>
+							</div>
+							<!-- Digsite Time -->
+							<div class="h5 font-w400 font-size-sm text-combat-smoke mb-2 text-center">
+								<i class="far fa-clock mr-1"></i>
+								<span>5 minutes</span>
+							</div>
+							<!-- Digsite Mastery -->
+							<div class="mastery-4">
+								<div class="mr-4 ml-4 ka-mastery-grid">
+								<div class="font-w400 text-center" style="grid-column: 2;">
+									<h5 class="font-w400 font-size-sm text-combat-smoke m-1"><small>379,855 / 407,015</small></h5>
+								</div>
+								<div class="m-1 font-w600 d-flex align-items-center">
+									<img class="mastery-icon-sm mr-2" src="assets/media/main/mastery_header.svg">
+									<span>63</span>
+								</div>
+								<div class="media-body ka-col justify-content-center">
+									<div>
+										<div class="progress active mr-2 ml-1" style="height: 1rem;">
+										<div class="progress-bar bg-info" role="progressbar" style="width: 29.3018%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
+				</div>
+				<!-- Digsite Buttons -->
+				<div class="text-center mt-2">
+					<button role="button" class="btn btn-sm btn-success m-1">Start Excavation</button>
+					<button role="button" class="btn btn-sm btn-info m-1">Show Drops</button>
 				</div>
 			</div>
 		</div>
-	</template>
-	
-	<template id="template-kru-archaeology-sidebar">
-		<small>({{ state.skill_level }} / {{ state.skill_level_max }})</small>
-	</template>
+	</div>
+</div>
+</div>
+</template>
+
+<template id="template-kru-archaeology-sidebar">
+	<small>({{ state.skill_level }} / {{ state.skill_level_max }})</small>
+</template>

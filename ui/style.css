@@ -10,12 +10,6 @@
 	min-height: 370px;
 }
 
-.ka-area-header {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
-
 .ka-area-title {
 	font-size: 1.125rem;
 	font-weight: 600;
@@ -31,24 +25,21 @@
 	background-position: center;
 }
 
-.ka-area-requirements {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	margin-top: 20px;
-}
-
 .ka-area-requirements > lang-string {
 	margin-bottom: 10px;
 }
 
-.ka-area-requirement {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
-
 .ka-area-requirement > img {
 	margin-right: 10px;
+}
+
+.ka-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.ka-mastery-grid {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	grid-template-rows: 1fr auto;
 }

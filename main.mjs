@@ -131,9 +131,14 @@ const state = ui.createStore({
 	}
 });
 
-/** Send an error notification to the player. */
-function notify_error(lang_id) {
-	game.notifications.createErrorNotification(lang_id, getLangString(lang_id));
+/** Send an error toast notification to the player. */
+function notify_error(lang_id, icon) {
+	notify(lang_id, 'danger', icon);
+}
+
+/** Send a toast notification to the player. */
+function notify(lang_id, theme = 'danger', icon = 'assets/svg/archaeology.svg') {
+	notifyPlayer({ media: ctx.getResourceUrl(icon) }, getLangString(lang_id), theme);
 }
 
 /** Called on every game tick. */

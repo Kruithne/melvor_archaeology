@@ -123,7 +123,7 @@ const state = ui.createStore({
 		
 		const save_state = JSON.parse(fs.readFileSync(tmp_state_file, 'utf8'));
 		if (save_state) {
-			this.skill_xp = state.skill_xp ?? 0;
+			this.skill_xp = save_state.skill_xp ?? 0;
 			
 			if (save_state.digsites) {
 				for (const [digsite_id, digsite_data] of Object.entries(save_state.digsites)) {

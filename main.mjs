@@ -51,7 +51,7 @@ const state = ui.createStore({
 	debug_give_requirements(digsite) {
 		for (const [r_id, r_value] of Object.entries(digsite.requirements)) {
 			if (r_id === 'level') {
-				const required_xp = exp.level_to_xp(r_value);
+				const required_xp = exp.level_to_xp(r_value + 1);
 				if (this.skill_xp < required_xp)
 					this.skill_xp = required_xp;
 

@@ -8,6 +8,7 @@ const ctx = mod.getContext(import.meta);
 const state = ui.createStore({
 	skill_xp: 0,
 	skill_level_max: 99,
+	active_digsite: null,
 
 	/** Get the URL for a requirement icon. */
 	get_requirement_icon(id) {
@@ -65,6 +66,26 @@ const state = ui.createStore({
 		}
 
 		update_digsite_requirements();
+	},
+
+	/** Sets the provided digsite as the active excavation. */
+	start_digsite(digsite) {
+		if (digsite.state.active || !digsite.state.unlocked)
+			return;
+
+		if (state.active_digsite)
+			state.active_digsite.state.active = false;
+
+		digsite.state.active = true;
+		state.active_digsite = digsite;
+	},
+
+	/** Stops the active excavation. */
+	stop_excavating() {
+		if (state.active_digsite)
+			state.active_digsite.state.active = false;
+
+		state.active_digsite = null;
 	},
 
 	/** Unlocks a digsite. */
@@ -132,6 +153,9 @@ const state = ui.createStore({
 						continue;
 
 					target_digsite.state = digsite_data;
+
+					if (digsite_data.active)
+						state.active_digsite = target_digsite;
 				}
 			}
 		}

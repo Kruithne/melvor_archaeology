@@ -136,7 +136,11 @@
 				</div>
 				<!-- Digsite Buttons -->
 				<div class="text-center mt-2">
-					<button role="button" class="btn btn-sm btn-success m-1">Start Excavation</button>
+					<button role="button" class="btn btn-sm btn-danger m-1" @click="state.stop_excavating()" v-if="digsite.state.active">
+						<div class="spinner-border spinner-border-sm mr-1" role="status"></div>
+						<span>Stop Excavating</span>
+					</button>
+					<button role="button" class="btn btn-sm btn-success m-1" @click="state.start_digsite(digsite)" v-else>Start Excavating</button>
 					<button role="button" class="btn btn-sm btn-info m-1">Show Drops</button>
 				</div>
 			</div>

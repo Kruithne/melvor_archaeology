@@ -10,7 +10,19 @@
 				"gold": 5000,
 				"melvorD:Bones": 128,
 				"melvorD:Magic_Bones": 5
-			}
+			},
+			"loot": [
+				{
+					"chance": 0.9,
+					"items": [
+						{
+							"id": "melvorD:Raw_Skeleton_Fish",
+							"quantity_min": 1,
+							"quantity_max": 5
+						}
+					]
+				}
+			]
 		},
 		"digsite_beta": {
 			"name": "MOD_KA_DIGSITE_BETA",

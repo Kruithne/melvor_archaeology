@@ -265,8 +265,22 @@ function process_digsite_tick(digsite) {
 			offline_progress.gp += digsite.gp;
 		}
 
-		// TODO: Implement loot.
-		// TODO: Implement mastery.
+		for (const loot_slot of digsite.loot) {
+			if (Math.random() >= loot_slot.chance)
+				continue;
+
+			const item = loot_slot.items[Math.floor(Math.random() * loot_slot.items.length)];
+			const item_qty = Math.floor(Math.random() * (item.quantity_max - item.quantity_min + 1)) + item.quantity_min;
+
+			game.bank.addItemByID(item.id, item_qty, true, true);
+
+			if (is_offline) {
+				if (!offline_progress.loot[item.id])
+					offline_progress.loot[item.id] = item_qty;
+				else
+					offline_progress.loot[item.id] += item_qty;
+			}
+		}
 	}
 }
 

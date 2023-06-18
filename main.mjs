@@ -180,6 +180,9 @@ const state = ui.createStore({
 
 		for (const loot_slot of digsite.loot) {
 			for (const loot_item of loot_slot.items) {
+				if (loot_item.hide_from_drops)
+					continue;
+
 				const item = game.items.getObjectByID(loot_item.id);
 				const item_found = game.stats.itemFindCount(item);
 

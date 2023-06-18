@@ -4,7 +4,7 @@
 			"name": "MOD_KA_DIGSITE_ALPHA",
 			"icon": "digsite_desert",
 			"duration": 200,
-			"xp": 100,
+			"xp": 5000,
 			"gp": 100,
 			"requirements": {
 				"level": 10,

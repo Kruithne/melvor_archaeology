@@ -171,7 +171,14 @@ const state = ui.createStore({
 
 	/** Adds XP to the skill. */
 	add_xp(xp) {
+		const before_level = this.skill_level;
 		this.skill_xp += xp;
+
+		const after_level = this.skill_level;
+		if (after_level > before_level) {
+			levelUpNotify({ name: getLangString('MOD_KA_SKILL_ARCHAEOLOGY'), media: ctx.getResourceUrl('assets/svg/archaeology.svg'), level: after_level });
+			update_digsite_requirements();
+		}
 	},
 
 	/** Render the drops modal for a digsite. */
@@ -295,7 +302,7 @@ function process_digsite_tick(digsite) {
 
 /** Run the completion of a digsite, sending rewards to player. */
 function complete_digsite(digsite) {
-	state.skill_xp += digsite.xp;
+	state.add_xp(digsite.xp);
 	game.gp.add(digsite.gp);
 
 	if (is_offline) {

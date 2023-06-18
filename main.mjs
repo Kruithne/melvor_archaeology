@@ -270,9 +270,6 @@ function notify(lang_id, theme = 'danger', icon = 'assets/svg/archaeology.svg') 
 
 /** Called on every game tick. */
 function passiveTick() {
-	//if (current_tick % TICKS_PER_SECOND === 0)
-		//state.skill_xp += 50;
-
 	if (state.active_digsite !== null)
 		process_digsite_tick(state.active_digsite);
 }

@@ -175,7 +175,7 @@ const state = ui.createStore({
 		this.skill_xp += xp;
 
 		const after_level = this.skill_level;
-		if (after_level > before_level) {
+		if (!is_offline && after_level > before_level) {
 			levelUpNotify({ name: getLangString('MOD_KA_SKILL_ARCHAEOLOGY'), media: ctx.getResourceUrl('assets/svg/archaeology.svg'), level: after_level });
 			update_digsite_requirements();
 		}

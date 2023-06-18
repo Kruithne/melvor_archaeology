@@ -36,5 +36,9 @@
 				"melvorD:Big_Bones": 2000
 			}
 		}
+	},
+	"svg_assets": {
+		"digsite_desert": "assets/svg/digsite_desert.svg",
+		"archaeology": "assets/svg/archaeology.svg"
 	}
 }

@@ -26,6 +26,7 @@ const state = ui.createStore({
 	skill_xp: 0,
 	skill_level_max: 99,
 	active_digsite: null,
+	assets: {},
 
 	/** Get the URL for a requirement icon. */
 	get_requirement_icon(id) {
@@ -386,35 +387,16 @@ function patch_save_data(ctx) {
 	};
 }
 
-/** Load the necessary SVG file for an element. */
-async function load_svg_asset(ctx, $elem) {
-	const svg_path = 'assets/svg/' + $elem.getAttribute('data-ka-svg') + '.svg';
-	const svg_url = await ctx.getResourceUrl(svg_path);
-
-	$elem.style.backgroundImage = 'url(' + svg_url + ')';
-}
-
-/** Loads SVG files referenced in the DOM. This is a workaround for the fact
- * that assets referenced in a mods CSS file do not resolve correctly. */
+/** Loads pre-defined SVG assets for use in the DOM template. This is a workaround
+ * for mod-specific assets not resolving correctly in the template. */
 async function load_svg_assets(ctx) {
-	const $elements = document.querySelectorAll('[data-ka-svg]');
-	for (const $elem of $elements)
-		await load_svg_asset(ctx, $elem);
+	const assets = {};
+	for (const [svg_id, svg_path] of Object.entries(state.content.svg_assets)) {
+		const svg_url = await ctx.getResourceUrl(svg_path);
+		assets[svg_id] = svg_url;
+	}
 
-	// Detect elements with data-ka-svg being added to the DOM and load them.
-	const observer = new MutationObserver((mutations) => {
-		for (const mutation of mutations) {
-			for (const node of mutation.addedNodes) {
-				if (node.nodeType === Node.ELEMENT_NODE) {
-					const $node = node;
-					if ($node.hasAttribute('data-ka-svg'))
-						load_svg_asset(ctx, $node);
-				}
-			}
-		}
-	});
-
-	observer.observe(document.body, { childList: true, subtree: true });
+	state.assets = assets;
 }
 
 /** Loads the mod-specific content and resolves the necessary localization. */

@@ -29,5 +29,27 @@
 		],
 		"itemType": "Weapon",
 		"attackType": "melee"
+	},
+	{
+		"id": "Archaeology_Skillcape",
+		"name": "MOD_KA_ITEM_NAME_SKILLCAPE",
+		"category": "Combat",
+		"customDescription": "MOD_KA_ITEM_DESC_SKILLCAPE",
+		"type": "Armour",
+		"media": "assets/svg/skillcape_archaeology.svg",
+		"ignoreCompletion": false,
+		"obtainFromItemLog": false,
+		"golbinRaidExclusive": false,
+		"sellsFor": 250000,
+		"tier": "Skillcape",
+		"validSlots": ["Cape"],
+		"occupiesSlots": [],
+		"equipRequirements": [],
+		"equipmentStats": [
+			{ "key": "meleeDefenceBonus", "value": 9 },
+			{ "key": "rangedDefenceBonus", "value": 9 },
+			{ "key": "magicDefenceBonus", "value": 9 }
+		],
+		"itemType": "Equipment"
 	}
 ]

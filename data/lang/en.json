@@ -3,10 +3,14 @@
 	"MOD_KA_CONSTRUCTION_REQUIREMENTS": "Construction Requirements:",
 	"MOD_KA_DIGSITE_ALPHA": "Digsite Alpha",
 	"MOD_KA_DIGSITE_BETA": "Digsite Beta",
-	"MOD_KA_ITEM_NAME_SHOVEL": "Shovel",
-	"MOD_KA_ITEM_DESC_SHOVEL": "A shovel used for digging up artifacts.",
 	"MOD_KA_TOAST_DIGSITE_REQUIREMENT": "Requirements not met.",
 	"MOD_KA_OFFLINE_HEADER": "Excavation Progress",
 	"MOD_KA_OFFLINE_PROGRESS": "You completed ${amount} excavations while you were offline!",
-	"MOD_KA_OFFLINE_LEVELS": "levels in Archaeology"
+	"MOD_KA_OFFLINE_LEVELS": "levels in Archaeology",
+
+	"MOD_KA_ITEM_NAME_SHOVEL": "Shovel",
+	"MOD_KA_ITEM_DESC_SHOVEL": "A shovel used for digging up artifacts.",
+
+	"MOD_KA_ITEM_NAME_SKILLCAPE": "Archaeology Skillcape",
+	"MOD_KA_ITEM_DESC_SKILLCAPE": "Provides some bonus to Archaeology, probably"
 }

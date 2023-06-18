@@ -452,7 +452,6 @@ export async function setup(ctx) {
 
 	ctx.onCharacterLoaded(() => {
 		state.load_state(ctx);
-		game.bank.addItemByID('kru_archaeology:Archaeology_Shovel', 1, false, true);
 		game._passiveTickers.push({ passiveTick });
 	});
 	

@@ -43,3 +43,12 @@
 	grid-template-columns: auto 1fr;
 	grid-template-rows: 1fr auto;
 }
+
+.ka-area-header {
+	display: grid;
+	grid-template-columns: auto 1fr;
+}
+
+.ka-h-1-rem {
+	height: 1rem;
+}

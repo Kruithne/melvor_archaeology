@@ -2,6 +2,8 @@
 	"digsites": {
 		"digsite_alpha": {
 			"name": "MOD_KA_DIGSITE_ALPHA",
+			"duration": 1200,
+			"xp": 100,
 			"requirements": {
 				"level": 10,
 				"gold": 5000,
@@ -11,6 +13,8 @@
 		},
 		"digsite_beta": {
 			"name": "MOD_KA_DIGSITE_BETA",
+			"duration": 12000,
+			"xp": 1000,
 			"requirements": {
 				"level": 32,
 				"gold": 50000,

@@ -48,9 +48,14 @@
 		<div class="row row-deck">
 			<div class="col-4 col-xl-4" v-for="(digsite, digsite_id) in state.content.digsites">
 				<div class="block block-rounded border-top border-archaeology border-4x ka-area">
-					<div class="d-flex align-items-center">
+					<div class="ka-area-header">
 						<div class="ka-area-icon" data-ka-svg="digsite_desert"></div>
-						<span class="ka-area-title">{{ digsite.name }}</span>
+						<div class="ka-col justify-content-center">
+							<span class="ka-area-title">{{ digsite.name }}</span>
+							<div class="progress active mr-3 ml-1 mt-2 ka-h-1-rem" v-if="digsite.state.active">
+								<div class="progress-bar bg-success" role="progressbar" style="width: 29.3018%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" :style="{ width: ((1 - (digsite.state.ticks_remaining / digsite.duration)) * 100) + '%' }"></div>
+							</div>
+						</div>
 					</div>
 					<!-- Digsite Requirements -->
 					<div class="ka-col align-items-center justify-content-center mt-4" v-if="!digsite.state.unlocked">
@@ -93,7 +98,7 @@
 								<div class="bank-item no-bg btn-light pointer-enabled m-1 resize-32">
 									<img class="bank-img p-2 resize-32" src="assets/media/main/xp.svg">
 									<div class="font-size-sm text-white text-center">
-										<small class="badge-pill bg-secondary">5</small>
+										<small class="badge-pill bg-secondary">{{ digsite.xp }}</small>
 									</div>
 								</div>
 								<div class="bank-item no-bg btn-light pointer-enabled m-1 resize-32">
@@ -112,7 +117,7 @@
 							<!-- Digsite Time -->
 							<div class="h5 font-w400 font-size-sm text-combat-smoke mb-2 text-center">
 								<i class="far fa-clock mr-1"></i>
-								<span>5 minutes</span>
+								<span>{{ state.format_ticks(digsite.duration) }}</span>
 							</div>
 							<!-- Digsite Mastery -->
 							<div class="mastery-4">
@@ -126,7 +131,7 @@
 								</div>
 								<div class="media-body ka-col justify-content-center">
 									<div>
-										<div class="progress active mr-2 ml-1" style="height: 1rem;">
+										<div class="progress active mr-2 ml-1 ka-h-1-rem">
 										<div class="progress-bar bg-info" role="progressbar" style="width: 29.3018%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 								</div>

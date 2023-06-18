@@ -70,20 +70,25 @@ const state = ui.createStore({
 
 	/** Sets the provided digsite as the active excavation. */
 	start_digsite(digsite) {
-		if (digsite.state.active || !digsite.state.unlocked)
+		const digsite_state = digsite.state;
+		if (digsite_state.active || !digsite_state.unlocked)
 			return;
 
 		if (state.active_digsite)
 			state.active_digsite.state.active = false;
 
-		digsite.state.active = true;
+		digsite_state.active = true;
+		digsite_state.ticks_remaining = digsite.duration;
 		state.active_digsite = digsite;
 	},
 
 	/** Stops the active excavation. */
 	stop_excavating() {
-		if (state.active_digsite)
-			state.active_digsite.state.active = false;
+		if (state.active_digsite) {
+			const digsite_state = state.active_digsite.state;
+			digsite_state.active = false;
+			digsite_state.ticks_remaining = 0;
+		}
 
 		state.active_digsite = null;
 	},
@@ -111,6 +116,24 @@ const state = ui.createStore({
 		}
 
 		digsite.state.unlocked = true;
+	},
+
+	/** Formats a tick duration as a human-readable string. */
+	format_ticks(ticks) {
+		const minutes = Math.floor(ticks / TICKS_PER_MINUTE);
+		const hours = Math.floor(minutes / 60);
+
+		if (hours > 0) {
+			if (hours === 1)
+				return getLangString('TIME_UNIT_hour');
+
+			return templateLangString('TIME_UNIT_hours', { hours });
+		}
+
+		if (minutes === 1)
+			return getLangString('TIME_UNIT_minute');
+
+		return templateLangString('TIME_UNIT_minutes', { minutes });
 	},
 
 	/** Returns the current skill level. */
@@ -200,7 +223,25 @@ function passiveTick() {
 	//if (current_tick % TICKS_PER_SECOND === 0)
 		//state.skill_xp += 50;
 
+	if (state.active_digsite !== null)
+		process_digsite_tick(state.active_digsite);
+
 	current_tick++;
+}
+
+/** Process a tick for the active digsite. */
+function process_digsite_tick(digsite) {
+	const digsite_state = digsite.state;
+
+	digsite_state.ticks_remaining--;
+	if (digsite_state.ticks_remaining <= 0) {
+		digsite_state.ticks_remaining = digsite.duration;
+
+		state.skill_xp += digsite.xp;
+
+		// TODO: Implement loot.
+		// TODO: Implement mastery.
+	}
 }
 
 function update_digsite_requirements() {
@@ -281,7 +322,8 @@ async function load_content(ctx) {
 		digsite.name = getLangString(digsite.name);
 		digsite.state = {
 			active: false,
-			unlocked: false
+			unlocked: false,
+			ticks_remaining: 0,
 		};
 	}
 

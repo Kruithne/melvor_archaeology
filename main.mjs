@@ -154,8 +154,12 @@ const state = ui.createStore({
 
 					target_digsite.state = digsite_data;
 
-					if (digsite_data.active)
-						state.active_digsite = target_digsite;
+					if (digsite_data.active) {
+						if (state.active_digsite !== null)
+							digsite_data.active = false;
+						else
+							state.active_digsite = target_digsite;
+					}
 				}
 			}
 		}

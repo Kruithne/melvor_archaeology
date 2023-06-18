@@ -13,8 +13,6 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-let current_tick = 0;
-
 let is_offline = true;
 let offline_progress = {
 	xp: 0,
@@ -244,8 +242,6 @@ function passiveTick() {
 
 	if (state.active_digsite !== null)
 		process_digsite_tick(state.active_digsite);
-
-	current_tick++;
 }
 
 /** Process a tick for the active digsite. */
@@ -256,30 +252,42 @@ function process_digsite_tick(digsite) {
 	if (digsite_state.ticks_remaining <= 0) {
 		digsite_state.ticks_remaining = digsite.duration;
 
-		state.skill_xp += digsite.xp;
-		game.gp.add(digsite.gp);
+		try {
+			complete_digsite(digsite);
+		} catch (e) {
+			// Catch errors here otherwise they bubble to runTicks() which causes tick
+			// processing to stop and could result in the player losing progress especially
+			// when processing large offline tick quantities.
+			console.error(e);
+		}
+	}
+}
+
+/** Run the completion of a digsite, sending rewards to player. */
+function complete_digsite(digsite) {
+	state.skill_xp += digsite.xp;
+	game.gp.add(digsite.gp);
+
+	if (is_offline) {
+		offline_progress.excavations++;
+		offline_progress.xp += digsite.xp;
+		offline_progress.gp += digsite.gp;
+	}
+
+	for (const loot_slot of digsite.loot) {
+		if (Math.random() >= loot_slot.chance)
+			continue;
+
+		const item = loot_slot.items[Math.floor(Math.random() * loot_slot.items.length)];
+		const item_qty = Math.floor(Math.random() * (item.quantity_max - item.quantity_min + 1)) + item.quantity_min;
+
+		game.bank.addItemByID(item.id, item_qty, true, true);
 
 		if (is_offline) {
-			offline_progress.excavations++;
-			offline_progress.xp += digsite.xp;
-			offline_progress.gp += digsite.gp;
-		}
-
-		for (const loot_slot of digsite.loot) {
-			if (Math.random() >= loot_slot.chance)
-				continue;
-
-			const item = loot_slot.items[Math.floor(Math.random() * loot_slot.items.length)];
-			const item_qty = Math.floor(Math.random() * (item.quantity_max - item.quantity_min + 1)) + item.quantity_min;
-
-			game.bank.addItemByID(item.id, item_qty, true, true);
-
-			if (is_offline) {
-				if (!offline_progress.loot[item.id])
-					offline_progress.loot[item.id] = item_qty;
-				else
-					offline_progress.loot[item.id] += item_qty;
-			}
+			if (!offline_progress.items[item.id])
+				offline_progress.items[item.id] = item_qty;
+			else
+				offline_progress.items[item.id] += item_qty;
 		}
 	}
 }

@@ -7,5 +7,6 @@
 	"MOD_KA_ITEM_DESC_SHOVEL": "A shovel used for digging up artifacts.",
 	"MOD_KA_TOAST_DIGSITE_REQUIREMENT": "Requirements not met.",
 	"MOD_KA_OFFLINE_HEADER": "Excavation Progress",
-	"MOD_KA_OFFLINE_PROGRESS": "You completed ${amount} excavations while you were offline!"
+	"MOD_KA_OFFLINE_PROGRESS": "You completed ${amount} excavations while you were offline!",
+	"MOD_KA_OFFLINE_LEVELS": "levels in Archaeology"
 }

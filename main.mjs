@@ -15,6 +15,7 @@ const path = require('path');
 
 let is_offline = true;
 let offline_progress = {
+	start_level: 1,
 	xp: 0,
 	gp: 0,
 	excavations: 0,
@@ -357,6 +358,9 @@ async function render_offline_modal() {
 		entries.push({ qty: item_qty, name: item_name, icon: item_icon });
 	}
 
+	if (state.skill_level > offline_progress.start_level)
+		entries.push({ qty: state.skill_level - offline_progress.start_level, name: getLangString('MOD_KA_OFFLINE_LEVELS'), icon: skill_icon});
+
 	if (offline_progress.xp > 0)
 		entries.push({ qty: offline_progress.xp, name: templateLangString('MENU_TEXT_XP_AMOUNT', { xp: getLangString('MOD_KA_SKILL_ARCHAEOLOGY') }), icon: skill_icon });
 
@@ -478,6 +482,7 @@ export async function setup(ctx) {
 
 	ctx.onCharacterLoaded(() => {
 		state.load_state(ctx);
+		offline_progress.start_level = state.skill_level;
 		game._passiveTickers.push({ passiveTick });
 	});
 	

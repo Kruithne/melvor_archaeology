@@ -44,11 +44,16 @@
 	grid-template-rows: 1fr auto;
 }
 
-.ka-area-header {
+.ka-grid-auto-1fr {
 	display: grid;
 	grid-template-columns: auto 1fr;
 }
 
 .ka-h-1-rem {
 	height: 1rem;
+}
+
+.ka-progress-icon {
+	width: 32px;
+	height: 32px;
 }

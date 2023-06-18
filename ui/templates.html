@@ -11,50 +11,15 @@
 						<li class="m-1" style="min-width: 30%"><span class="font-w600"><lang-string lang-id="MENU_TEXT_SKILL XP">Skill XP</lang-string></span> <span class="p-1 bg-info rounded font-w600">{{ formatNumber(state.skill_xp) }} / {{ formatNumber(state.next_level_xp) }}</span></li>
 					</ul>
 				</div>
-				<div class="pl-1 pr-1">
-					<div class="row no-gutters">
-						<div class="col-12 col-lg-8">
-							<div class="media d-flex align-items-center push m-0">
-								<div class="m-1">
-									<img class="skill-icon-xs m-0" src="assets/media/main/mastery_pool.svg">
-								</div>
-								<div class="media-body">
-									<div class="font-size-sm">
-										<div class="progress active mr-1 mt-2 ml-1" style="height: 4px">
-											<div class="progress-bar bg-warning" role="progressbar" style="width: 0.858222%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-											</div>
-										</div>
-									</div>
-									<div class="font-w400">
-										<h5 class="font-w400 font-size-sm text-combat-smoke m-1"><small><span><span>98,695</span> / <span>11,500,000</span> (<span>0.86%</span>)</span> XP</small></h5>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-md-4">
-							<div class="ml-2 mr-2 text-right">
-								<button role="button" class="btn btn-sm btn-info m-1 font-size-xs">
-									<lang-string lang-id="MENU_TEXT_MASTERY_VIEW_CHECKPOINTS">View Checkpoints</lang-string>
-								</button>
-								<button role="button" class="btn btn-sm btn-success m-1 font-size-xs">
-									<lang-string lang-id="MENU_TEXT_MASTERY_SPEND_XP">Spend Mastery Pool XP</lang-string>
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 		<div class="row row-deck">
 			<div class="col-4 col-xl-4" v-for="(digsite, digsite_id) in state.content.digsites">
 				<div class="block block-rounded border-top border-archaeology border-4x ka-area">
-					<div class="ka-area-header">
+					<div class="ka-grid-auto-1fr">
 						<div class="ka-area-icon" data-ka-svg="digsite_desert"></div>
 						<div class="ka-col justify-content-center">
 							<span class="ka-area-title">{{ digsite.name }}</span>
-							<div class="progress active mr-3 ml-1 mt-2 ka-h-1-rem" v-if="digsite.state.active">
-								<div class="progress-bar bg-success" role="progressbar" style="width: 29.3018%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" :style="{ width: ((1 - (digsite.state.ticks_remaining / digsite.duration)) * 100) + '%' }"></div>
-							</div>
 						</div>
 					</div>
 					<!-- Digsite Requirements -->
@@ -71,7 +36,7 @@
 					</div>
 					<div v-else>
 						<!-- Digsite Unlocked UI -->
-						<div class="ka-col">
+						<div class="ka-col mt-2">
 							<!-- Pristine Collection -->
 							<div class="ka-col align-items-center mb-2">
 								Pristine Collection
@@ -102,15 +67,9 @@
 									</div>
 								</div>
 								<div class="bank-item no-bg btn-light pointer-enabled m-1 resize-32">
-									<img class="bank-img p-2 resize-32" src="assets/media/main/mastery_header.svg">
+									<img class="bank-img p-2 resize-32" src="assets/media/main/coins.svg">
 									<div class="font-size-xs text-white text-center ka-col align-items-center" style="bottom: -8px">
-										<small class="badge-pill bg-secondary">435</small>
-									</div>
-								</div>
-								<div class="bank-item no-bg btn-light pointer-enabled m-1 resize-32">
-									<img class="bank-img p-2 resize-32" src="assets/media/main/mastery_pool.svg">
-									<div class="font-size-xs text-white text-center ka-col align-items-center" style="bottom: -8px">
-										<small class="badge-pill bg-secondary">435</small>
+										<small class="badge-pill bg-secondary">{{ formatNumber(digsite.gp) }}</small>
 									</div>
 								</div>
 							</div>
@@ -119,34 +78,24 @@
 								<i class="far fa-clock mr-1"></i>
 								<span>{{ state.format_ticks(digsite.duration) }}</span>
 							</div>
-							<!-- Digsite Mastery -->
-							<div class="mastery-4">
-								<div class="mr-4 ml-4 ka-mastery-grid">
-								<div class="font-w400 text-center" style="grid-column: 2;">
-									<h5 class="font-w400 font-size-sm text-combat-smoke m-1"><small>379,855 / 407,015</small></h5>
+							<!-- Digsite Progress -->
+							<div class="ka-grid-auto-1fr align-items-center mr-4 ml-4" v-if="digsite.state.active">
+								<div class="ka-progress-icon mr-2" data-ka-svg="archaeology"></div>
+								<div class="progress active ml-1 ka-h-1-rem">
+									<div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" :style="{ width: ((1 - (digsite.state.ticks_remaining / digsite.duration)) * 100) + '%' }"></div>
 								</div>
-								<div class="m-1 font-w600 d-flex align-items-center">
-									<img class="mastery-icon-sm mr-2" src="assets/media/main/mastery_header.svg">
-									<span>63</span>
-								</div>
-								<div class="media-body ka-col justify-content-center">
-									<div>
-										<div class="progress active mr-2 ml-1 ka-h-1-rem">
-										<div class="progress-bar bg-info" role="progressbar" style="width: 29.3018%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								</div>
+							</div>
+							<!-- Digsite Buttons -->
+							<div class="text-center mt-2">
+								<button role="button" class="btn btn-sm btn-danger m-1" @click="state.stop_excavating()" v-if="digsite.state.active">
+									<div class="spinner-border spinner-border-sm mr-1" role="status"></div>
+									<span>Stop Excavating</span>
+								</button>
+								<button role="button" class="btn btn-sm btn-success m-1" @click="state.start_digsite(digsite)" v-else>Start Excavating</button>
+								<button role="button" class="btn btn-sm btn-info m-1">Show Drops</button>
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- Digsite Buttons -->
-				<div class="text-center mt-2">
-					<button role="button" class="btn btn-sm btn-danger m-1" @click="state.stop_excavating()" v-if="digsite.state.active">
-						<div class="spinner-border spinner-border-sm mr-1" role="status"></div>
-						<span>Stop Excavating</span>
-					</button>
-					<button role="button" class="btn btn-sm btn-success m-1" @click="state.start_digsite(digsite)" v-else>Start Excavating</button>
-					<button role="button" class="btn btn-sm btn-info m-1">Show Drops</button>
 				</div>
 			</div>
 		</div>

@@ -17,7 +17,7 @@
 			<div class="col-4 col-xl-4" v-for="(digsite, digsite_id) in state.content.digsites">
 				<div class="block block-rounded border-top border-archaeology border-4x ka-area">
 					<div class="ka-grid-auto-1fr">
-						<div class="ka-area-icon" :style="{ backgroundImage: 'url(' + state.assets.digsite_desert + ')'}"></div>
+						<div class="ka-area-icon" :style="{ backgroundImage: 'url(' + state.assets[digsite.icon] + ')'}"></div>
 						<div class="ka-col justify-content-center">
 							<span class="ka-area-title">{{ digsite.name }}</span>
 						</div>

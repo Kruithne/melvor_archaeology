@@ -2,6 +2,7 @@
 	"digsites": {
 		"digsite_alpha": {
 			"name": "MOD_KA_DIGSITE_ALPHA",
+			"icon": "digsite_desert",
 			"duration": 200,
 			"xp": 100,
 			"gp": 100,
@@ -26,6 +27,7 @@
 		},
 		"digsite_beta": {
 			"name": "MOD_KA_DIGSITE_BETA",
+			"icon": "digsite_desert",
 			"duration": 12000,
 			"xp": 1000,
 			"gp": 1000,

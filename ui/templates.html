@@ -92,7 +92,7 @@
 									<span>Stop Excavating</span>
 								</button>
 								<button role="button" class="btn btn-sm btn-success m-1" @click="state.start_digsite(digsite)" v-else>Start Excavating</button>
-								<button role="button" class="btn btn-sm btn-info m-1">Show Drops</button>
+								<button role="button" class="btn btn-sm btn-info m-1" @click="state.render_drops_modal(digsite)">Show Drops</button>
 							</div>
 						</div>
 					</div>

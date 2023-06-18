@@ -174,6 +174,35 @@ const state = ui.createStore({
 		this.skill_xp += xp;
 	},
 
+	/** Render the drops modal for a digsite. */
+	render_drops_modal(digsite) {
+		const entries = [];
+
+		for (const loot_slot of digsite.loot) {
+			for (const loot_item of loot_slot.items) {
+				const item = game.items.getObjectByID(loot_item.id);
+				const item_found = game.stats.itemFindCount(item);
+
+				const item_name = item_found ? item.name : getLangString('THIEVING_UNDISCOVERED_ITEM');
+				const item_icon = item_found ? item.media : cdnMedia('assets/media/main/question.svg');
+
+				const item_qty = loot_item.quantity_min === loot_item.quantity_max ? loot_item.quantity_min : `${loot_item.quantity_min}-${loot_item.quantity_max}`;
+
+				entries.push({ qty: item_qty, name: item_name, icon: item_icon });
+			}
+		}
+
+		addModalToQueue({
+			title: digsite.name,
+			html: entries.map(entry => `<h5 class="font-w600 mb-1">${entry.qty}x <img class="skill-icon-xs" src="${entry.icon}"> ${entry.name}</h5>`).join(''),
+			imageUrl: state.assets[digsite.icon],
+			imageWidth: 64,
+			imageHeight: 64,
+			imageAlt: getLangString('MOD_KA_SKILL_ARCHAEOLOGY'),
+			allowOutsideClick: false,
+		});
+	},
+
 	/** Load the skill state from mod settings. */
 	load_state(ctx) {
 		// TODO: Swap this when mod is on mod.io

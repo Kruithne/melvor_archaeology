@@ -15,6 +15,14 @@ const path = require('path');
 
 let current_tick = 0;
 
+let is_offline = true;
+let offline_progress = {
+	xp: 0,
+	gp: 0,
+	excavations: 0,
+	items: {}
+};
+
 const ctx = mod.getContext(import.meta);
 const state = ui.createStore({
 	skill_xp: 0,
@@ -249,6 +257,13 @@ function process_digsite_tick(digsite) {
 		digsite_state.ticks_remaining = digsite.duration;
 
 		state.skill_xp += digsite.xp;
+		game.gp.add(digsite.gp);
+
+		if (is_offline) {
+			offline_progress.excavations++;
+			offline_progress.xp += digsite.xp;
+			offline_progress.gp += digsite.gp;
+		}
 
 		// TODO: Implement loot.
 		// TODO: Implement mastery.
@@ -264,6 +279,42 @@ function update_digsite_requirements() {
 		requirement.classList.remove('text-success', 'text-danger');
 		requirement.classList.add(state.get_requirement_class(id, value));
 	}
+}
+
+/** Render the offline progress modal for archaeology */
+async function render_offline_modal() {
+	if (offline_progress.excavations === 0)
+		return;
+
+	const entries = [];
+	const skill_icon = await ctx.getResourceUrl('assets/svg/archaeology.svg');
+
+	const header = `<h5 class="font-w400 mb-1">${templateLangString('MOD_KA_OFFLINE_PROGRESS', { amount: offline_progress.excavations })}</h5>`;
+
+	for (const [item_id, item_qty] of Object.entries(offline_progress.items)) {
+		const item_name = get_localized_item_name(item_id);
+		const item_icon = game.items.getObjectByID(item_id).media;
+
+		entries.push({ qty: item_qty, name: item_name, icon: item_icon });
+	}
+
+	if (offline_progress.xp > 0)
+		entries.push({ qty: offline_progress.xp, name: templateLangString('MENU_TEXT_XP_AMOUNT', { xp: getLangString('MOD_KA_SKILL_ARCHAEOLOGY') }), icon: skill_icon });
+
+	if (offline_progress.gp > 0)
+		entries.push({ qty: offline_progress.gp, name: getLangString('MENU_TEXT_GP'), icon: 'assets/media/main/coins.svg' });
+
+	addModalToQueue({
+		title: getLangString('MOD_KA_OFFLINE_HEADER'),
+		html: header + entries.map(entry => `<h5 class="font-w600 mb-1">You gained <span class="text-success">${formatNumber(entry.qty)}</span> <img class="skill-icon-xs" src="${entry.icon}"> ${entry.name}</h5>`).join(''),
+		imageUrl: skill_icon,
+		imageWidth: 64,
+		imageHeight: 64,
+		imageAlt: getLangString('MOD_KA_SKILL_ARCHAEOLOGY'),
+		allowOutsideClick: false,
+	});
+
+	offline_progress = undefined;
 }
 
 /** Resolves a localized name for an item. */
@@ -373,6 +424,8 @@ export async function setup(ctx) {
 	});
 	
 	ctx.onInterfaceReady(() => {
+		is_offline = false;
+
 		ui.create(UISidebarLevel(), document.querySelector('.kru-archaeology-sidebar-archaeology'));
 
 		const $main_container = document.getElementById('main-container');
@@ -390,6 +443,7 @@ export async function setup(ctx) {
 
 		observer.observe($container, { attributes: true });
 
+		render_offline_modal(ctx);
 		load_svg_assets(ctx);
 	});
 }

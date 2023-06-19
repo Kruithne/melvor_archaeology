@@ -464,6 +464,17 @@ export async function setup(ctx) {
 		const $main_container = document.getElementById('main-container');
 		$main_container.appendChild($container);
 
+		const observer = new MutationObserver((mutations) => {
+			for (const mutation of mutations) {
+				if (mutation.attributeName === 'class') {
+					if (!$container.classList.contains('d-none'))
+						update_digsite_requirements();
+				}
+			}
+		});
+
+		observer.observe($container, { attributes: true });
+
 		render_offline_modal(ctx);
 		load_svg_assets(ctx);
 	});

@@ -187,7 +187,7 @@ const state = ui.createStore({
 					if (!target_digsite)
 						continue;
 
-					target_digsite.state = digsite_data;
+					Object.assign(target_digsite.state, digsite_data);
 
 					if (digsite_data.active) {
 						if (state.active_digsite !== null)

@@ -1,10 +1,9 @@
 /**
  * BE WARNED, ALL YE WHO ENTER HERE
- * This mod has been created in a very short amount of time for the Melvor Mod Contest 2023
- * by someone who has never created a Melvor mod before. I am fully aware that things could
- * be done *a lot* better, especially around skill registration, but the priority was to
- * create content over improving code quality. You should *not* use this mod as an example
- * of how to create a Melvor mod - there are much less hacky ways!
+ * This mod has been created in a very short amount of time for the Melvor Mod Contest 2023 by someone who has never
+ * created a Melvor mod before. I am fully aware that things could be done *a lot* better but the priority was to
+ * create content over improving code quality. You should *not* use this mod as an example of how to create a Melvor
+ * mod - there are much less hacky ways!
  * 
  * I hope you enjoy the mod regardless!
  */
@@ -23,9 +22,9 @@ let offline_progress = {
 };
 
 const ctx = mod.getContext(import.meta);
+let skill = null;
+
 const state = ui.createStore({
-	skill_xp: 0,
-	skill_level_max: 99,
 	active_digsite: null,
 	assets: {},
 
@@ -54,7 +53,7 @@ const state = ui.createStore({
 	/** Returns true if the digsite requirement is met by the player. */
 	is_requirement_met(id, value) {
 		if (id === 'level')
-			return this.skill_level >= value;
+			return skill.level >= value;
 
 		if (id === 'gold')
 			return game.gp.amount >= value;
@@ -72,8 +71,8 @@ const state = ui.createStore({
 		for (const [r_id, r_value] of Object.entries(digsite.requirements)) {
 			if (r_id === 'level') {
 				const required_xp = exp.level_to_xp(r_value + 1);
-				if (this.skill_xp < required_xp)
-					this.skill_xp = required_xp;
+				if (skill.xp < required_xp)
+					skill.addXP(required_xp - skill.xp);
 
 				continue;
 			}
@@ -155,31 +154,9 @@ const state = ui.createStore({
 		return templateLangString('TIME_UNIT_minutes', { minutes });
 	},
 
-	/** Returns the current skill level. */
-	get skill_level() {
-		return Math.min(this.skill_level_max, exp.xpToLevel(this.skill_xp));
-	},
-
 	/** Returns the amount of XP required to reach the next level. */
 	get next_level_xp() {
-		return exp.level_to_xp(this.skill_level + 1);
-	},
-
-	/** Returns progress through the current level as a fraction. */
-	get current_level_frac() {
-		return (this.skill_xp - exp.level_to_xp(this.skill_level)) / (this.next_level_xp - exp.level_to_xp(this.skill_level));
-	},
-
-	/** Adds XP to the skill. */
-	add_xp(xp) {
-		const before_level = this.skill_level;
-		this.skill_xp += xp;
-
-		const after_level = this.skill_level;
-		if (!is_offline && after_level > before_level) {
-			levelUpNotify({ name: getLangString('MOD_KA_SKILL_ARCHAEOLOGY'), media: ctx.getResourceUrl('assets/svg/archaeology.svg'), level: after_level });
-			update_digsite_requirements();
-		}
+		return exp.level_to_xp(skill.level + 1);
 	},
 
 	/** Render the drops modal for a digsite. */
@@ -209,7 +186,7 @@ const state = ui.createStore({
 			imageUrl: state.assets[digsite.icon],
 			imageWidth: 64,
 			imageHeight: 64,
-			imageAlt: getLangString('MOD_KA_SKILL_ARCHAEOLOGY'),
+			imageAlt: getLangString('SKILL_NAME_Archaeology'),
 			allowOutsideClick: false,
 		});
 	},
@@ -224,9 +201,7 @@ const state = ui.createStore({
 			return;
 		
 		const save_state = JSON.parse(fs.readFileSync(tmp_state_file, 'utf8'));
-		if (save_state) {
-			this.skill_xp = save_state.skill_xp ?? 0;
-			
+		if (save_state) {			
 			if (save_state.digsites) {
 				for (const [digsite_id, digsite_data] of Object.entries(save_state.digsites)) {
 					const target_digsite = state.content.digsites[digsite_id];
@@ -254,10 +229,7 @@ const state = ui.createStore({
 		for (const [digsite_id, digsite_data] of Object.entries(state.content.digsites))
 			digsites[digsite_id] = digsite_data.state;
 
-		const save_state = {
-			skill_xp: this.skill_xp,
-			digsites
-		};
+		const save_state = { digsites };
 
 		const tmp_state_file = path.join(os.tmpdir(), 'archaeology_state.json');
 		fs.writeFileSync(tmp_state_file, JSON.stringify(save_state));
@@ -303,7 +275,7 @@ function process_digsite_tick(digsite) {
 
 /** Run the completion of a digsite, sending rewards to player. */
 function complete_digsite(digsite) {
-	state.add_xp(digsite.xp);
+	skill.addXP(digsite.xp);
 	game.gp.add(digsite.gp);
 
 	if (is_offline) {
@@ -358,11 +330,11 @@ async function render_offline_modal() {
 		entries.push({ qty: item_qty, name: item_name, icon: item_icon });
 	}
 
-	if (state.skill_level > offline_progress.start_level)
-		entries.push({ qty: state.skill_level - offline_progress.start_level, name: getLangString('MOD_KA_OFFLINE_LEVELS'), icon: skill_icon});
+	if (skill.level > offline_progress.start_level)
+		entries.push({ qty: skill.level - offline_progress.start_level, name: getLangString('MOD_KA_OFFLINE_LEVELS'), icon: skill_icon});
 
 	if (offline_progress.xp > 0)
-		entries.push({ qty: offline_progress.xp, name: templateLangString('MENU_TEXT_XP_AMOUNT', { xp: getLangString('MOD_KA_SKILL_ARCHAEOLOGY') }), icon: skill_icon });
+		entries.push({ qty: offline_progress.xp, name: templateLangString('MENU_TEXT_XP_AMOUNT', { xp: getLangString('SKILL_NAME_Archaeology') }), icon: skill_icon });
 
 	if (offline_progress.gp > 0)
 		entries.push({ qty: offline_progress.gp, name: getLangString('MENU_TEXT_GP'), icon: 'assets/media/main/coins.svg' });
@@ -373,7 +345,7 @@ async function render_offline_modal() {
 		imageUrl: skill_icon,
 		imageWidth: 64,
 		imageHeight: 64,
-		imageAlt: getLangString('MOD_KA_SKILL_ARCHAEOLOGY'),
+		imageAlt: getLangString('SKILL_NAME_Archaeology'),
 		allowOutsideClick: false,
 	});
 
@@ -480,31 +452,27 @@ export async function setup(ctx) {
 	await load_items(ctx);
 	await load_content(ctx);
 
+	await ctx.loadTemplates('ui/templates.html');
+
+	ui.create(UIArchaeologyContainer(), document.body);
+
+	game.registerSkill(game.registeredNamespaces.getNamespace('kru_archaeology'), ArchaeologySkill);
+	skill = game.skills.registeredObjects.get('kru_archaeology:Archaeology');
+
+	await ctx.gameData.addPackage('data.json');
+
 	ctx.onCharacterLoaded(() => {
 		state.load_state(ctx);
-		offline_progress.start_level = state.skill_level;
+		offline_progress.start_level = skill.level;
 		game._passiveTickers.push({ passiveTick });
 	});
 	
 	ctx.onInterfaceReady(() => {
-		is_offline = false;
-
-		ui.create(UISidebarLevel(), document.querySelector('.kru-archaeology-sidebar-archaeology'));
-
-		const $main_container = document.getElementById('main-container');
-		ui.create(UIArchaeologyContainer(), $main_container);
+		is_offline = false;		
 
 		const $container = document.getElementById('kru-archaeology-container');
-		const observer = new MutationObserver((mutations) => {
-			for (const mutation of mutations) {
-				if (mutation.attributeName === 'class') {
-					if (!$container.classList.contains('d-none'))
-						update_digsite_requirements();
-				}
-			}
-		});
-
-		observer.observe($container, { attributes: true });
+		const $main_container = document.getElementById('main-container');
+		$main_container.appendChild($container);
 
 		render_offline_modal(ctx);
 		load_svg_assets(ctx);
@@ -518,9 +486,16 @@ function UIArchaeologyContainer() {
 	}
 }
 
-function UISidebarLevel() {
-	return {
-		$template: '#template-kru-archaeology-sidebar',
-		state
+class ArchaeologySkill extends Skill {
+	constructor(namespace, game) {
+		super(namespace, 'Archaeology', game);
+		this.renderQueue = new ArchaeologySkillRenderQueue();
+		this._media = 'assets/svg/archaeology.svg';
+	}
+}
+
+class ArchaeologySkillRenderQueue extends SkillRenderQueue {
+	constructor() {
+		super(...arguments);
 	}
 }

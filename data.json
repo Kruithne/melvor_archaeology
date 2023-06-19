@@ -10,11 +10,8 @@
 				"headerBgClass": "bg-archaeology",
 				"hasGameGuide": false,
 				"canBeDefault": true,
-				"sidebarItem": {
-					"categoryID": "Passive",
-					"icon": "assets/svg/archaeology.svg",
-					"itemClass": "kru-archaeology-sidebar-archaeology"
-				}
+				"skills": ["kru_archaeology:Archaeology"],
+				"skillSidebarCategoryID": "Passive"
 			}
 		]
 	}

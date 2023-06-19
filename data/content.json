@@ -36,7 +36,8 @@
 				"gold": 50000,
 				"melvorD:Raw_Skeleton_Fish": 20,
 				"melvorD:Big_Bones": 2000
-			}
+			},
+			"loot": []
 		}
 	},
 	"svg_assets": {

@@ -479,4 +479,9 @@ class ArchaeologySkillRenderQueue extends SkillRenderQueue {
 	constructor() {
 		super(...arguments);
 	}
+
+	onLevelUp(oldLevel, newLevel) {
+		if (!is_offline)
+			update_digsite_requirements();
+	}
 }

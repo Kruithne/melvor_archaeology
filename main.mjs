@@ -424,7 +424,7 @@ export async function setup(ctx) {
 
 	await ctx.loadTemplates('ui/templates.html');
 
-	ui.create(UIArchaeologyContainer(), document.body);
+	ui.create({ $template: '#template-kru-archaeology-container', state	}, document.body);
 
 	game.registerSkill(game.registeredNamespaces.getNamespace('kru_archaeology'), ArchaeologySkill);
 	skill = game.skills.registeredObjects.get('kru_archaeology:Archaeology');
@@ -458,13 +458,6 @@ export async function setup(ctx) {
 		render_offline_modal(ctx);
 		load_svg_assets(ctx);
 	});
-}
-
-function UIArchaeologyContainer() {
-	return {
-		$template: '#template-kru-archaeology-container',
-		state
-	}
 }
 
 class ArchaeologySkill extends Skill {

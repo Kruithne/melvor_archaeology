@@ -314,12 +314,12 @@ function update_digsite_requirements() {
 }
 
 /** Render the offline progress modal for archaeology */
-async function render_offline_modal() {
+function render_offline_modal() {
 	if (offline_progress.excavations === 0)
 		return;
 
 	const entries = [];
-	const skill_icon = await ctx.getResourceUrl('assets/svg/archaeology.svg');
+	const skill_icon = ctx.getResourceUrl('assets/svg/archaeology.svg');
 
 	const header = `<h5 class="font-w400 mb-1">${templateLangString('MOD_KA_OFFLINE_PROGRESS', { amount: offline_progress.excavations })}</h5>`;
 

@@ -462,15 +462,15 @@ class ArchaeologySkill extends Skill {
 		this.renderQueue = new ArchaeologySkillRenderQueue();
 		this._media = 'assets/svg/archaeology.svg';
 	}
+
+	onLevelUp(oldLevel, newLevel) {
+		if (!is_offline)
+			update_digsite_requirements();
+	}
 }
 
 class ArchaeologySkillRenderQueue extends SkillRenderQueue {
 	constructor() {
 		super(...arguments);
-	}
-
-	onLevelUp(oldLevel, newLevel) {
-		if (!is_offline)
-			update_digsite_requirements();
 	}
 }

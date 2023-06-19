@@ -162,7 +162,7 @@ const state = ui.createStore({
 		addModalToQueue({
 			title: digsite.name,
 			html: entries.map(entry => `<h5 class="font-w600 mb-1">${entry.qty}x <img class="skill-icon-xs" src="${entry.icon}"> ${entry.name}</h5>`).join(''),
-			imageUrl: ctx.getResourceUrl(digsite.icon),
+			imageUrl: state.get_svg(digsite.icon),
 			imageWidth: 64,
 			imageHeight: 64,
 			imageAlt: getLangString('SKILL_NAME_Archaeology'),

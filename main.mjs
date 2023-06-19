@@ -56,26 +56,6 @@ const state = ui.createStore({
 		return this.is_requirement_met(id, value) ? 'text-success' : 'text-danger';
 	},
 
-	/** Gives the player the necessary unlock requirements. */
-	debug_give_requirements(digsite) {
-		for (const [r_id, r_value] of Object.entries(digsite.requirements)) {
-			if (r_id === 'level') {
-				const required_xp = exp.level_to_xp(r_value + 1);
-				if (skill.xp < required_xp)
-					skill.addXP(required_xp - skill.xp);
-
-				continue;
-			}
-
-			if (r_id === 'gold')
-				game.gp.add(r_value);
-			else
-				game.bank.addItemByID(r_id, r_value);
-		}
-
-		update_digsite_requirements();
-	},
-
 	/** Sets the provided digsite as the active excavation. */
 	start_digsite(digsite) {
 		const digsite_state = digsite.state;

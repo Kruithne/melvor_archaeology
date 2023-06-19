@@ -54,6 +54,15 @@
 }
 
 .ka-progress-icon {
-	width: 32px;
-	height: 32px;
+	width: 26px;
+	height: 26px;
+}
+
+.ka-mastery {
+	font-size: 70%;
+}
+
+.ka-mastery-icon {
+	background-image: url('assets/media/main/mastery_header.svg');
+    background-size: contain;
 }

@@ -11,6 +11,8 @@ let offline_progress = {
 	items: {}
 };
 
+const DIGSITE_RANKS = [0, 192, 384, 576, 768];
+
 const ctx = mod.getContext(import.meta);
 let skill = null;
 
@@ -36,6 +38,24 @@ const state = ui.createStore({
 			return 'assets/media/main/coins.svg';
 
 		return game.items.getObjectByID(id).media;
+	},
+
+	/** Returns progress through the current mastery rank as a fraction. */
+	get_mastery_progress(xp) {
+		const current_level = mastery_level_from_xp(xp);
+		const xp_for_current_level = mastery_xp_for_level(current_level);
+		return (xp - xp_for_current_level) / (mastery_xp_for_level(current_level + 1) - xp_for_current_level);
+	},
+
+	/** Formats digsite mastery into a human-readable string. */
+	format_mastery_string(xp) {
+		const level = mastery_level_from_xp(xp);
+		return templateLangString('MOD_KA_DIGSITE_LEVEL', {
+			level,
+			rank: getLangString('MOD_KA_DIGSITE_RANK_' + level),
+			xp: formatNumber(xp),
+			xp_needed: mastery_xp_for_level(level + 1)
+		});
 	},
 
 	/** Formats a digsite requirement into a human-readable string. */
@@ -256,6 +276,7 @@ function process_digsite_tick(digsite) {
 function complete_digsite(digsite) {
 	skill.addXP(digsite.xp);
 	game.gp.add(digsite.gp);
+	digsite.state.mastery_xp += digsite.mastery; // TODO: Cap this.
 
 	if (is_offline) {
 		offline_progress.excavations++;
@@ -331,6 +352,21 @@ async function render_offline_modal() {
 	offline_progress = undefined;
 }
 
+/** Get the mastery XP necessary for a mastery level. */
+function mastery_xp_for_level(level) {
+	return DIGSITE_RANKS[Math.max(0, Math.min(level - 1, DIGSITE_RANKS.length - 1))] ?? 0;
+}
+
+/** Get the mastery level for a given mastery XP. */
+function mastery_level_from_xp(xp) {
+	const rank_count = DIGSITE_RANKS.length;
+	let level = 1;
+	while (level < rank_count && xp >= DIGSITE_RANKS[level])
+		level++;
+
+	return level;
+}
+
 /** Resolves a localized name for an item. */
 function get_localized_item_name(id) {
 	const colon_index = id.indexOf(':');
@@ -388,6 +424,7 @@ async function load_content(ctx) {
 			active: false,
 			unlocked: false,
 			ticks_remaining: 0,
+			mastery_xp: 0
 		};
 	}
 

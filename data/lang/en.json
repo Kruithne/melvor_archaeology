@@ -1,9 +1,18 @@
 {
 	"SKILL_NAME_Archaeology": "Archaeology",
 	"MOD_KA_CONSTRUCTION_REQUIREMENTS": "Construction Requirements:",
+
+	"MOD_KA_DIGSITE_LEVEL": "Digsite Level ${level} (${rank}) - (${xp} / ${xp_needed})",
+	"MOD_KA_DIGSITE_RANK_1": "Apprentice",
+	"MOD_KA_DIGSITE_RANK_2": "Journeyman",
+	"MOD_KA_DIGSITE_RANK_3": "Expert",
+	"MOD_KA_DIGSITE_RANK_4": "Artisan",
+	"MOD_KA_DIGSITE_RANK_5": "Master",
+
 	"MOD_KA_DIGSITE_ALPHA": "Digsite Alpha",
 	"MOD_KA_DIGSITE_BETA": "Digsite Beta",
 	"MOD_KA_TOAST_DIGSITE_REQUIREMENT": "Requirements not met.",
+
 	"MOD_KA_OFFLINE_HEADER": "Excavation Progress",
 	"MOD_KA_OFFLINE_PROGRESS": "You completed ${amount} excavations while you were offline!",
 	"MOD_KA_OFFLINE_LEVELS": "levels in Archaeology",

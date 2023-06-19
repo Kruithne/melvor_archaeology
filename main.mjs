@@ -48,6 +48,9 @@ const state = ui.createStore({
 	/** Returns progress through the current mastery rank as a fraction. */
 	get_mastery_progress(xp) {
 		const current_level = mastery_level_from_xp(xp);
+		if (current_level === DIGSITE_RANKS.length)
+			return 1;
+
 		const xp_for_current_level = mastery_xp_for_level(current_level);
 		return (xp - xp_for_current_level) / (mastery_xp_for_level(current_level + 1) - xp_for_current_level);
 	},
@@ -281,7 +284,7 @@ function process_digsite_tick(digsite) {
 function complete_digsite(digsite) {
 	skill.addXP(digsite.xp);
 	game.gp.add(digsite.gp);
-	digsite.state.mastery_xp += digsite.mastery; // TODO: Cap this.
+	digsite.state.mastery_xp = Math.min(DIGSITE_RANKS[DIGSITE_RANKS.length - 1], digsite.state.mastery_xp + digsite.mastery);
 
 	if (is_offline) {
 		offline_progress.excavations++;

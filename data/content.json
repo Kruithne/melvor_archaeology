@@ -13,6 +13,13 @@
 				"melvorD:Bones": 128,
 				"melvorD:Magic_Bones": 5
 			},
+			"collection": [
+				"melvorD:Sapphire",
+				"melvorD:Emerald",
+				"melvorD:Ruby",
+				"melvorD:Diamond",
+				"melvorD:Topaz"
+			],
 			"loot": [
 				{
 					"chance": 0.9,
@@ -20,7 +27,8 @@
 						{
 							"id": "melvorD:Raw_Skeleton_Fish",
 							"quantity_min": 1,
-							"quantity_max": 1
+							"quantity_max": 1,
+							"pristine_variant": "melvorD:Diamond"
 						}
 					]
 				}
@@ -33,6 +41,13 @@
 			"xp": 1000,
 			"gp": 1000,
 			"mastery": 43,
+			"collection": [
+				"melvorD:Sapphire",
+				"melvorD:Emerald",
+				"melvorD:Ruby",
+				"melvorD:Diamond",
+				"melvorD:Topaz"
+			],
 			"requirements": {
 				"level": 32,
 				"gold": 50000,

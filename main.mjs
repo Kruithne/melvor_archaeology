@@ -29,6 +29,11 @@ const state = ui.createStore({
 		return 'url(' + this.get_svg(id) + ')';
 	},
 
+	/** Get the URL for an item. */
+	get_item_icon(id) {
+		return game.items.getObjectByID(id).media;
+	},
+
 	/** Get the URL for a requirement icon. */
 	get_requirement_icon(id) {
 		if (id === 'level')
@@ -291,7 +296,17 @@ function complete_digsite(digsite) {
 		const item = loot_slot.items[Math.floor(Math.random() * loot_slot.items.length)];
 		const item_qty = Math.floor(Math.random() * (item.quantity_max - item.quantity_min + 1)) + item.quantity_min;
 
-		game.bank.addItemByID(item.id, item_qty, true, true);
+		let item_id = item.id;
+		if (item.pristine_variant && Math.random() >= 0.3) {
+			// TODO: Implement proper pristine variant percentage chance.
+			item_id = item.pristine_variant;
+			
+			const artifacts = digsite.state.unlocked_artifacts;
+			if (!artifacts.includes(item_id))
+				artifacts.push(item_id);
+		}
+
+		game.bank.addItemByID(item_id, item_qty, true, true);
 
 		if (is_offline) {
 			if (!offline_progress.items[item.id])
@@ -424,7 +439,8 @@ async function load_content(ctx) {
 			active: false,
 			unlocked: false,
 			ticks_remaining: 0,
-			mastery_xp: 0
+			mastery_xp: 0,
+			unlocked_artifacts: []
 		};
 	}
 

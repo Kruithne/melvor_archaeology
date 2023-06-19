@@ -16,7 +16,16 @@ let skill = null;
 
 const state = ui.createStore({
 	active_digsite: null,
-	assets: {},
+
+	/** Returns a resource path for an SVG asset. */
+	get_svg(id) {
+		return ctx.getResourceUrl('assets/svg/' + id + '.svg');
+	},
+
+	/** Returns the CSS URL syntax for an SVG asset. */
+	get_svg_url(id) {
+		return 'url(' + this.get_svg(id) + ')';
+	},
 
 	/** Get the URL for a requirement icon. */
 	get_requirement_icon(id) {
@@ -153,7 +162,7 @@ const state = ui.createStore({
 		addModalToQueue({
 			title: digsite.name,
 			html: entries.map(entry => `<h5 class="font-w600 mb-1">${entry.qty}x <img class="skill-icon-xs" src="${entry.icon}"> ${entry.name}</h5>`).join(''),
-			imageUrl: state.assets[digsite.icon],
+			imageUrl: ctx.getResourceUrl(digsite.icon),
 			imageWidth: 64,
 			imageHeight: 64,
 			imageAlt: getLangString('SKILL_NAME_Archaeology'),
@@ -369,18 +378,6 @@ function patch_save_data(ctx) {
 	};
 }
 
-/** Loads pre-defined SVG assets for use in the DOM template. This is a workaround
- * for mod-specific assets not resolving correctly in the template. */
-async function load_svg_assets(ctx) {
-	const assets = {};
-	for (const [svg_id, svg_path] of Object.entries(state.content.svg_assets)) {
-		const svg_url = await ctx.getResourceUrl(svg_path);
-		assets[svg_id] = svg_url;
-	}
-
-	state.assets = assets;
-}
-
 /** Loads the mod-specific content and resolves the necessary localization. */
 async function load_content(ctx) {
 	const content = await ctx.loadData('data/content.json');
@@ -456,7 +453,6 @@ export async function setup(ctx) {
 		observer.observe($container, { attributes: true });
 
 		render_offline_modal(ctx);
-		load_svg_assets(ctx);
 	});
 }
 

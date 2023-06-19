@@ -17,7 +17,7 @@
 			<div class="col-4 col-xl-4" v-for="(digsite, digsite_id) in state.content.digsites">
 				<div class="block block-rounded border-top border-archaeology border-4x ka-area">
 					<div class="ka-grid-auto-1fr">
-						<div class="ka-area-icon" :style="{ backgroundImage: 'url(' + state.assets[digsite.icon] + ')'}"></div>
+						<div class="ka-area-icon" :style="{ backgroundImage: state.get_svg_url(digsite.icon) }"></div>
 						<div class="ka-col justify-content-center">
 							<span class="ka-area-title">{{ digsite.name }}</span>
 						</div>
@@ -79,7 +79,7 @@
 							</div>
 							<!-- Digsite Progress -->
 							<div class="ka-grid-auto-1fr align-items-center mr-4 ml-4" v-if="digsite.state.active">
-								<div class="ka-progress-icon mr-2" :style="{ backgroundImage: 'url(' + state.assets.archaeology + ')'}"></div>
+								<div class="ka-progress-icon mr-2" :style="{ backgroundImage: state.get_svg_url('archaeology') }"></div>
 								<div class="progress active ml-1 ka-h-1-rem">
 									<div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" :style="{ width: ((1 - (digsite.state.ticks_remaining / digsite.duration)) * 100) + '%' }"></div>
 								</div>

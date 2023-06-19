@@ -39,9 +39,5 @@
 			},
 			"loot": []
 		}
-	},
-	"svg_assets": {
-		"digsite_desert": "assets/svg/digsite_desert.svg",
-		"archaeology": "assets/svg/archaeology.svg"
 	}
 }

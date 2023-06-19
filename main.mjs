@@ -1,13 +1,3 @@
-/**
- * BE WARNED, ALL YE WHO ENTER HERE
- * This mod has been created in a very short amount of time for the Melvor Mod Contest 2023 by someone who has never
- * created a Melvor mod before. I am fully aware that things could be done *a lot* better but the priority was to
- * create content over improving code quality. You should *not* use this mod as an example of how to create a Melvor
- * mod - there are much less hacky ways!
- * 
- * I hope you enjoy the mod regardless!
- */
-
 const fs = require('fs');
 const os = require('os');
 const path = require('path');

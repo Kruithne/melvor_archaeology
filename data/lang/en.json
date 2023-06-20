@@ -120,5 +120,20 @@
 	"MOD_KA_ITEM_DESC_ARTIFACT_BARROWS_4": "Placeholder Artifact 4 Description",
 	"MOD_KA_ITEM_ARTIFACT_BARROWS_5": "Placeholder Artifact 5",
 	"MOD_KA_ITEM_ARTIFACT_BARROWS_5_PRISTINE": "Placeholder Artifact 5 (Pristine)",
-	"MOD_KA_ITEM_DESC_ARTIFACT_BARROWS_5": "Placeholder Artifact 5 Description"
+	"MOD_KA_ITEM_DESC_ARTIFACT_BARROWS_5": "Placeholder Artifact 5 Description",
+
+	"MOD_KA_ITEM_CURIOUSITY_JUNGLE": "Placeholder Curiousity Jungle",
+	"MOD_KA_ITEM_DESC_CURIOUSITY_JUNGLE": "Placeholder Curiousity Jungle Description",
+
+	"MOD_KA_ITEM_CURIOUSITY_VOLCANIC": "Placeholder Curiousity Volcanic",
+	"MOD_KA_ITEM_DESC_CURIOUSITY_VOLCANIC": "Placeholder Curiousity Volcanic Description",
+
+	"MOD_KA_ITEM_CURIOUSITY_CASTLE": "Placeholder Curiousity Castle",
+	"MOD_KA_ITEM_DESC_CURIOUSITY_CASTLE": "Placeholder Curiousity Castle Description",
+
+	"MOD_KA_ITEM_CURIOUSITY_PIRATE": "Placeholder Curiousity Pirate",
+	"MOD_KA_ITEM_DESC_CURIOUSITY_PIRATE": "Placeholder Curiousity Pirate Description",
+
+	"MOD_KA_ITEM_CURIOUSITY_BARROWS": "Placeholder Curiousity Barrows",
+	"MOD_KA_ITEM_DESC_CURIOUSITY_BARROWS": "Placeholder Curiousity Barrows Description"
 }

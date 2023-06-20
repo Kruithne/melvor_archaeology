@@ -55,6 +55,14 @@
 							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Desert_5_Pristine"
 						}
 					]
+				},
+				{
+					"chance": 0.05,
+					"items": {
+						"id": "kru_archaeology:Archaeology_Curiosity_Desert",
+						"quantity_min": 1,
+						"quantity_max": 1
+					}
 				}
 			]
 		},
@@ -113,6 +121,14 @@
 							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Jungle_5_Pristine"
 						}
 					]
+				},
+				{
+					"chance": 0.05,
+					"items": {
+						"id": "kru_archaeology:Archaeology_Curiosity_Jungle",
+						"quantity_min": 1,
+						"quantity_max": 1
+					}
 				}
 			]
 		},
@@ -171,6 +187,14 @@
 							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Castle_5_Pristine"
 						}
 					]
+				},
+				{
+					"chance": 0.05,
+					"items": {
+						"id": "kru_archaeology:Archaeology_Curiosity_Castle",
+						"quantity_min": 1,
+						"quantity_max": 1
+					}
 				}
 			]
 		},
@@ -229,6 +253,14 @@
 							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Volcanic_5_Pristine"
 						}
 					]
+				},
+				{
+					"chance": 0.05,
+					"items": {
+						"id": "kru_archaeology:Archaeology_Curiosity_Volcanic",
+						"quantity_min": 1,
+						"quantity_max": 1
+					}
 				}
 			]
 		},
@@ -287,6 +319,14 @@
 							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Barrows_5_Pristine"
 						}
 					]
+				},
+				{
+					"chance": 0.05,
+					"items": {
+						"id": "kru_archaeology:Archaeology_Curiosity_Barrows",
+						"quantity_min": 1,
+						"quantity_max": 1
+					}
 				}
 			]
 		},
@@ -345,6 +385,14 @@
 							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Pirate_5_Pristine"
 						}
 					]
+				},
+				{
+					"chance": 0.05,
+					"items": {
+						"id": "kru_archaeology:Archaeology_Curiosity_Pirate",
+						"quantity_min": 1,
+						"quantity_max": 1
+					}
 				}
 			]
 		}

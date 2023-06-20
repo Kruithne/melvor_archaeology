@@ -22,4 +22,4 @@ As you gain mastery on a digsite, the consistency of junk items will decrease an
 
 Pristine artifacts sell for more gold by themselves, but also function as part of a collection. The general aim of the skill is to collect all of the Pristine artifacts for each digsite.
 
-In addition, you may also find various puzzle items from digsits. One example might be a "Puzzle Box", which requires solving a small puzzle to open it. Inside will be a variety of treasure items.
+In addition, you may also find various unique items from digsites known as "curiosities". One example might be a "Puzzle Box", which requires solving a small puzzle to open it. Inside will be a variety of treasure items.

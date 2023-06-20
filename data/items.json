@@ -44,7 +44,13 @@
 		"tier": "Skillcape",
 		"validSlots": ["Cape"],
 		"occupiesSlots": [],
-		"equipRequirements": [],
+		"equipRequirements": [
+			{
+				"type": "SkillLevel",
+				"skillID": "kru_archaeology:Archaeology",
+				"level": 99
+			}
+		],
 		"equipmentStats": [
 			{ "key": "meleeDefenceBonus", "value": 9 },
 			{ "key": "rangedDefenceBonus", "value": 9 },

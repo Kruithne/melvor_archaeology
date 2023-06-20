@@ -39,11 +39,11 @@
 					"type": "SkillLevel",
 					"skillID": "kru_archaeology:Archaeology",
 					"level": 99
-				}],
-				"defaultBuyLimit": 1,
-				"buyLimitOverrides": [],
-				"showBuyLimit": false
-			}
+					}],
+					"defaultBuyLimit": 1,
+					"buyLimitOverrides": [],
+					"showBuyLimit": false
+				}
 		],
 		"shopDisplayOrder": [
 			{
@@ -54,3 +54,4 @@
 		]
 	}
 }
+	

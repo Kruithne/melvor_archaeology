@@ -1,7 +1,7 @@
 {
 	"digsites": {
-		"digsite_alpha": {
-			"name": "MOD_KA_DIGSITE_ALPHA",
+		"digsite_desert": {
+			"name": "MOD_KA_DIGSITE_DESERT",
 			"icon": "digsite_desert",
 			"duration": 200,
 			"xp": 5000,
@@ -14,47 +14,339 @@
 				"melvorD:Magic_Bones": 5
 			},
 			"collection": [
-				"melvorD:Sapphire",
-				"melvorD:Emerald",
-				"melvorD:Ruby",
-				"melvorD:Diamond",
-				"melvorD:Topaz"
+				"kru_archaeology:Archaeology_Artifact_Desert_1",
+				"kru_archaeology:Archaeology_Artifact_Desert_2",
+				"kru_archaeology:Archaeology_Artifact_Desert_3",
+				"kru_archaeology:Archaeology_Artifact_Desert_4",
+				"kru_archaeology:Archaeology_Artifact_Desert_5"
 			],
 			"loot": [
 				{
-					"chance": 0.9,
+					"chance": 0.1,
 					"items": [
 						{
-							"id": "melvorD:Raw_Skeleton_Fish",
+							"id": "kru_archaeology:Archaeology_Artifact_Desert_1",
 							"quantity_min": 1,
 							"quantity_max": 1,
-							"pristine_variant": "melvorD:Diamond"
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Desert_1_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Desert_2",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Desert_2_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Desert_3",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Desert_3_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Desert_4",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Desert_4_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Desert_5",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Desert_5_Pristine"
 						}
 					]
 				}
 			]
 		},
-		"digsite_beta": {
-			"name": "MOD_KA_DIGSITE_BETA",
+		"digsite_jungle": {
+			"name": "MOD_KA_DIGSITE_JUNGLE",
 			"icon": "digsite_desert",
-			"duration": 12000,
-			"xp": 1000,
-			"gp": 1000,
+			"duration": 200,
+			"xp": 5000,
+			"gp": 100,
 			"mastery": 43,
-			"collection": [
-				"melvorD:Sapphire",
-				"melvorD:Emerald",
-				"melvorD:Ruby",
-				"melvorD:Diamond",
-				"melvorD:Topaz"
-			],
 			"requirements": {
-				"level": 32,
-				"gold": 50000,
-				"melvorD:Raw_Skeleton_Fish": 20,
-				"melvorD:Big_Bones": 2000
+				"level": 10,
+				"gold": 5000,
+				"melvorD:Bones": 128,
+				"melvorD:Magic_Bones": 5
 			},
-			"loot": []
+			"collection": [
+				"kru_archaeology:Archaeology_Artifact_Jungle_1",
+				"kru_archaeology:Archaeology_Artifact_Jungle_2",
+				"kru_archaeology:Archaeology_Artifact_Jungle_3",
+				"kru_archaeology:Archaeology_Artifact_Jungle_4",
+				"kru_archaeology:Archaeology_Artifact_Jungle_5"
+			],
+			"loot": [
+				{
+					"chance": 0.1,
+					"items": [
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Jungle_1",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Jungle_1_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Jungle_2",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Jungle_2_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Jungle_3",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Jungle_3_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Jungle_4",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Jungle_4_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Jungle_5",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Jungle_5_Pristine"
+						}
+					]
+				}
+			]
+		},
+		"digsite_castle": {
+			"name": "MOD_KA_DIGSITE_CASTLE",
+			"icon": "digsite_desert",
+			"duration": 200,
+			"xp": 5000,
+			"gp": 100,
+			"mastery": 43,
+			"requirements": {
+				"level": 10,
+				"gold": 5000,
+				"melvorD:Bones": 128,
+				"melvorD:Magic_Bones": 5
+			},
+			"collection": [
+				"kru_archaeology:Archaeology_Artifact_Castle_1",
+				"kru_archaeology:Archaeology_Artifact_Castle_2",
+				"kru_archaeology:Archaeology_Artifact_Castle_3",
+				"kru_archaeology:Archaeology_Artifact_Castle_4",
+				"kru_archaeology:Archaeology_Artifact_Castle_5"
+			],
+			"loot": [
+				{
+					"chance": 0.1,
+					"items": [
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Castle_1",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Castle_1_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Castle_2",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Castle_2_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Castle_3",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Castle_3_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Castle_4",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Castle_4_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Castle_5",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Castle_5_Pristine"
+						}
+					]
+				}
+			]
+		},
+		"digsite_volcanic": {
+			"name": "MOD_KA_DIGSITE_VOLCANIC",
+			"icon": "digsite_desert",
+			"duration": 200,
+			"xp": 5000,
+			"gp": 100,
+			"mastery": 43,
+			"requirements": {
+				"level": 10,
+				"gold": 5000,
+				"melvorD:Bones": 128,
+				"melvorD:Magic_Bones": 5
+			},
+			"collection": [
+				"kru_archaeology:Archaeology_Artifact_Volcanic_1",
+				"kru_archaeology:Archaeology_Artifact_Volcanic_2",
+				"kru_archaeology:Archaeology_Artifact_Volcanic_3",
+				"kru_archaeology:Archaeology_Artifact_Volcanic_4",
+				"kru_archaeology:Archaeology_Artifact_Volcanic_5"
+			],
+			"loot": [
+				{
+					"chance": 0.1,
+					"items": [
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Volcanic_1",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Volcanic_1_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Volcanic_2",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Volcanic_2_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Volcanic_3",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Volcanic_3_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Volcanic_4",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Volcanic_4_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Volcanic_5",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Volcanic_5_Pristine"
+						}
+					]
+				}
+			]
+		},
+		"digsite_barrows": {
+			"name": "MOD_KA_DIGSITE_BARROWS",
+			"icon": "digsite_desert",
+			"duration": 200,
+			"xp": 5000,
+			"gp": 100,
+			"mastery": 43,
+			"requirements": {
+				"level": 10,
+				"gold": 5000,
+				"melvorD:Bones": 128,
+				"melvorD:Magic_Bones": 5
+			},
+			"collection": [
+				"kru_archaeology:Archaeology_Artifact_Barrows_1",
+				"kru_archaeology:Archaeology_Artifact_Barrows_2",
+				"kru_archaeology:Archaeology_Artifact_Barrows_3",
+				"kru_archaeology:Archaeology_Artifact_Barrows_4",
+				"kru_archaeology:Archaeology_Artifact_Barrows_5"
+			],
+			"loot": [
+				{
+					"chance": 0.1,
+					"items": [
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Barrows_1",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Barrows_1_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Barrows_2",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Barrows_2_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Barrows_3",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Barrows_3_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Barrows_4",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Barrows_4_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Barrows_5",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Barrows_5_Pristine"
+						}
+					]
+				}
+			]
+		},
+		"digsite_pirate": {
+			"name": "MOD_KA_DIGSITE_PIRATE",
+			"icon": "digsite_desert",
+			"duration": 200,
+			"xp": 5000,
+			"gp": 100,
+			"mastery": 43,
+			"requirements": {
+				"level": 10,
+				"gold": 5000,
+				"melvorD:Bones": 128,
+				"melvorD:Magic_Bones": 5
+			},
+			"collection": [
+				"kru_archaeology:Archaeology_Artifact_Pirate_1",
+				"kru_archaeology:Archaeology_Artifact_Pirate_2",
+				"kru_archaeology:Archaeology_Artifact_Pirate_3",
+				"kru_archaeology:Archaeology_Artifact_Pirate_4",
+				"kru_archaeology:Archaeology_Artifact_Pirate_5"
+			],
+			"loot": [
+				{
+					"chance": 0.1,
+					"items": [
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Pirate_1",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Pirate_1_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Pirate_2",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Pirate_2_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Pirate_3",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Pirate_3_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Pirate_4",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Pirate_4_Pristine"
+						},
+						{
+							"id": "kru_archaeology:Archaeology_Artifact_Pirate_5",
+							"quantity_min": 1,
+							"quantity_max": 1,
+							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Pirate_5_Pristine"
+						}
+					]
+				}
+			]
 		}
 	}
 }

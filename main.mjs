@@ -472,16 +472,15 @@ export async function setup(ctx) {
 	await patch_localization(ctx);
 	patch_save_data(ctx);
 
-	await load_items(ctx);
 	await load_content(ctx);
-
 	await ctx.loadTemplates('ui/templates.html');
-
+	
 	ui.create({ $template: '#template-kru-archaeology-container', state	}, document.body);
-
+	
 	game.registerSkill(game.registeredNamespaces.getNamespace('kru_archaeology'), ArchaeologySkill);
 	skill = game.skills.registeredObjects.get('kru_archaeology:Archaeology');
-
+	
+	await load_items(ctx);
 	await ctx.gameData.addPackage('data.json');
 
 	ctx.onCharacterLoaded(() => {

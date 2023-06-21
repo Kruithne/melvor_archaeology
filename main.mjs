@@ -514,10 +514,10 @@ export async function setup(ctx) {
 
 		const $bank_options = document.getElementById('kru-archaeology-bank-options');
 		const $bank_menu = document.querySelector('bank-selected-item-menu .row');
-		const $bank_menu_child = $bank_menu.children[1];
+		const $bank_menu_child = $bank_menu.children[2];
 		
 		for (const child of $bank_options.children)
-			$bank_menu.insertAfter(child, $bank_menu_child);
+			$bank_menu.insertBefore(child, $bank_menu_child);
 
 		render_offline_modal(ctx);
 	});

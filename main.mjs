@@ -2,6 +2,11 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
+let skill = null;
+
+let bank_item_ui = null;
+let bank_selected_item = null;
+
 let is_offline = true;
 let offline_progress = {
 	start_level: 1,
@@ -14,7 +19,6 @@ let offline_progress = {
 const DIGSITE_RANKS = [0, 192, 384, 576, 768];
 
 const ctx = mod.getContext(import.meta);
-let skill = null;
 
 const state = ui.createStore({
 	active_digsite: null,
@@ -476,6 +480,7 @@ export async function setup(ctx) {
 	await ctx.loadTemplates('ui/templates.html');
 	
 	ui.create({ $template: '#template-kru-archaeology-container', state	}, document.body);
+	ui.create({ $template: '#template-kru-archaeology-bank-options', state }, document.body);
 	
 	game.registerSkill(game.registeredNamespaces.getNamespace('kru_archaeology'), ArchaeologySkill);
 	skill = game.skills.registeredObjects.get('kru_archaeology:Archaeology');
@@ -506,6 +511,13 @@ export async function setup(ctx) {
 		});
 
 		observer.observe($container, { attributes: true });
+
+		const $bank_options = document.getElementById('kru-archaeology-bank-options');
+		const $bank_menu = document.querySelector('bank-selected-item-menu .row');
+		const $bank_menu_child = $bank_menu.children[1];
+		
+		for (const child of $bank_options.children)
+			$bank_menu.insertAfter(child, $bank_menu_child);
 
 		render_offline_modal(ctx);
 	});

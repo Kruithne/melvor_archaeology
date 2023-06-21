@@ -9,12 +9,12 @@
 	"MOD_KA_DIGSITE_RANK_4": "Artisan",
 	"MOD_KA_DIGSITE_RANK_5": "Master",
 
-	"MOD_KA_DIGSITE_DESERT": "Desert Digsite",
-	"MOD_KA_DIGSITE_JUNGLE": "Jungle Digsite",
-	"MOD_KA_DIGSITE_VOLCANIC": "Volcanic Digsite",
-	"MOD_KA_DIGSITE_CASTLE": "Castle Digsite",
-	"MOD_KA_DIGSITE_PIRATE": "Pirate Digsite",
-	"MOD_KA_DIGSITE_BARROWS": "Barrows Digsite",
+	"MOD_KA_DIGSITE_DESERT": "Scorched Sands",
+	"MOD_KA_DIGSITE_JUNGLE": "Ancient Temple",
+	"MOD_KA_DIGSITE_VOLCANIC": "Jurassic Plains",
+	"MOD_KA_DIGSITE_CASTLE": "Castle Ruins",
+	"MOD_KA_DIGSITE_PIRATE": "Sunken Galleon",
+	"MOD_KA_DIGSITE_BARROWS": "Highland Barrows",
 
 	"MOD_KA_TOAST_DIGSITE_REQUIREMENT": "Requirements not met.",
 

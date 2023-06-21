@@ -68,7 +68,7 @@
 		},
 		"digsite_jungle": {
 			"name": "MOD_KA_DIGSITE_JUNGLE",
-			"icon": "digsite_desert",
+			"icon": "digsite_jungle",
 			"duration": 200,
 			"xp": 5000,
 			"gp": 100,
@@ -134,7 +134,7 @@
 		},
 		"digsite_castle": {
 			"name": "MOD_KA_DIGSITE_CASTLE",
-			"icon": "digsite_desert",
+			"icon": "digsite_castle",
 			"duration": 200,
 			"xp": 5000,
 			"gp": 100,
@@ -200,7 +200,7 @@
 		},
 		"digsite_volcanic": {
 			"name": "MOD_KA_DIGSITE_VOLCANIC",
-			"icon": "digsite_desert",
+			"icon": "digsite_volcanic",
 			"duration": 200,
 			"xp": 5000,
 			"gp": 100,
@@ -266,7 +266,7 @@
 		},
 		"digsite_barrows": {
 			"name": "MOD_KA_DIGSITE_BARROWS",
-			"icon": "digsite_desert",
+			"icon": "digsite_barrows",
 			"duration": 200,
 			"xp": 5000,
 			"gp": 100,
@@ -332,7 +332,7 @@
 		},
 		"digsite_pirate": {
 			"name": "MOD_KA_DIGSITE_PIRATE",
-			"icon": "digsite_desert",
+			"icon": "digsite_pirate",
 			"duration": 200,
 			"xp": 5000,
 			"gp": 100,

@@ -2,6 +2,9 @@
 	"SKILL_NAME_Archaeology": "Archaeology",
 	"MOD_KA_CONSTRUCTION_REQUIREMENTS": "Construction Requirements:",
 
+	"MOD_KA_BUTTON_ACCEPT": "Accept",
+	"MOD_KA_BUTTON_CANCEL": "Cancel",
+
 	"MOD_KA_DIGSITE_LEVEL": "Digsite Level ${level} (${rank}) - (${xp} / ${xp_needed})",
 	"MOD_KA_DIGSITE_RANK_1": "Apprentice",
 	"MOD_KA_DIGSITE_RANK_2": "Journeyman",
@@ -122,8 +125,10 @@
 	"MOD_KA_ITEM_ARTIFACT_BARROWS_5_PRISTINE": "Placeholder Artifact 5 (Pristine)",
 	"MOD_KA_ITEM_DESC_ARTIFACT_BARROWS_5": "Placeholder Artifact 5 Description",
 
-	"MOD_KA_ITEM_CURIOSITY_DESERT": "Placeholder CURIOSITY Desert",
-	"MOD_KA_ITEM_DESC_CURIOSITY_DESERT": "Placeholder CURIOSITY Desert Description",
+	"MOD_KA_ITEM_CURIOSITY_DESERT": "Mysterious Lamp",
+	"MOD_KA_ITEM_DESC_CURIOSITY_DESERT": "An ornate brass lamp that feels warm to the touch.",
+	"MOD_KA_ITEM_CURIOSITY_DESERT_USE_DESC": "Choose a skill to enhance, granting a level or 200k experience (whichever is lowest). The lamp will crumble to ash after use.",
+	"MOD_KA_ITEM_CURIOSITY_DESERT_USE_BUTTON": "Rub Lamp",
 
 	"MOD_KA_ITEM_CURIOSITY_JUNGLE": "Placeholder CURIOSITY Jungle",
 	"MOD_KA_ITEM_DESC_CURIOSITY_JUNGLE": "Placeholder CURIOSITY Jungle Description",

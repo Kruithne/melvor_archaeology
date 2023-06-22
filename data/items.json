@@ -813,7 +813,7 @@
 		"category": "Archaeology",
 		"customDescription": "MOD_KA_ITEM_DESC_CURIOSITY_DESERT",
 		"type": "Curiosity",
-		"media": "assets/svg/archaeology.svg",
+		"media": "assets/svg/item_genie_lamp.svg",
 		"ignoreCompletion": true,
 		"obtainFromItemLog": false,
 		"golbinRaidExclusive": false,

@@ -65,3 +65,20 @@
 	background-image: url('assets/media/main/mastery_header.svg');
     background-size: contain;
 }
+
+ka-skill-selector {
+	display: block;
+}
+
+ka-skill-selector > img {
+	width: 56px;
+	height: 56px;
+	margin: 10px;
+	cursor: pointer;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+ka-skill-selector > img.selected {
+	background-color: #277548;
+}

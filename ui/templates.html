@@ -107,30 +107,16 @@
 </template>
 <template id="template-kru-archaeology-bank-options">
 	<div id="kru-archaeology-bank-options" class="d-none">
-		<div class="col-12">
+		<div class="col-12 d-none ka-bank-panel" id="ka-bank-panel-desert-curiosity">
 			<div class="block block-rounded-double bg-combat-inner-dark p-3">
-				<div class="row no-gutters">
-					<div class="col-4">
-						<h5 class="font-w700 text-left text-combat-smoke m-1 mb-2">
-							<lang-string lang-id="MENU_TEXT_BURY_ITEM">Bury Item</lang-string>
-						</h5>
-					</div>
-					<div class="col-8">
-						<h5 class="font-w400 font-size-sm text-right text-combat-smoke m-1 mb-2">Grants 3 Prayer Points each</h5>
-					</div>
-					<div class="col-12 col-xl-8">
-						<div class="form-group">
-							<span class="irs irs--round js-irs-3"><span class="irs"><span class="irs-line" tabindex="0"></span><span class="irs-min" style="visibility: visible;">1</span><span class="irs-max" style="visibility: hidden;">130</span><span class="irs-from" style="visibility: hidden;">0</span><span class="irs-to" style="visibility: hidden;">0</span><span class="irs-single" style="left: 87.2859%;">130</span></span><span class="irs-grid"></span><span class="irs-bar irs-bar--single" style="left: 0px; width: 94.6805%;"></span><span class="irs-shadow shadow-single" style="display: none;"></span><span class="irs-handle single" style="left: 89.3611%;"><i></i><i></i><i></i></span></span><input type="text" class="js-rangeslider irs-hidden-input" name="bank-rangeslider-bury" value="0" data-min="0" data-max="0" tabindex="-1" readonly="">
-						</div>
-					</div>
-					<div class="col-12 col-xl-4 text-right">
-						<button role="button" class="btn btn-warning m-1">
-							<lang-string lang-id="MENU_TEXT_BURY_ITEM">Bury Item</lang-string>
-						</button>
-					</div>
-					<div class="col-12 text-right">
-						<h5 class="font-w400 font-size-sm text-combat-smoke m-1 mb-2">390 Prayer Points</h5>
-					</div>
+				<div class="ka-col">
+					<h5 class="font-w700 text-left text-combat-smoke m-1 mb-2">
+						<lang-string lang-id="MOD_KA_ITEM_CURIOSITY_DESERT"></lang-string>
+					</h5>
+					<lang-string lang-id="MOD_KA_ITEM_CURIOSITY_DESERT_USE_DESC" class="font-size-sm mb-1"></lang-string>
+					<button role="button" class="btn btn-warning m-1" @click="state.use_lamp_curiosity()">
+						<lang-string lang-id="MOD_KA_ITEM_CURIOSITY_DESERT_USE_BUTTON"></lang-string>
+					</button>
 				</div>
 			</div>
 		</div>

@@ -4,9 +4,6 @@ const path = require('path');
 
 let skill = null;
 
-let bank_item_ui = null;
-let bank_selected_item = null;
-
 let is_offline = true;
 let offline_progress = {
 	start_level: 1,
@@ -246,6 +243,17 @@ const state = ui.createStore({
 		fs.writeFileSync(tmp_state_file, JSON.stringify(save_state));
 
 		//ctx.characterStorage.setItem('state', save_state);
+	},
+
+	/** Shows the interaction modal for the genie lamp curiosity. */
+	use_lamp_curiosity() {
+		addModalToQueue({
+			title: getLangString('MOD_KA_ITEM_CURIOSITY_DESERT'),
+			html: `<small>${getLangString('MOD_KA_ITEM_CURIOSITY_DESERT_USE_DESC')}</small><ka-skill-selector class="mt-4"></ka-skill-selector>`,
+			confirmButtonText: getLangString('MOD_KA_BUTTON_ACCEPT'),
+			cancelButtonText: getLangString('MOD_KA_BUTTON_CANCEL'),
+			showCancelButton: true,
+		});
 	}
 });
 
@@ -332,6 +340,17 @@ function update_digsite_requirements() {
 
 		requirement.classList.remove('text-success', 'text-danger');
 		requirement.classList.add(state.get_requirement_class(id, value));
+	}
+}
+
+let selected_bank_panel = null;
+function update_bank(selected_item_id) {
+	if (selected_bank_panel !== null)
+		selected_bank_panel.classList.add('d-none');
+
+	if (selected_item_id === 'kru_archaeology:Archaeology_Curiosity_Desert') {
+		selected_bank_panel = document.getElementById('ka-bank-panel-desert-curiosity');
+		selected_bank_panel.classList.remove('d-none');
 	}
 }
 
@@ -426,6 +445,16 @@ async function patch_localization(ctx) {
 		await fetch_mod_localization(setLang);
 }
 
+/** Patches the bank toggleItemForSelection fn to track selected bank item. */
+function patch_bank_set_item() {
+	const orig_toggleItemForSelection = game.bank.toggleItemForSelection;
+	game.bank.toggleItemForSelection = (bank_item) => {
+		orig_toggleItemForSelection.apply(game.bank, [bank_item]);
+
+		update_bank(bank_item.item.id);
+	};
+}
+
 /** Patches the global saveData() fn so we can save our own state. */
 function patch_save_data(ctx) {
 	const fn_saveData = globalThis.saveData;
@@ -488,6 +517,8 @@ export async function setup(ctx) {
 	await load_items(ctx);
 	await ctx.gameData.addPackage('data.json');
 
+	patch_bank_set_item();
+
 	ctx.onCharacterLoaded(() => {
 		state.load_state(ctx);
 		offline_progress.start_level = skill.level;
@@ -541,3 +572,60 @@ class ArchaeologySkillRenderQueue extends SkillRenderQueue {
 		super(...arguments);
 	}
 }
+
+class KASkillSelector extends HTMLElement {
+	constructor() {
+		super();
+		
+		this.selected_skill = null;
+		this.skill_buttons = new Map();
+
+		for (const [skill_id, skill] of game.skills.registeredObjects) {
+			const $skill_button = document.createElement('img');
+			$skill_button.src = skill.media;
+			this.skill_buttons.set(skill_id, $skill_button);
+
+			$skill_button.addEventListener('click', () => {
+				this.set_selected_skill(skill_id);
+			});
+
+			this.appendChild($skill_button);
+		}
+
+		// Is there no better way to get a callback from addModalToQueue()?
+		Swal.getConfirmButton().addEventListener('click', () => {
+			this.apply_skill();
+		});
+	}
+
+	set_selected_skill(skill_id) {
+		if (this.selected_skill !== null) {
+			const $skill_button = this.skill_buttons.get(this.selected_skill);
+			if ($skill_button)
+				$skill_button.classList.remove('selected');
+		}
+
+		this.selected_skill = skill_id;
+		const $skill_button = this.skill_buttons.get(skill_id);
+		if ($skill_button)
+			$skill_button.classList.add('selected');
+	}
+
+	apply_skill() {
+		if (this.selected_skill === null)
+			return;
+
+		const skill = game.skills.getObjectByID(this.selected_skill);
+		const needed_xp = exp.level_to_xp(skill.level + 1) - skill.xp;
+
+		// Add a full level or 200k, whichever is less.
+		skill.addXP(Math.min(200000, needed_xp + 1));
+		this.selected_skill = null;
+
+		// Lamp crumbles to ash on use.
+		game.bank.removeItemQuantityByID('kru_archaeology:Archaeology_Curiosity_Desert', 1);
+		game.bank.addItemByID('melvorF:Ash', 1, false, true);
+	}
+}
+
+window.customElements.define('ka-skill-selector', KASkillSelector);

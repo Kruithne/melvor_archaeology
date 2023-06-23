@@ -547,8 +547,8 @@ export async function setup(ctx) {
 		const $bank_menu = document.querySelector('bank-selected-item-menu .row');
 		const $bank_menu_child = $bank_menu.children[2];
 		
-		for (const child of $bank_options.children)
-			$bank_menu.insertBefore(child, $bank_menu_child);
+		while ($bank_options.childNodes.length > 0)
+			$bank_menu.insertBefore($bank_options.childNodes[0], $bank_menu_child);
 
 		render_offline_modal(ctx);
 

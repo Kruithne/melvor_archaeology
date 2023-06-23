@@ -551,6 +551,8 @@ export async function setup(ctx) {
 			$bank_menu.insertBefore(child, $bank_menu_child);
 
 		render_offline_modal(ctx);
+
+		$bank_options.remove();
 	});
 }
 

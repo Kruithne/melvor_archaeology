@@ -2,6 +2,12 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
+// Development quick-reload. Remove before release!
+window.addEventListener('keydown', (e) => {
+	if (e.key === 'F5')
+		window.location.reload();
+});
+
 let skill = null;
 
 let is_offline = true;

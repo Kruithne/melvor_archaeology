@@ -260,6 +260,22 @@ const state = ui.createStore({
 			cancelButtonText: getLangString('MOD_KA_BUTTON_CANCEL'),
 			showCancelButton: true,
 		});
+	},
+
+	/** Shows the interaction modal for the puzzle box curiosity. */
+	use_puzzle_box_curiosity() {
+		const background = ctx.getResourceUrl(puzzle_box_backgrounds[Math.floor(Math.random() * puzzle_box_backgrounds.length)]);
+
+		addModalToQueue({
+			imageUrl: background,
+			imageWidth: 64,
+			imageHeight: 64,
+			title: getLangString('MOD_KA_ITEM_CURIOSITY_JUNGLE'),
+			html: `<ka-puzzle-box data-ka-background="${background}"></ka-puzzle-box>`,
+			cancelButtonText: getLangString('MOD_KA_BUTTON_CLOSE'),
+			showCancelButton: true,
+			showConfirmButton: false
+		})
 	}
 });
 
@@ -349,13 +365,19 @@ function update_digsite_requirements() {
 	}
 }
 
+const bank_panel_map = {
+	'kru_archaeology:Archaeology_Curiosity_Desert': 'ka-bank-panel-desert-curiosity',
+	'kru_archaeology:Archaeology_Curiosity_Jungle': 'ka-bank-panel-jungle-curiosity'
+};
+
 let selected_bank_panel = null;
 function update_bank(selected_item_id) {
 	if (selected_bank_panel !== null)
 		selected_bank_panel.classList.add('d-none');
 
-	if (selected_item_id === 'kru_archaeology:Archaeology_Curiosity_Desert') {
-		selected_bank_panel = document.getElementById('ka-bank-panel-desert-curiosity');
+	const bank_panel_id = bank_panel_map[selected_item_id];
+	if (bank_panel_id !== undefined) {
+		selected_bank_panel = document.getElementById(bank_panel_id);
 		selected_bank_panel.classList.remove('d-none');
 	}
 }
@@ -552,7 +574,7 @@ export async function setup(ctx) {
 		const $bank_options = document.getElementById('kru-archaeology-bank-options');
 		const $bank_menu = document.querySelector('bank-selected-item-menu .row');
 		const $bank_menu_child = $bank_menu.children[2];
-		
+
 		while ($bank_options.childNodes.length > 0)
 			$bank_menu.insertBefore($bank_options.childNodes[0], $bank_menu_child);
 
@@ -578,6 +600,127 @@ class ArchaeologySkill extends Skill {
 class ArchaeologySkillRenderQueue extends SkillRenderQueue {
 	constructor() {
 		super(...arguments);
+	}
+}
+
+const puzzle_box_slot_positions = [
+	{ top: '0%', left: '0%' },
+	{ top: '0%', left: 'calc(50% - 15%)' },
+	{ top: '0%', left: 'calc(100% - 30%)' },
+	{ top: 'calc(50% - 15%)', left: '0%' },
+	{ top: 'calc(50% - 15%)', left: 'calc(50% - 15%)' },
+	{ top: 'calc(50% - 15%)', left: 'calc(100% - 30%)' },
+	{ top: 'calc(100% - 30%)', left: '0%' },
+	{ top: 'calc(100% - 30%)', left: 'calc(50% - 15%)' },
+	{ top: 'calc(100% - 30%)', left: 'calc(100% - 30%)' }
+];
+
+const puzzle_box_backgrounds = [
+	'assets/svg/digsite_barrows.svg',
+	'assets/svg/digsite_castle.svg',
+	'assets/svg/digsite_desert.svg',
+	'assets/svg/digsite_jungle.svg',
+	'assets/svg/digsite_pirate.svg',
+	'assets/svg/digsite_volcanic.svg',
+];
+
+const puzzle_box_background_positions = [
+	'0% 0%', '50% 0%', '100% 0%',
+	'0% 50%', '50% 50%', '100% 50%',
+	'0% 100%', '50% 100%'
+];
+
+class KAPuzzleBox extends HTMLElement {
+	constructor() {
+		super();
+
+		this.slots = Array(9);
+		this.solution = Array(9);
+		this.completed = false;
+
+		const background = this.getAttribute('data-ka-background');
+		const indexes = [0, 1, 2, 3, 4, 5, 6, 7];
+
+		for (let i = 0; i < 8; i++) {
+			const $piece = document.createElement('div');
+			$piece.style.backgroundImage = `url(${background})`;
+			$piece.style.backgroundPosition = puzzle_box_background_positions[i];
+
+			this.appendChild($piece);
+			
+			const index = indexes.splice(Math.floor(Math.random() * indexes.length), 1)[0];
+			this.slots[index] = $piece;
+			this.solution[i] = $piece;
+
+			this.apply_slot_style($piece, index);
+
+			$piece.addEventListener('click', () => {
+				this.handle_slot_click($piece);
+			});
+		}
+	}
+
+	check_completion() {
+		for (let i = 0; i < 8; i++) {
+			if (this.slots[i] !== this.solution[i])
+				return;
+		}
+
+		this.completed = true;
+		setTimeout(() => this.reward(), 1000);
+	}
+
+	reward() {
+		Swal.close();
+		game.bank.removeItemQuantityByID('kru_archaeology:Archaeology_Curiosity_Jungle', 1);
+	}
+
+	handle_slot_click($piece) {
+		const current_slot_index = this.slots.indexOf($piece);
+		const empty_slot = this.get_empty_adjacent_slot(current_slot_index);
+
+		if (empty_slot === undefined)
+			return;
+
+		this.slots[empty_slot] = $piece;
+		this.slots[current_slot_index] = undefined;
+		this.apply_slot_style($piece, empty_slot);
+
+		this.check_completion();
+	}
+
+	get_empty_adjacent_slot(slot_index) {
+		if (slot_index > 2) {
+			const top_slot_index = slot_index - 3;
+			if (!this.slots[top_slot_index])
+				return top_slot_index;
+		}
+
+		if (slot_index < 6) {
+			const bottom_slot_index = slot_index + 3;
+			if (!this.slots[bottom_slot_index])
+				return bottom_slot_index;
+		}
+
+		if (slot_index % 3 !== 0) {
+			const left_slot_index = slot_index - 1;
+			if (!this.slots[left_slot_index])
+				return left_slot_index;
+		}
+
+		if (slot_index % 3 !== 2) {
+			const right_slot_index = slot_index + 1;
+			if (!this.slots[right_slot_index])
+				return right_slot_index;
+		}
+
+		return undefined;
+	}
+
+	apply_slot_style($piece, i) {
+		const style = puzzle_box_slot_positions[i];
+		$piece.style.top = style.top;
+		$piece.style.left = style.left;
 	}
 }
 
@@ -637,3 +780,4 @@ class KASkillSelector extends HTMLElement {
 }
 
 window.customElements.define('ka-skill-selector', KASkillSelector);
+window.customElements.define('ka-puzzle-box', KAPuzzleBox);

@@ -82,3 +82,25 @@ ka-skill-selector > img {
 ka-skill-selector > img.selected {
 	background-color: #277548;
 }
+
+ka-puzzle-box {
+	display: block;
+	width: 320px;
+	height: 320px;
+	position: relative;
+	margin: auto;
+}
+
+ka-puzzle-box > div {
+	color: white;
+	font-size: 2em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 30%;
+	height: 30%;
+	position: absolute;
+	transition: left 0.2s ease-out, top 0.2s ease-out;
+	cursor: pointer;
+	background-size: calc(300% + (100% / 3));
+}

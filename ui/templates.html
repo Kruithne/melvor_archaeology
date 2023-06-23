@@ -107,6 +107,7 @@
 </template>
 <template id="template-kru-archaeology-bank-options">
 	<div id="kru-archaeology-bank-options" class="d-none">
+		<!-- Desert Curiosity -->
 		<div class="col-12 d-none ka-bank-panel" id="ka-bank-panel-desert-curiosity">
 			<div class="block block-rounded-double bg-combat-inner-dark p-3">
 				<div class="ka-col">
@@ -116,6 +117,20 @@
 					<lang-string lang-id="MOD_KA_ITEM_CURIOSITY_DESERT_USE_DESC" class="font-size-sm mb-1"></lang-string>
 					<button role="button" class="btn btn-warning m-1" @click="state.use_lamp_curiosity()">
 						<lang-string lang-id="MOD_KA_ITEM_CURIOSITY_DESERT_USE_BUTTON"></lang-string>
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- Jungle Curiosity -->
+		<div class="col-12 d-none ka-bank-panel" id="ka-bank-panel-jungle-curiosity">
+			<div class="block block-rounded-double bg-combat-inner-dark p-3">
+				<div class="ka-col">
+					<h5 class="font-w700 text-left text-combat-smoke m-1 mb-2">
+						<lang-string lang-id="MOD_KA_ITEM_CURIOSITY_JUNGLE"></lang-string>
+					</h5>
+					<lang-string lang-id="MOD_KA_ITEM_CURIOSITY_JUNGLE_USE_DESC" class="font-size-sm mb-1"></lang-string>
+					<button role="button" class="btn btn-warning m-1" @click="state.use_puzzle_box_curiosity()">
+						<lang-string lang-id="MOD_KA_ITEM_CURIOSITY_JUNGLE_USE_BUTTON"></lang-string>
 					</button>
 				</div>
 			</div>

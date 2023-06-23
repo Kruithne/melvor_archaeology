@@ -4,6 +4,7 @@
 
 	"MOD_KA_BUTTON_ACCEPT": "Accept",
 	"MOD_KA_BUTTON_CANCEL": "Cancel",
+	"MOD_KA_BUTTON_CLOSE": "Close",
 
 	"MOD_KA_DIGSITE_LEVEL": "Digsite Level ${level} (${rank}) - (${xp} / ${xp_needed})",
 	"MOD_KA_DIGSITE_RANK_1": "Apprentice",
@@ -130,8 +131,10 @@
 	"MOD_KA_ITEM_CURIOSITY_DESERT_USE_DESC": "Choose a skill to enhance, granting a level or 200k experience (whichever is lowest). The lamp will crumble to ash after use.",
 	"MOD_KA_ITEM_CURIOSITY_DESERT_USE_BUTTON": "Rub Lamp",
 
-	"MOD_KA_ITEM_CURIOSITY_JUNGLE": "Placeholder CURIOSITY Jungle",
-	"MOD_KA_ITEM_DESC_CURIOSITY_JUNGLE": "Placeholder CURIOSITY Jungle Description",
+	"MOD_KA_ITEM_CURIOSITY_JUNGLE": "Puzzle Box",
+	"MOD_KA_ITEM_DESC_CURIOSITY_JUNGLE": "An ancient wooden box sealed with a complex locking mechanism.",
+	"MOD_KA_ITEM_CURIOSITY_JUNGLE_USE_DESC": "Arrange the sliding pieces of the puzzle box to retrieve the treasure within.",
+	"MOD_KA_ITEM_CURIOSITY_JUNGLE_USE_BUTTON": "Unlock Puzzle Box",
 
 	"MOD_KA_ITEM_CURIOSITY_VOLCANIC": "Placeholder CURIOSITY Volcanic",
 	"MOD_KA_ITEM_DESC_CURIOSITY_VOLCANIC": "Placeholder CURIOSITY Volcanic Description",

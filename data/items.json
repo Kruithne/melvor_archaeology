@@ -852,7 +852,7 @@
 		"category": "Archaeology",
 		"customDescription": "MOD_KA_ITEM_DESC_CURIOSITY_PIRATE",
 		"type": "Curiosity",
-		"media": "assets/svg/archaeology.svg",
+		"media": "assets/svg/item_challenge_scroll.svg",
 		"ignoreCompletion": true,
 		"obtainFromItemLog": false,
 		"golbinRaidExclusive": false,

@@ -25,6 +25,7 @@ const ctx = mod.getContext(import.meta);
 
 const state = ui.createStore({
 	active_digsite: null,
+	active_challenge: null,
 
 	/** Returns a resource path for an SVG asset. */
 	get_svg(id) {
@@ -232,6 +233,9 @@ const state = ui.createStore({
 					}
 				}
 			}
+
+			if (save_state.active_challenge)
+				state.active_challenge = save_state.active_challenge;
 		}
 	},
 
@@ -243,7 +247,10 @@ const state = ui.createStore({
 		for (const [digsite_id, digsite_data] of Object.entries(state.content.digsites))
 			digsites[digsite_id] = digsite_data.state;
 
-		const save_state = { digsites };
+		const save_state = {
+			digsites,
+			active_challenge: state.active_challenge
+		};
 
 		const tmp_state_file = path.join(os.tmpdir(), 'archaeology_state.json');
 		fs.writeFileSync(tmp_state_file, JSON.stringify(save_state));
@@ -276,6 +283,34 @@ const state = ui.createStore({
 			showCancelButton: true,
 			showConfirmButton: false
 		})
+	},
+
+	/** Shows the interaction modal for the challenge scroll curiosity. */
+	use_challenge_scroll_curiosity() {
+		if (!state.active_challenge)
+			generate_challenge();
+
+		const challenge = state.active_challenge;
+		const challenge_item = game.items.getObjectByID(challenge.item_id);
+		
+		addModalToQueue({
+			title: getLangString('MOD_KA_ITEM_CURIOSITY_JUNGLE'),
+			html: `<span class="font-size-sm">${getLangString('MOD_KA_CHALLENGE_TEXT')}</span><div class="mb-2"></div><h5 class="font-w600 mb-0">${challenge.amount}x <img class="skill-icon-xs" src="${challenge_item.media}"> ${challenge_item.name}</h5>`,
+			showCancelButton: true,
+			showConfirmButton: true,
+			cancelButtonText: getLangString('MOD_KA_BUTTON_CLOSE'),
+			confirmButtonText: getLangString('MOD_KA_BUTTON_COMPLETE_CHALLENGE'),
+		});
+
+		Swal.getConfirmButton().addEventListener('click', () => {
+			if (game.bank.checkForItems([{ item: challenge_item, quantity: challenge.amount } ])) {
+				game.bank.removeItemQuantityByID(challenge.item_id, challenge.amount);
+				game.bank.removeItemQuantityByID('kru_archaeology:Archaeology_Curiosity_Pirate', 1);)
+				state.active_challenge = null;
+
+				// TODO: Reward treasure and show reward modal.
+			}
+		});
 	}
 });
 
@@ -367,7 +402,8 @@ function update_digsite_requirements() {
 
 const bank_panel_map = {
 	'kru_archaeology:Archaeology_Curiosity_Desert': 'ka-bank-panel-desert-curiosity',
-	'kru_archaeology:Archaeology_Curiosity_Jungle': 'ka-bank-panel-jungle-curiosity'
+	'kru_archaeology:Archaeology_Curiosity_Jungle': 'ka-bank-panel-jungle-curiosity',
+	'kru_archaeology:Archaeology_Curiosity_Pirate': 'ka-bank-panel-pirate-curiosity',
 };
 
 let selected_bank_panel = null;
@@ -419,6 +455,29 @@ function render_offline_modal() {
 	});
 
 	offline_progress = undefined;
+}
+
+const challenge_skills = [
+	'melvorD:Woodcutting',
+	'melvorD:Fishing',
+	'melvorD:Mining',
+	'melvorD:Farming'
+];
+
+function generate_challenge() {
+	const potential_items = [];
+
+	for (const skill_id of challenge_skills) {
+		const skill = game.skills.getObjectByID(skill_id);
+		for (const action of skill.actions.registeredObjects.values()) {
+			if (action.level <= skill.level)
+			potential_items.push(action.product);
+		}
+	}
+
+	const selected_item = potential_items[Math.floor(Math.random() * potential_items.length)];
+	const amount = (Math.floor(Math.random() * 10) + 1) * 100;
+	state.active_challenge = { item_id: selected_item.id, amount };
 }
 
 /** Get the mastery XP necessary for a mastery level. */

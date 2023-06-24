@@ -732,6 +732,8 @@ class KAPuzzleBox extends HTMLElement {
 	reward() {
 		Swal.close();
 		game.bank.removeItemQuantityByID('kru_archaeology:Archaeology_Curiosity_Jungle', 1);
+
+		// TODO: Reward player and show reward modal.
 	}
 
 	handle_slot_click($piece) {

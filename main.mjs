@@ -305,7 +305,7 @@ const state = ui.createStore({
 		Swal.getConfirmButton().addEventListener('click', () => {
 			if (game.bank.checkForItems([{ item: challenge_item, quantity: challenge.amount } ])) {
 				game.bank.removeItemQuantityByID(challenge.item_id, challenge.amount);
-				game.bank.removeItemQuantityByID('kru_archaeology:Archaeology_Curiosity_Pirate', 1);)
+				game.bank.removeItemQuantityByID('kru_archaeology:Archaeology_Curiosity_Pirate', 1);
 				state.active_challenge = null;
 
 				// TODO: Reward treasure and show reward modal.

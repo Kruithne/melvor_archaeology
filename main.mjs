@@ -343,7 +343,7 @@ const state = ui.createStore({
 			showCancelButton: true,
 			showConfirmButton: true,
 			cancelButtonText: getLangString('MOD_KA_BUTTON_CLOSE'),
-			confirmButtonText: getLangString('MOD_KA_ITEM_CURIOSITY_CASTLE_USE_BUTTON'),
+			confirmButtonText: getLangString('MOD_KA_BUTTON_UNLOCK'),
 		});
 	}
 });

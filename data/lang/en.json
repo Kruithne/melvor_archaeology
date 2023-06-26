@@ -40,6 +40,8 @@
 	"MOD_KA_BUTTON_ADJUST_MEDIUM_WHEEL": "Turn Center",
 	"MOD_KA_BUTTON_ADJUST_SMALL_WHEEL": "Turn Inner",
 
+	"MOD_KA_BUTTON_UNLOCK": "Unlock",
+
 	"MOD_KA_ROYAL_RIDDLE_HEADER": "To unlock the chest, riddle me this:",
 	"MOD_KA_ROYAL_RIDDLE_ERROR": "Incorrect combination",
 	"MOD_KA_ROYAL_RIDDLE_0": "How many [melvorD:Carrot] do I need to cook <b>{mod*3}</b> [melvorD:Carrot_Cake]?",

@@ -400,21 +400,20 @@ function update_digsite_requirements() {
 	}
 }
 
-const bank_panel_map = {
-	'kru_archaeology:Archaeology_Curiosity_Desert': 'ka-bank-panel-desert-curiosity',
-	'kru_archaeology:Archaeology_Curiosity_Jungle': 'ka-bank-panel-jungle-curiosity',
-	'kru_archaeology:Archaeology_Curiosity_Pirate': 'ka-bank-panel-pirate-curiosity',
-};
+const bankPanelRegex = /^kru_archaeology:Archaeology_Curiosity_([a-z]+)$/i;
 
 let selected_bank_panel = null;
 function update_bank(selected_item_id) {
 	if (selected_bank_panel !== null)
 		selected_bank_panel.classList.add('d-none');
 
-	const bank_panel_id = bank_panel_map[selected_item_id];
-	if (bank_panel_id !== undefined) {
-		selected_bank_panel = document.getElementById(bank_panel_id);
-		selected_bank_panel.classList.remove('d-none');
+	const match = selected_item_id.match(bankPanelRegex);
+	if (match === null)
+		return;
+
+	const bank_panel_id = `ka-bank-panel-${match[1].toLowerCase()}-curiosity`;
+	selected_bank_panel = document.getElementById(bank_panel_id);
+	selected_bank_panel.classList.remove('d-none');
 	}
 }
 

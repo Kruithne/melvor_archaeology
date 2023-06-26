@@ -26,6 +26,8 @@ const ctx = mod.getContext(import.meta);
 const state = ui.createStore({
 	active_digsite: null,
 	active_challenge: null,
+	active_riddle: null,
+	active_riddle_mod: 0,
 
 	/** Returns a resource path for an SVG asset. */
 	get_svg(id) {
@@ -236,6 +238,11 @@ const state = ui.createStore({
 
 			if (save_state.active_challenge)
 				state.active_challenge = save_state.active_challenge;
+
+			if (save_state.active_riddle !== undefined) {
+				state.active_riddle = save_state.active_riddle;
+				state.active_riddle_mod = save_state.active_riddle_mod;
+			}
 		}
 	},
 
@@ -249,7 +256,9 @@ const state = ui.createStore({
 
 		const save_state = {
 			digsites,
-			active_challenge: state.active_challenge
+			active_challenge: state.active_challenge,
+			active_riddle: state.active_riddle,
+			active_riddle_mod: state.active_riddle_mod,
 		};
 
 		const tmp_state_file = path.join(os.tmpdir(), 'archaeology_state.json');
@@ -323,7 +332,19 @@ const state = ui.createStore({
 			showCancelButton: true,
 			showConfirmButton: false,
 			cancelButtonText: getLangString('MOD_KA_BUTTON_CLOSE'),
-		})
+		});
+	},
+
+	/** Shows the interaction modal for the royal chest curiosity. */
+	use_royal_chest() {
+		addModalToQueue({
+			title: getLangString('MOD_KA_ITEM_CURIOSITY_CASTLE'),
+			html: `<ka-royal-chest></ka-royal-chest>`,
+			showCancelButton: true,
+			showConfirmButton: true,
+			cancelButtonText: getLangString('MOD_KA_BUTTON_CLOSE'),
+			confirmButtonText: getLangString('MOD_KA_ITEM_CURIOSITY_CASTLE_USE_BUTTON'),
+		});
 	}
 });
 
@@ -851,6 +872,123 @@ class KASkillSelector extends HTMLElement {
 	}
 }
 
+const MAX_RIDDLE_INDEX = 0;
+class KARoyalChest extends HTMLElement {
+	constructor() {
+		super();
+
+		this.combination = [0, 0, 0, 0];
+		this.wheels = Array(4);
+
+		let riddle_index = state.active_riddle;
+		let mod = state.active_riddle_mod;
+
+		if (riddle_index === null) {
+			riddle_index = Math.floor(Math.random() * (MAX_RIDDLE_INDEX + 1));
+			mod = Math.floor(Math.random() * 198) + 2;
+
+			state.active_riddle = riddle_index;
+			state.active_riddle_mod = mod;
+		}
+
+		this.riddle_answer = mod;
+		let riddle_lang = getLangString('MOD_KA_ROYAL_RIDDLE_' + riddle_index);
+		riddle_lang = riddle_lang.replace(/\{([^\}]+)\}/g, (match, expr) => {
+			this.riddle_answer = eval(expr);
+			return mod;
+		});
+
+		riddle_lang = riddle_lang.replace(/\[([^\]]+)\]/g, (match, item_id) => {
+			const item = game.items.getObjectByID(item_id);
+			return `<span><img class="skill-icon-xs mr-2" src="${item.media}"/>${item.name}s</span>`;
+		});
+
+		const $header = document.createElement('span');
+		$header.classList.add('font-size-sm', 'mb-2');
+		$header.style.display = 'block';
+		$header.textContent = getLangString('MOD_KA_ROYAL_RIDDLE_HEADER');
+
+		const $riddle_text = document.createElement('span');
+		$riddle_text.classList.add('font-size-m');
+		$riddle_text.innerHTML = riddle_lang;
+
+		this.appendChild($header);
+		this.appendChild($riddle_text);
+
+		const $dial_container = document.createElement('div');
+		$dial_container.classList.add('d-flex', 'align-items-center', 'justify-content-center', 'mt-4');
+
+		for (let i = 0; i < 4; i++) {
+			const $container = document.createElement('div');
+
+			const $up_button = document.createElement('button');
+			$up_button.classList.add('btn', 'btn-warning', 'mb-2');
+			$up_button.addEventListener('click', () => this.adjust_wheel(i, -1));
+			$up_button.textContent = '▲';
+
+			const $down_button = document.createElement('button');
+			$down_button.classList.add('btn', 'btn-warning', 'mt-2');
+			$down_button.addEventListener('click', () => this.adjust_wheel(i, 1));
+			$down_button.textContent = '▼';
+
+			const $outer = document.createElement('div');
+			$outer.classList.add('ka-combo-digit-dial');
+
+			const $digit_holder = document.createElement('div');
+			$outer.appendChild($digit_holder);
+
+			this.wheels[i] = $digit_holder;
+
+			for (let x = 0; x < 10; x++) {
+				const $digit = document.createElement('div');
+				$digit.classList.add('ka-combo-digit');
+				$digit.textContent = x;
+
+				$digit_holder.appendChild($digit);
+			}
+
+			$container.appendChild($up_button);
+			$container.appendChild($outer);
+			$container.appendChild($down_button);
+
+			$dial_container.appendChild($container);
+		}
+
+		this.appendChild($dial_container);
+
+		Swal.getConfirmButton().addEventListener('click', () => {
+			this.check_combination();
+		});
+	}
+
+	adjust_wheel(index, delta) {
+		const $digit_holder = this.wheels[index];
+		const current_digit = this.combination[index];
+		let new_digit = current_digit + delta;
+
+		if (new_digit === -1 || new_digit === 10)
+			return;
+
+		$digit_holder.style.top = `-${new_digit * 70}px`;
+		this.combination[index] = new_digit;
+	}
+
+	check_combination() {
+		// this.combination is an array of numbers (with leading zeros).
+		// Validate combination against this.riddle_answer
+
+		const combination = parseInt(this.combination.join('').replace(/^0+/, ''));
+		if (combination === this.riddle_answer) {
+			game.bank.removeItemQuantityByID('kru_archaeology:Archaeology_Curiosity_Castle', 1);
+			Swal.close();
+
+			// TODO: Add reward to and show modal.
+		} else {
+			notify_error('MOD_KA_ROYAL_RIDDLE_ERROR');
+		}
+	}
+}
+
 class KAChallengeWheel extends HTMLElement {
 	constructor() {
 		super();
@@ -934,3 +1072,4 @@ class KAChallengeWheel extends HTMLElement {
 window.customElements.define('ka-skill-selector', KASkillSelector);
 window.customElements.define('ka-puzzle-box', KAPuzzleBox);
 window.customElements.define('ka-challenge-wheel', KAChallengeWheel);
+window.customElements.define('ka-royal-chest', KARoyalChest);

@@ -40,6 +40,10 @@
 	"MOD_KA_BUTTON_ADJUST_MEDIUM_WHEEL": "Turn Center",
 	"MOD_KA_BUTTON_ADJUST_SMALL_WHEEL": "Turn Inner",
 
+	"MOD_KA_ROYAL_RIDDLE_HEADER": "To unlock the chest, riddle me this:",
+	"MOD_KA_ROYAL_RIDDLE_ERROR": "Incorrect combination",
+	"MOD_KA_ROYAL_RIDDLE_0": "How many [melvorD:Carrot] do I need to cook <b>{mod*3}</b> [melvorD:Carrot_Cake]?",
+
 	"MOD_KA_ITEM_ARTIFACT_DESERT_1": "Placeholder Artifact 1",
 	"MOD_KA_ITEM_ARTIFACT_DESERT_1_PRISTINE": "Placeholder Artifact 1 (Pristine)",
 	"MOD_KA_ITEM_DESC_ARTIFACT_DESERT_1": "Placeholder Artifact 1 Description",
@@ -147,8 +151,10 @@
 	"MOD_KA_ITEM_CURIOSITY_VOLCANIC": "Placeholder CURIOSITY Volcanic",
 	"MOD_KA_ITEM_DESC_CURIOSITY_VOLCANIC": "Placeholder CURIOSITY Volcanic Description",
 
-	"MOD_KA_ITEM_CURIOSITY_CASTLE": "Placeholder CURIOSITY Castle",
-	"MOD_KA_ITEM_DESC_CURIOSITY_CASTLE": "Placeholder CURIOSITY Castle Description",
+	"MOD_KA_ITEM_CURIOSITY_CASTLE": "Royal Treasury Box",
+	"MOD_KA_ITEM_DESC_CURIOSITY_CASTLE": "An ornate wooden box sealed with a complex locking mechanism.",
+	"MOD_KA_ITEM_CURIOSITY_CASTLE_USE_DESC": "Figure out the correct combination to unlock the royal treasury box.",
+	"MOD_KA_ITEM_CURIOSITY_CASTLE_USE_BUTTON": "Unlock",
 
 	"MOD_KA_ITEM_CURIOSITY_PIRATE": "Challenge in a Bottle",
 	"MOD_KA_ITEM_DESC_CURIOSITY_PIRATE": "There appears to be a challenge inside.",

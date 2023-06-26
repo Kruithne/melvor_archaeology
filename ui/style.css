@@ -128,3 +128,28 @@ ka-challenge-wheel img {
 	height: 470px;
 	overflow: hidden;
 }
+
+.ka-combo-digit-dial {
+    width: 60px;
+    height: 70px;
+    box-shadow: inset black 0 0 20px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 10px;
+}
+
+.ka-combo-digit-dial > div {
+	position: absolute;
+	transition: top 0.2s linear;
+	top: 0;
+}
+
+.ka-combo-digit {
+	color: white;
+    width: 60px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    font-size: 4rem;
+    justify-content: center;
+}

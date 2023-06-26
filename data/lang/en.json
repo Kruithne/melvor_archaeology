@@ -34,6 +34,7 @@
 
 	"MOD_KA_BUTTON_COMPLETE_CHALLENGE": "Complete Challenge",
 	"MOD_KA_CHALLENGE_TEXT": "To the landlubber who finds this, here be ye challenge:",
+	"MOD_KA_CHALLENGE_ERROR": "You lack the requirements to complete this challenge.",
 
 	"MOD_KA_BUTTON_ADJUST_LARGE_WHEEL": "Turn Outer",
 	"MOD_KA_BUTTON_ADJUST_MEDIUM_WHEEL": "Turn Center",

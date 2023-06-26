@@ -309,6 +309,8 @@ const state = ui.createStore({
 				state.active_challenge = null;
 
 				// TODO: Reward treasure and show reward modal.
+			} else {
+				notify_error('MOD_KA_CHALLENGE_ERROR');
 			}
 		});
 	},

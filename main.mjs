@@ -311,6 +311,17 @@ const state = ui.createStore({
 				// TODO: Reward treasure and show reward modal.
 			}
 		});
+	},
+
+	/** Shows the interaction modal for the challenge wheel curiosity. */
+	use_challenge_wheel_curiosity() {
+		addModalToQueue({
+			title: getLangString('MOD_KA_ITEM_CURIOSITY_BARROWS'),
+			html: `<ka-challenge-wheel></ka-challenge-wheel>`,
+			showCancelButton: true,
+			showConfirmButton: false,
+			cancelButtonText: getLangString('MOD_KA_BUTTON_CLOSE'),
+		})
 	}
 });
 
@@ -414,7 +425,6 @@ function update_bank(selected_item_id) {
 	const bank_panel_id = `ka-bank-panel-${match[1].toLowerCase()}-curiosity`;
 	selected_bank_panel = document.getElementById(bank_panel_id);
 	selected_bank_panel.classList.remove('d-none');
-	}
 }
 
 /** Render the offline progress modal for archaeology */
@@ -839,5 +849,86 @@ class KASkillSelector extends HTMLElement {
 	}
 }
 
+class KAChallengeWheel extends HTMLElement {
+	constructor() {
+		super();
+
+		this.parts = {};
+		this.solved = false;
+
+		const $button_container = document.createElement('div');
+		$button_container.classList.add('d-flex', 'justify-content-center');
+
+		const $wheel_container = document.createElement('div');
+		$wheel_container.classList.add('ka-wheel-container');
+
+		for (const part_name of ['large', 'medium', 'small', 'umbo']) {
+			const $part = document.createElement('img');
+			$part.src = ctx.getResourceUrl(`assets/svg/ui_challenge_wheel_${part_name}.svg`);
+			
+			if (part_name !== 'umbo') {
+				const rotation = Math.floor(Math.random() * 24) * 15;
+				$part.style.transform = `rotate(${rotation}deg)`;
+
+				this.parts[part_name] = {
+					$part,
+					rotation,
+				};
+
+				const $button = document.createElement('button');
+				$button.classList.add('btn', 'btn-warning', 'm-1');
+				$button.addEventListener('click', () => this.adjust_wheel(part_name));
+				$button.innerHTML = `<lang-string lang-id="MOD_KA_BUTTON_ADJUST_${part_name.toUpperCase()}_WHEEL"></lang-string>`;
+				$button_container.appendChild($button);
+			}
+
+			$wheel_container.appendChild($part);
+		}
+	
+		this.appendChild($wheel_container);
+		this.appendChild($button_container);
+	}
+
+	adjust_wheel(wheel_type) {
+		if (this.solved)
+			return;
+
+		const part = this.parts[wheel_type];
+		if (!part)
+			return;
+
+		part.rotation += wheel_type === 'medium' ? -15 : 15;
+		part.$part.style.transform = `rotate(${part.rotation}deg)`;
+
+		this.check_completion();
+	}
+
+	check_completion() {		
+		let rotation = undefined;
+		for (const part of Object.values(this.parts)) {
+			const normalizedRotation = part.rotation % 360;
+			if (rotation === undefined) {
+				rotation = normalizedRotation;
+			} else {
+				const normalizedDiff = (normalizedRotation - rotation + 360) % 360;
+				if (normalizedDiff !== 0)
+					return;
+			}
+		}
+
+		this.solved = true;
+
+		setTimeout(() => this.reward(), 1000);
+	}
+
+	reward() {
+		Swal.close();
+		game.bank.removeItemQuantityByID('kru_archaeology:Archaeology_Curiosity_Barrows', 1);
+
+		// TODO: Add actual reward + modal.
+	}
+}
+
 window.customElements.define('ka-skill-selector', KASkillSelector);
 window.customElements.define('ka-puzzle-box', KAPuzzleBox);
+window.customElements.define('ka-challenge-wheel', KAChallengeWheel);

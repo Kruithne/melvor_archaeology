@@ -104,3 +104,27 @@ ka-puzzle-box > div {
 	cursor: pointer;
 	background-size: calc(300% + (100% / 3));
 }
+
+ka-challenge-wheel {
+	position: relative;
+	display: block;
+	overflow: hidden;
+}
+
+ka-challenge-wheel img {
+	position: absolute;
+	left: 0;
+	transition: transform 0.2s ease-out;
+}
+
+.ka-button-shelf > div {
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+
+.ka-wheel-container {
+	position: relative;
+	height: 470px;
+	overflow: hidden;
+}

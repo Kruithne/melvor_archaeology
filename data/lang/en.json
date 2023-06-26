@@ -35,6 +35,10 @@
 	"MOD_KA_BUTTON_COMPLETE_CHALLENGE": "Complete Challenge",
 	"MOD_KA_CHALLENGE_TEXT": "To the landlubber who finds this, here be ye challenge:",
 
+	"MOD_KA_BUTTON_ADJUST_LARGE_WHEEL": "Turn Outer",
+	"MOD_KA_BUTTON_ADJUST_MEDIUM_WHEEL": "Turn Center",
+	"MOD_KA_BUTTON_ADJUST_SMALL_WHEEL": "Turn Inner",
+
 	"MOD_KA_ITEM_ARTIFACT_DESERT_1": "Placeholder Artifact 1",
 	"MOD_KA_ITEM_ARTIFACT_DESERT_1_PRISTINE": "Placeholder Artifact 1 (Pristine)",
 	"MOD_KA_ITEM_DESC_ARTIFACT_DESERT_1": "Placeholder Artifact 1 Description",
@@ -150,6 +154,8 @@
 	"MOD_KA_ITEM_CURIOSITY_PIRATE_USE_DESC": "Open the bottle to read and complete the challenge.",
 	"MOD_KA_ITEM_CURIOSITY_PIRATE_USE_BUTTON": "Read Challenge",
 
-	"MOD_KA_ITEM_CURIOSITY_BARROWS": "Placeholder CURIOSITY Barrows",
-	"MOD_KA_ITEM_DESC_CURIOSITY_BARROWS": "Placeholder CURIOSITY Barrows Description"
+	"MOD_KA_ITEM_CURIOSITY_BARROWS": "Ancient Chest",
+	"MOD_KA_ITEM_DESC_CURIOSITY_BARROWS": "An ancient chest locked by a strange mechanism consisting of multiple wheels.",
+	"MOD_KA_ITEM_CURIOSITY_BARROWS_USE_DESC": "Align the wheels correctly to unlock the chest and claim the treasure within.",
+	"MOD_KA_ITEM_CURIOSITY_BARROWS_USE_BUTTON": "Unlock Chest"
 }

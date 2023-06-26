@@ -282,7 +282,7 @@ const state = ui.createStore({
 			cancelButtonText: getLangString('MOD_KA_BUTTON_CLOSE'),
 			showCancelButton: true,
 			showConfirmButton: false
-		})
+		});
 	},
 
 	/** Shows the interaction modal for the challenge scroll curiosity. */

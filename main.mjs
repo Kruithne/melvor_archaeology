@@ -319,7 +319,7 @@ const state = ui.createStore({
 
 				// TODO: Reward treasure and show reward modal.
 			} else {
-				notify_error('MOD_KA_CHALLENGE_ERROR');
+				notify_error('MOD_KA_CHALLENGE_ERROR', 'assets/svg/item_challenge_scroll.svg');
 			}
 		});
 	},
@@ -984,7 +984,7 @@ class KARoyalChest extends HTMLElement {
 
 			// TODO: Add reward to and show modal.
 		} else {
-			notify_error('MOD_KA_ROYAL_RIDDLE_ERROR');
+			notify_error('MOD_KA_ROYAL_RIDDLE_ERROR', 'assets/svg/item_royal_jewelry_box.svg');
 		}
 	}
 }

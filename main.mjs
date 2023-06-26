@@ -974,9 +974,6 @@ class KARoyalChest extends HTMLElement {
 	}
 
 	check_combination() {
-		// this.combination is an array of numbers (with leading zeros).
-		// Validate combination against this.riddle_answer
-
 		const combination = parseInt(this.combination.join('').replace(/^0+/, ''));
 		if (combination === this.riddle_answer) {
 			game.bank.removeItemQuantityByID('kru_archaeology:Archaeology_Curiosity_Castle', 1);

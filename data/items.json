@@ -839,7 +839,7 @@
 		"category": "Archaeology",
 		"customDescription": "MOD_KA_ITEM_DESC_CURIOSITY_VOLCANIC",
 		"type": "Curiosity",
-		"media": "assets/svg/archaeology.svg",
+		"media": "assets/svg/item_volcanic_chest.svg",
 		"ignoreCompletion": true,
 		"obtainFromItemLog": false,
 		"golbinRaidExclusive": false,

@@ -63,7 +63,7 @@
 
 .ka-mastery-icon {
 	background-image: url('assets/media/main/mastery_header.svg');
-    background-size: contain;
+	background-size: contain;
 }
 
 ka-skill-selector {
@@ -130,12 +130,12 @@ ka-challenge-wheel img {
 }
 
 .ka-combo-digit-dial {
-    width: 60px;
-    height: 70px;
-    box-shadow: inset black 0 0 20px;
-    overflow: hidden;
-    position: relative;
-    margin: 0 10px;
+	width: 60px;
+	height: 70px;
+	box-shadow: inset black 0 0 20px;
+	overflow: hidden;
+	position: relative;
+	margin: 0 10px;
 }
 
 .ka-combo-digit-dial > div {
@@ -146,10 +146,94 @@ ka-challenge-wheel img {
 
 .ka-combo-digit {
 	color: white;
-    width: 60px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    font-size: 4rem;
-    justify-content: center;
+	width: 60px;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	font-size: 4rem;
+	justify-content: center;
+}
+
+ka-volcanic-chest {
+	display: block;
+	overflow: hidden;
+}
+
+ka-volcanic-chest > img {
+	width: 200px;
+	margin-bottom: 20px;
+	cursor: pointer;
+	transform: rotate(0deg);
+}
+
+ka-volcanic-chest > img.jiggle {
+	animation: jiggle 0.2s ease-in-out;
+}
+
+@keyframes jiggle {
+	0% {
+		transform: rotate(-10deg);
+	}
+	50% {
+		transform: rotate(10deg);
+	}
+	100% {
+		transform: rotate(-10deg);
+	}
+}
+
+ka-volcanic-chest > span {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.ka-lock-bar {
+	height: 30px;
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.ka-lock-bar-fill {
+	height: 25px;
+	width: 100%;
+	position: relative;
+	background-color: #ffa900;
+}
+
+.ka-lock-bar-button {
+	width: 10px;
+	height: 30px;
+	background: #00fff8;
+	border-radius: 5px;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+}
+
+.ka-lock-bar-hotspot {
+	width: 40px;
+	background-color: red;
+	height: 100%;
+	position: absolute;
+	left: 20%;
+	transform: translateX(-50%);
+}
+
+.ka-lock-bar-hotspot::before,
+.ka-lock-bar-hotspot::after {
+	content: '';
+	position: absolute;
+	width: 60px;
+	height: 100%;
+	background-color: #ff7500;
+}
+
+.ka-lock-bar-hotspot::before {
+	right: 100%;
+}
+
+.ka-lock-bar-hotspot::after {
+	left: 100%;
 }

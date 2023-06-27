@@ -345,6 +345,17 @@ const state = ui.createStore({
 			cancelButtonText: getLangString('MOD_KA_BUTTON_CLOSE'),
 			confirmButtonText: getLangString('MOD_KA_BUTTON_UNLOCK'),
 		});
+	},
+
+	/** Shows the interaction modal for the volcanic chest curiosity. */
+	use_volcanic_chest() {
+		addModalToQueue({
+			title: getLangString('MOD_KA_ITEM_CURIOSITY_VOLCANIC'),
+			html: `<ka-volcanic-chest></ka-volcanic-chest>`,
+			showCancelButton: true,
+			showConfirmButton: false,
+			cancelButtonText: getLangString('MOD_KA_BUTTON_CLOSE'),
+		});
 	}
 });
 
@@ -872,6 +883,80 @@ class KASkillSelector extends HTMLElement {
 	}
 }
 
+class KAVolcanicChest extends HTMLElement {
+	constructor() {
+		super();
+
+		this.position = 50;
+		this.hotspot = Math.floor(Math.random() * 60) + 20;
+		this.active = true;
+
+		const $header = document.createElement('span');
+		$header.classList.add('font-size-sm');
+		$header.textContent = getLangString('MOD_KA_VOLCANIC_HEADER');
+		this.appendChild($header);
+
+		const $lock = document.createElement('img');
+		$lock.src = ctx.getResourceUrl('assets/svg/ui_volcanic_lock.svg');
+		this.appendChild($lock);
+
+		$lock.addEventListener('click', () => {
+			if (!this.active)
+				return;
+
+			if (Math.abs(this.position - this.hotspot) <= 5) {
+				this.active = false;
+				setTimeout(() => {
+					Swal.close();
+					// TODO: Reward the player and show modal.
+				}, 1000);
+			} else {
+				const class_list = $lock.classList;
+
+				if (!class_list.contains('jiggle')) {
+					$lock.classList.add('jiggle');
+					setTimeout(() => $lock.classList.remove('jiggle'), 200);
+				}
+			}
+		});
+
+		const $bar = document.createElement('div');
+		$bar.classList.add('ka-lock-bar');
+
+		const $bar_fill = document.createElement('div');
+		$bar_fill.classList.add('ka-lock-bar-fill');
+		$bar.appendChild($bar_fill);
+
+		const $bar_hotspot = document.createElement('div');
+		$bar_hotspot.classList.add('ka-lock-bar-hotspot');
+		$bar_fill.appendChild($bar_hotspot);
+		$bar_hotspot.style.left = this.hotspot + '%';
+
+		const $bar_button = this.$button = document.createElement('div');
+		$bar_button.classList.add('ka-lock-bar-button');
+		$bar.appendChild($bar_button);
+
+		this.appendChild($bar);
+	}
+
+	connectedCallback() {
+		if (!this.isConnected)
+			return;
+
+		requestAnimationFrame(ts => this.tick(ts));
+	}
+
+	tick(ts) {
+		if (!this.isConnected || !this.active)
+			return;
+
+		this.position = 50 + Math.sin(ts / 1000) * 48;
+		this.$button.style.left = this.position + '%';
+
+		requestAnimationFrame(ts => this.tick(ts));
+	}
+}
+
 const MAX_RIDDLE_INDEX = 0;
 class KARoyalChest extends HTMLElement {
 	constructor() {
@@ -1070,3 +1155,4 @@ window.customElements.define('ka-skill-selector', KASkillSelector);
 window.customElements.define('ka-puzzle-box', KAPuzzleBox);
 window.customElements.define('ka-challenge-wheel', KAChallengeWheel);
 window.customElements.define('ka-royal-chest', KARoyalChest);
+window.customElements.define('ka-volcanic-chest', KAVolcanicChest);

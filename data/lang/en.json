@@ -42,6 +42,8 @@
 
 	"MOD_KA_BUTTON_UNLOCK": "Unlock",
 
+	"MOD_KA_VOLCANIC_HEADER": "Click the lock when the indicator is in the red zone.",
+
 	"MOD_KA_ROYAL_RIDDLE_HEADER": "To unlock the chest, riddle me this:",
 	"MOD_KA_ROYAL_RIDDLE_ERROR": "Incorrect combination",
 	"MOD_KA_ROYAL_RIDDLE_0": "How many [melvorD:Carrot] do I need to cook <b>{mod*3}</b> [melvorD:Carrot_Cake]?",
@@ -150,8 +152,10 @@
 	"MOD_KA_ITEM_CURIOSITY_JUNGLE_USE_DESC": "Arrange the sliding pieces of the puzzle box to retrieve the treasure within.",
 	"MOD_KA_ITEM_CURIOSITY_JUNGLE_USE_BUTTON": "Unlock Puzzle Box",
 
-	"MOD_KA_ITEM_CURIOSITY_VOLCANIC": "Placeholder CURIOSITY Volcanic",
-	"MOD_KA_ITEM_DESC_CURIOSITY_VOLCANIC": "Placeholder CURIOSITY Volcanic Description",
+	"MOD_KA_ITEM_CURIOSITY_VOLCANIC": "Smoldering Chest",
+	"MOD_KA_ITEM_DESC_CURIOSITY_VOLCANIC": "This chest seethes with volcanic heat.",
+	"MOD_KA_ITEM_CURIOSITY_VOLCANIC_USE_DESC": "Hot to the touch, the lock requires swift and skillful hands to open.",
+	"MOD_KA_ITEM_CURIOSITY_VOLCANIC_USE_BUTTON": "Picklock Chest",
 
 	"MOD_KA_ITEM_CURIOSITY_CASTLE": "Royal Treasury Box",
 	"MOD_KA_ITEM_DESC_CURIOSITY_CASTLE": "An ornate wooden box sealed with a complex locking mechanism.",

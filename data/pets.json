@@ -1,7 +1,7 @@
 [
 	{
 		"id": "Archaeology_Pet_Desert",
-		"media": "assets/svg/digsite_desert.svg",
+		"media": "assets/svg/pet_desert.svg",
 		"name": "MOD_KA_PET_NAME_DESERT",
 		"scaleChanceWithMasteryPool": false,
 		"ignoreCompletion": false,

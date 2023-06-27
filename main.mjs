@@ -423,7 +423,7 @@ function complete_digsite(digsite) {
 				artifacts.push(item_id);
 		}
 
-		game.bank.addItemByID(item_id, item_qty, true, true);
+		game.bank.addItemByID(item_id, item_qty, false, true);
 
 		if (is_offline) {
 			if (!offline_progress.items[item.id])

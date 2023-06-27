@@ -31,7 +31,7 @@
 	},
 	{
 		"id": "Archaeology_Pet_Jungle",
-		"media": "assets/svg/digsite_jungle.svg",
+		"media": "assets/svg/pet_jungle.svg",
 		"name": "MOD_KA_PET_NAME_JUNGLE",
 		"scaleChanceWithMasteryPool": false,
 		"ignoreCompletion": false,

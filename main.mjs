@@ -636,7 +636,7 @@ async function load_items(ctx) {
 
 /** Loads mod-specific pets with localization. */
 async function load_pets(ctx) {
-	const ignore_completion = !ctx.settings.section('General').get('include-in-completion');
+	const ignore_completion = !ctx.settings.section('General').get('include-pets-in-completion');
 	const pets = await ctx.loadData('data/pets.json');
 	
 	ctx.gameData.buildPackage(pkg => {
@@ -668,6 +668,14 @@ export async function setup(ctx) {
 		name: 'include-in-completion',
 		label: 'Include items in Completion Log (Restart Required)',
 		hint: 'If enabled, items added by this mod will be included in the completion log.',
+		default: true
+	});
+
+	general_settings.add({
+		type: 'switch',
+		name: 'include-pets-in-completion',
+		label: 'Include pets in Completion Log (Restart Required)',
+		hint: 'If enabled, pets added by this mod will be included in the completion log.',
 		default: true
 	});
 

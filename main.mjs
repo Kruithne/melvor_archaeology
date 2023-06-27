@@ -909,6 +909,7 @@ class KAVolcanicChest extends HTMLElement {
 				this.active = false;
 				setTimeout(() => {
 					Swal.close();
+					game.bank.removeItemQuantityByID('kru_archaeology:Archaeology_Curiosity_Volcanic', 1);
 					// TODO: Reward the player and show modal.
 				}, 1000);
 			} else {

@@ -1,6 +1,7 @@
 {
 	"namespace": "kru_archaeology",
 	"setup": "main.mjs",
+	"icon": "assets/svg/archaeology.svg",
 	"load": [
 		"ui/style.css"
 	]

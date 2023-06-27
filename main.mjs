@@ -618,10 +618,13 @@ async function load_items(ctx) {
 	// Items are loaded from data/items.json instead of being provided in
 	// the mod data.json because the latter does not support localization.
 
+	const ignore_completion = !ctx.settings.section('General').get('include-in-completion');
+
 	const items = await ctx.loadData('data/items.json');
 	ctx.gameData.buildPackage(pkg => {
 		for (const item of items) {
 			item.name = getLangString(item.name);
+			item.ignoreCompletion = ignore_completion;
 
 			if (item.customDescription)
 				item.customDescription = getLangString(item.customDescription);
@@ -643,6 +646,15 @@ export async function setup(ctx) {
 	
 	game.registerSkill(game.registeredNamespaces.getNamespace('kru_archaeology'), ArchaeologySkill);
 	skill = game.skills.registeredObjects.get('kru_archaeology:Archaeology');
+
+	const general_settings = ctx.settings.section('General');
+	general_settings.add({
+		type: 'switch',
+		name: 'include-in-completion',
+		label: 'Include items in Completion Log (Restart Required)',
+		hint: 'If enabled, items added by this mod will be included in the completion log.',
+		default: true
+	});
 	
 	await load_items(ctx);
 	await ctx.gameData.addPackage('data.json');

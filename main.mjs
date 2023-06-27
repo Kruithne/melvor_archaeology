@@ -890,6 +890,7 @@ class KAVolcanicChest extends HTMLElement {
 		this.position = 50;
 		this.hotspot = Math.floor(Math.random() * 60) + 20;
 		this.active = true;
+		this.throttle = false;
 
 		const $header = document.createElement('span');
 		$header.classList.add('font-size-sm');
@@ -901,7 +902,7 @@ class KAVolcanicChest extends HTMLElement {
 		this.appendChild($lock);
 
 		$lock.addEventListener('click', () => {
-			if (!this.active)
+			if (!this.active || this.throttle)
 				return;
 
 			if (Math.abs(this.position - this.hotspot) <= 5) {
@@ -911,12 +912,13 @@ class KAVolcanicChest extends HTMLElement {
 					// TODO: Reward the player and show modal.
 				}, 1000);
 			} else {
-				const class_list = $lock.classList;
+				this.throttle = true;
+				$lock.classList.add('jiggle');
 
-				if (!class_list.contains('jiggle')) {
-					$lock.classList.add('jiggle');
-					setTimeout(() => $lock.classList.remove('jiggle'), 200);
-				}
+				setTimeout(() => {
+					this.throttle = false;
+					$lock.classList.remove('jiggle');
+				}, 500);
 			}
 		});
 

@@ -20,6 +20,13 @@
 	"MOD_KA_DIGSITE_PIRATE": "Sunken Galleon",
 	"MOD_KA_DIGSITE_BARROWS": "Highland Barrows",
 
+	"MOD_KA_PET_NAME_DESERT": "Archaeology Pet Desert PH",
+	"MOD_KA_PET_NAME_JUNGLE": "Archaeology Pet Jungle PH",
+	"MOD_KA_PET_NAME_VOLCANIC": "Archaeology Pet Volcanic PH",
+	"MOD_KA_PET_NAME_CASTLE": "Archaeology Pet Castle PH",
+	"MOD_KA_PET_NAME_PIRATE": "Archaeology Pet Pirate PH",
+	"MOD_KA_PET_NAME_BARROWS": "Archaeology Pet Barrows PH",
+
 	"MOD_KA_TOAST_DIGSITE_REQUIREMENT": "Requirements not met.",
 
 	"MOD_KA_OFFLINE_HEADER": "Excavation Progress",

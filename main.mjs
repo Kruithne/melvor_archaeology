@@ -634,6 +634,21 @@ async function load_items(ctx) {
 	}).add();
 }
 
+/** Loads mod-specific pets with localization. */
+async function load_pets(ctx) {
+	const ignore_completion = !ctx.settings.section('General').get('include-in-completion');
+	const pets = await ctx.loadData('data/pets.json');
+	
+	ctx.gameData.buildPackage(pkg => {
+		for (const pet of pets) {
+			pet.name = getLangString(pet.name);
+			pet.ignoreCompletion = ignore_completion;
+
+			pkg.pets.add(pet);
+		}
+	}).add();
+}
+
 export async function setup(ctx) {
 	await patch_localization(ctx);
 	patch_save_data(ctx);
@@ -655,8 +670,8 @@ export async function setup(ctx) {
 		hint: 'If enabled, items added by this mod will be included in the completion log.',
 		default: true
 	});
-	
-	await load_items(ctx);
+
+	await Promise.all([load_items(ctx), load_pets(ctx)]);
 	await ctx.gameData.addPackage('data.json');
 
 	patch_bank_set_item();

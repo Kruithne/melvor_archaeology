@@ -1,0 +1,62 @@
+[
+	{
+		"id": "Archaeology_Pet_Desert",
+		"media": "assets/svg/digsite_desert.svg",
+		"name": "MOD_KA_PET_NAME_DESERT",
+		"scaleChanceWithMasteryPool": false,
+		"ignoreCompletion": false,
+		"modifiers": {},
+		"activeInRaid": false,
+		"langHint": "MOD_KA_DIGSITE_DESERT"
+	},
+	{
+		"id": "Archaeology_Pet_Barrows",
+		"media": "assets/svg/digsite_barrows.svg",
+		"name": "MOD_KA_PET_NAME_BARROWS",
+		"scaleChanceWithMasteryPool": false,
+		"ignoreCompletion": false,
+		"modifiers": {},
+		"activeInRaid": false,
+		"langHint": "MOD_KA_DIGSITE_BARROWS"
+	},
+	{
+		"id": "Archaeology_Pet_Castle",
+		"media": "assets/svg/digsite_castle.svg",
+		"name": "MOD_KA_PET_NAME_CASTLE",
+		"scaleChanceWithMasteryPool": false,
+		"ignoreCompletion": false,
+		"modifiers": {},
+		"activeInRaid": false,
+		"langHint": "MOD_KA_DIGSITE_CASTLE"
+	},
+	{
+		"id": "Archaeology_Pet_Jungle",
+		"media": "assets/svg/digsite_jungle.svg",
+		"name": "MOD_KA_PET_NAME_JUNGLE",
+		"scaleChanceWithMasteryPool": false,
+		"ignoreCompletion": false,
+		"modifiers": {},
+		"activeInRaid": false,
+		"langHint": "MOD_KA_DIGSITE_JUNGLE"
+	},
+	{
+		"id": "Archaeology_Pet_Pirate",
+		"media": "assets/svg/digsite_pirate.svg",
+		"name": "MOD_KA_PET_NAME_PIRATE",
+		"scaleChanceWithMasteryPool": false,
+		"ignoreCompletion": false,
+		"modifiers": {},
+		"activeInRaid": false,
+		"langHint": "MOD_KA_DIGSITE_PIRATE"
+	},
+	{
+		"id": "Archaeology_Pet_Volcanic",
+		"media": "assets/svg/digsite_volcanic.svg",
+		"name": "MOD_KA_PET_NAME_VOLCANIC",
+		"scaleChanceWithMasteryPool": false,
+		"ignoreCompletion": false,
+		"modifiers": {},
+		"activeInRaid": false,
+		"langHint": "MOD_KA_DIGSITE_VOLCANIC"
+	}
+]

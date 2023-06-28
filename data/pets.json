@@ -41,7 +41,7 @@
 	},
 	{
 		"id": "Archaeology_Pet_Pirate",
-		"media": "assets/svg/digsite_pirate.svg",
+		"media": "assets/svg/pet_pirate.svg",
 		"name": "MOD_KA_PET_NAME_PIRATE",
 		"scaleChanceWithMasteryPool": false,
 		"ignoreCompletion": false,

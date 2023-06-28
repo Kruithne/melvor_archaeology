@@ -642,6 +642,7 @@ async function load_pets(ctx) {
 	ctx.gameData.buildPackage(pkg => {
 		for (const pet of pets) {
 			pet.name = getLangString(pet.name);
+			pet.hint = getLangString(pet.hint);
 			pet.ignoreCompletion = ignore_completion;
 
 			pkg.pets.add(pet);

@@ -433,7 +433,7 @@ function complete_digsite(digsite) {
 		if (Math.random() >= loot_slot.chance)
 			continue;
 
-		const item = loot_slot.items[Math.floor(Math.random() * loot_slot.items.length)];
+		const item = loot_slot.items[Math.floor(Math.random() * loot_slot.items.length) - 1];
 		const item_qty = Math.floor(Math.random() * (item.quantity_max - item.quantity_min + 1)) + item.quantity_min;
 
 		let item_id = item.id;

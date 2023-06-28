@@ -237,3 +237,7 @@ ka-volcanic-chest > span {
 .ka-lock-bar-hotspot::after {
 	left: 100%;
 }
+
+.ka-pet-border {
+	border: 1px solid gold;
+}

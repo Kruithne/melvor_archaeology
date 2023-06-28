@@ -27,6 +27,8 @@
 	"MOD_KA_PET_NAME_PIRATE": "Willow",
 	"MOD_KA_PET_NAME_BARROWS": "Skelly Skelsson",
 
+	"MOD_KA_PET_DESC": "+10% GP from Archaeology",
+
 	"MOD_KA_TOAST_DIGSITE_REQUIREMENT": "Requirements not met.",
 
 	"MOD_KA_OFFLINE_HEADER": "Excavation Progress",

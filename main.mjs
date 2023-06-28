@@ -648,6 +648,12 @@ async function load_pets(ctx) {
 			pkg.pets.add(pet);
 		}
 	}).add();
+
+	// Providing customDescription to pets does not appear to work, so we hack it in.
+	for (const pet of pets) {
+		const pet_obj = game.pets.getObjectByID('kru_archaeology:' + pet.id);
+		pet_obj._customDescription = getLangString(pet.customDescription);
+	}
 }
 
 export async function setup(ctx) {

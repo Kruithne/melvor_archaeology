@@ -7,7 +7,8 @@
 		"ignoreCompletion": false,
 		"modifiers": {},
 		"activeInRaid": false,
-		"hint": "MOD_KA_DIGSITE_DESERT"
+		"hint": "MOD_KA_DIGSITE_DESERT",
+		"customDescription": "MOD_KA_PET_DESC"
 	},
 	{
 		"id": "Archaeology_Pet_Barrows",
@@ -17,7 +18,8 @@
 		"ignoreCompletion": false,
 		"modifiers": {},
 		"activeInRaid": false,
-		"hint": "MOD_KA_DIGSITE_BARROWS"
+		"hint": "MOD_KA_DIGSITE_BARROWS",
+		"customDescription": "MOD_KA_PET_DESC"
 	},
 	{
 		"id": "Archaeology_Pet_Castle",
@@ -27,7 +29,8 @@
 		"ignoreCompletion": false,
 		"modifiers": {},
 		"activeInRaid": false,
-		"hint": "MOD_KA_DIGSITE_CASTLE"
+		"hint": "MOD_KA_DIGSITE_CASTLE",
+		"customDescription": "MOD_KA_PET_DESC"
 	},
 	{
 		"id": "Archaeology_Pet_Jungle",
@@ -37,7 +40,8 @@
 		"ignoreCompletion": false,
 		"modifiers": {},
 		"activeInRaid": false,
-		"hint": "MOD_KA_DIGSITE_JUNGLE"
+		"hint": "MOD_KA_DIGSITE_JUNGLE",
+		"customDescription": "MOD_KA_PET_DESC"
 	},
 	{
 		"id": "Archaeology_Pet_Pirate",
@@ -47,7 +51,8 @@
 		"ignoreCompletion": false,
 		"modifiers": {},
 		"activeInRaid": false,
-		"hint": "MOD_KA_DIGSITE_PIRATE"
+		"hint": "MOD_KA_DIGSITE_PIRATE",
+		"customDescription": "MOD_KA_PET_DESC"
 	},
 	{
 		"id": "Archaeology_Pet_Volcanic",
@@ -57,6 +62,7 @@
 		"ignoreCompletion": false,
 		"modifiers": {},
 		"activeInRaid": false,
-		"hint": "MOD_KA_DIGSITE_VOLCANIC"
+		"hint": "MOD_KA_DIGSITE_VOLCANIC",
+		"customDescription": "MOD_KA_PET_DESC"
 	}
 ]

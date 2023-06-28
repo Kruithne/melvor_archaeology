@@ -11,7 +11,7 @@
 	},
 	{
 		"id": "Archaeology_Pet_Barrows",
-		"media": "assets/svg/digsite_barrows.svg",
+		"media": "assets/svg/pet_barrows.svg",
 		"name": "MOD_KA_PET_NAME_BARROWS",
 		"scaleChanceWithMasteryPool": false,
 		"ignoreCompletion": false,

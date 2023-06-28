@@ -51,7 +51,7 @@
 	},
 	{
 		"id": "Archaeology_Pet_Volcanic",
-		"media": "assets/svg/digsite_volcanic.svg",
+		"media": "assets/svg/pet_volcanic.svg",
 		"name": "MOD_KA_PET_NAME_VOLCANIC",
 		"scaleChanceWithMasteryPool": false,
 		"ignoreCompletion": false,

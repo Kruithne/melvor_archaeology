@@ -21,7 +21,7 @@
 	},
 	{
 		"id": "Archaeology_Pet_Castle",
-		"media": "assets/svg/digsite_castle.svg",
+		"media": "assets/svg/pet_castle.svg",
 		"name": "MOD_KA_PET_NAME_CASTLE",
 		"scaleChanceWithMasteryPool": false,
 		"ignoreCompletion": false,

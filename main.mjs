@@ -418,13 +418,15 @@ function process_digsite_tick(digsite) {
 function complete_digsite(digsite) {
 	skill.addXP(digsite.xp);
 
-	game.gp.add(state.get_gp_modified(digsite.gp));
+	const gp = state.get_gp_modified(digsite.gp);
+	game.gp.add(gp);
+
 	digsite.state.mastery_xp = Math.min(DIGSITE_RANKS[DIGSITE_RANKS.length - 1], digsite.state.mastery_xp + digsite.mastery);
 
 	if (is_offline) {
 		offline_progress.excavations++;
 		offline_progress.xp += digsite.xp;
-		offline_progress.gp += digsite.gp;
+		offline_progress.gp += gp;
 	}
 
 	for (const loot_slot of digsite.loot) {

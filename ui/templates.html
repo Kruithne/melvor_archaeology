@@ -44,6 +44,9 @@
 										<img class="bank-img p-2 resize-32" :src="state.get_item_icon(item_id)" v-if="digsite.state.unlocked_artifacts.includes(item_id)">
 										<img class="bank-img p-2 resize-32" src="assets/media/main/question.svg" v-else>
 									</div>
+									<div class="bank-item no-bg btm-light m-1 resize-32" v-if="digsite.state.unlocked_artifacts.length == digsite.collection.length">
+										<img class="bank-img p-2 resize-32" :src="state.get_pet_icon(digsite.pet)">
+									</div>
 								</div>
 							</div>
 							<!-- Icons -->
@@ -57,7 +60,7 @@
 								<div class="bank-item no-bg btn-light pointer-enabled m-1 resize-32">
 									<img class="bank-img p-2 resize-32" src="assets/media/main/coins.svg">
 									<div class="font-size-xs text-white text-center ka-col align-items-center" style="bottom: -8px">
-										<small class="badge-pill bg-secondary">{{ formatNumber(digsite.gp) }}</small>
+										<small class="badge-pill bg-secondary">{{ formatNumber(state.get_gp_modified(digsite.gp)) }}</small>
 									</div>
 								</div>
 								<div class="bank-item no-bg btn-light pointer-enabled m-1 resize-32">

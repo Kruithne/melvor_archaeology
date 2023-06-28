@@ -13,6 +13,7 @@
 				"melvorD:Bones": 128,
 				"melvorD:Magic_Bones": 5
 			},
+			"pet": "kru_archaeology:Archaeology_Pet_Desert",
 			"collection": [
 				"kru_archaeology:Archaeology_Artifact_Desert_1",
 				"kru_archaeology:Archaeology_Artifact_Desert_2",
@@ -79,6 +80,7 @@
 				"melvorD:Bones": 128,
 				"melvorD:Magic_Bones": 5
 			},
+			"pet": "kru_archaeology:Archaeology_Pet_Jungle",
 			"collection": [
 				"kru_archaeology:Archaeology_Artifact_Jungle_1",
 				"kru_archaeology:Archaeology_Artifact_Jungle_2",
@@ -145,6 +147,7 @@
 				"melvorD:Bones": 128,
 				"melvorD:Magic_Bones": 5
 			},
+			"pet": "kru_archaeology:Archaeology_Pet_Castle",
 			"collection": [
 				"kru_archaeology:Archaeology_Artifact_Castle_1",
 				"kru_archaeology:Archaeology_Artifact_Castle_2",
@@ -211,6 +214,7 @@
 				"melvorD:Bones": 128,
 				"melvorD:Magic_Bones": 5
 			},
+			"pet": "kru_archaeology:Archaeology_Pet_Volcanic",
 			"collection": [
 				"kru_archaeology:Archaeology_Artifact_Volcanic_1",
 				"kru_archaeology:Archaeology_Artifact_Volcanic_2",
@@ -277,6 +281,7 @@
 				"melvorD:Bones": 128,
 				"melvorD:Magic_Bones": 5
 			},
+			"pet": "kru_archaeology:Archaeology_Pet_Barrows",
 			"collection": [
 				"kru_archaeology:Archaeology_Artifact_Barrows_1",
 				"kru_archaeology:Archaeology_Artifact_Barrows_2",
@@ -343,6 +348,7 @@
 				"melvorD:Bones": 128,
 				"melvorD:Magic_Bones": 5
 			},
+			"pet": "kru_archaeology:Archaeology_Pet_Pirate",
 			"collection": [
 				"kru_archaeology:Archaeology_Artifact_Pirate_1",
 				"kru_archaeology:Archaeology_Artifact_Pirate_2",

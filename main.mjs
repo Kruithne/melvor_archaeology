@@ -22,7 +22,7 @@ let offline_progress = {
 const DIGSITE_RANKS = [0, 192, 384, 576, 768];
 
 const ctx = mod.getContext(import.meta);
-
+const skill_pets = [];
 const state = ui.createStore({
 	active_digsite: null,
 	active_challenge: null,
@@ -44,6 +44,11 @@ const state = ui.createStore({
 		return game.items.getObjectByID(id).media;
 	},
 
+	/** Get the URL for a pet. */
+	get_pet_icon(id) {
+		return game.pets.getObjectByID(id).media;
+	},
+
 	/** Get the URL for a requirement icon. */
 	get_requirement_icon(id) {
 		if (id === 'level')
@@ -63,6 +68,21 @@ const state = ui.createStore({
 
 		const xp_for_current_level = mastery_xp_for_level(current_level);
 		return (xp - xp_for_current_level) / (mastery_xp_for_level(current_level + 1) - xp_for_current_level);
+	},
+
+	/** Get the modifier for GP. */
+	get_gp_modified(gp) {
+		let gp_mod = 1;
+
+		const unlocked_pets = game.petManager.unlocked;
+		for (const pet of skill_pets) {
+			if (!unlocked_pets.has(pet))
+				continue;
+
+			gp_mod += 0.1;
+		}
+
+		return Math.floor(gp * gp_mod);
 	},
 
 	/** Formats digsite mastery into a human-readable string. */
@@ -397,7 +417,8 @@ function process_digsite_tick(digsite) {
 /** Run the completion of a digsite, sending rewards to player. */
 function complete_digsite(digsite) {
 	skill.addXP(digsite.xp);
-	game.gp.add(digsite.gp);
+
+	game.gp.add(state.get_gp_modified(digsite.gp));
 	digsite.state.mastery_xp = Math.min(DIGSITE_RANKS[DIGSITE_RANKS.length - 1], digsite.state.mastery_xp + digsite.mastery);
 
 	if (is_offline) {
@@ -653,6 +674,7 @@ async function load_pets(ctx) {
 	for (const pet of pets) {
 		const pet_obj = game.pets.getObjectByID('kru_archaeology:' + pet.id);
 		pet_obj._customDescription = getLangString(pet.customDescription);
+		skill_pets.push(pet_obj);
 	}
 }
 

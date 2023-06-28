@@ -430,29 +430,32 @@ function complete_digsite(digsite) {
 	}
 
 	for (const loot_slot of digsite.loot) {
-		if (Math.random() <= loot_slot.chance)
+		if (Math.random() >= loot_slot.chance)
 			continue;
 
 		const item = loot_slot.items[Math.floor(Math.random() * loot_slot.items.length)];
 		const item_qty = Math.floor(Math.random() * (item.quantity_max - item.quantity_min + 1)) + item.quantity_min;
 
 		let item_id = item.id;
-		if (item.pristine_variant && Math.random() >= 0.3) {
+		if (item.pristine_variant && Math.random() >= 0.1) {
 			// TODO: Implement proper pristine variant percentage chance.
 			item_id = item.pristine_variant;
 			
 			const artifacts = digsite.state.unlocked_artifacts;
-			if (!artifacts.includes(item_id))
-				artifacts.push(item_id);
+			if (!artifacts.includes(item.id))
+				artifacts.push(item.id);
+
+			if (artifacts.length === digsite.collection.length)
+				game.petManager.unlockPetByID(digsite.pet);
 		}
 
 		game.bank.addItemByID(item_id, item_qty, false, true);
 
 		if (is_offline) {
-			if (!offline_progress.items[item.id])
-				offline_progress.items[item.id] = item_qty;
+			if (!offline_progress.items[item_id])
+				offline_progress.items[item_id] = item_qty;
 			else
-				offline_progress.items[item.id] += item_qty;
+				offline_progress.items[item_id] += item_qty;
 		}
 	}
 }

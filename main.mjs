@@ -656,6 +656,13 @@ async function load_items(ctx) {
 				item.customDescription = getLangString(item.customDescription);
 
 			pkg.items.add(item);
+
+			if (item.type === 'Artifact') {
+				const pristine_item = Object.assign({}, item);
+				pristine_item.name = templateLangString('MOD_KA_ITEM_ARTIFACT_PRISTINE', { item: item.name });
+				// TODO: Adjust value.
+				// TODO: Adjust icon.
+			}
 		}
 	}).add();
 }

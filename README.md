@@ -18,8 +18,8 @@ Digsites require an amount of gold and resource to set-up. The associated cost w
 
 During the early levels, most of the items recovered will be junk, similar to how fishing works. These junk items will be themed according to the digsite area. For example, a castle may have you finding broken arrows, whereas a desert digsite you may recover cracked canopic jars.
 
-As you gain mastery on a digsite, the consistency of junk items will decrease and you will find more valuable items. Most of these items will simply be sold for gold, however there are rare variants of items called "Pristine".
+As you gain mastery on a digsite, the consistency of junk items will decrease and you will find more valuable items. Most of these items will simply be sold for gold, however there are rare items called "Artifacts".
 
-Pristine artifacts sell for more gold by themselves, but also function as part of a collection. The general aim of the skill is to collect all of the Pristine artifacts for each digsite.
+Artifacts sell for more gold by themselves, but also function as part of a collection. The general aim of the skill is to collect all of the artifacts for each digsite. Once you have collected all of the artifacts for a digsite, you will unlock a digsite-specific pet.
 
 In addition, you may also find various unique items from digsites known as "curiosities". One example might be a "Puzzle Box", which requires solving a small puzzle to open it. Inside will be a variety of treasure items.

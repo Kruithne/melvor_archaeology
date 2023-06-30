@@ -436,11 +436,7 @@ function complete_digsite(digsite) {
 		const item = loot_slot.items[Math.floor(Math.random() * loot_slot.items.length)];
 		const item_qty = Math.floor(Math.random() * (item.quantity_max - item.quantity_min + 1)) + item.quantity_min;
 
-		let item_id = item.id;
-		if (item.pristine_variant && Math.random() >= 0.1) {
-			// TODO: Implement proper pristine variant percentage chance.
-			item_id = item.pristine_variant;
-			
+		if (item.type === 'Artifact') {
 			const artifacts = digsite.state.unlocked_artifacts;
 			if (!artifacts.includes(item.id))
 				artifacts.push(item.id);
@@ -449,13 +445,13 @@ function complete_digsite(digsite) {
 				game.petManager.unlockPetByID(digsite.pet);
 		}
 
-		game.bank.addItemByID(item_id, item_qty, false, true);
+		game.bank.addItemByID(item.id, item_qty, false, true);
 
 		if (is_offline) {
-			if (!offline_progress.items[item_id])
-				offline_progress.items[item_id] = item_qty;
+			if (!offline_progress.items[item.id])
+				offline_progress.items[item.id] = item_qty;
 			else
-				offline_progress.items[item_id] += item_qty;
+				offline_progress.items[item.id] += item_qty;
 		}
 	}
 }
@@ -656,14 +652,6 @@ async function load_items(ctx) {
 				item.customDescription = getLangString(item.customDescription);
 
 			pkg.items.add(item);
-
-			if (item.type === 'Artifact') {
-				const pristine_item = Object.assign({}, item);
-				pristine_item.name = templateLangString('MOD_KA_ITEM_ARTIFACT_PRISTINE', { item: item.name });
-				pristine_item.media = pristine_item.media.replace(/(\.[^.]+)$/, '_pristine$1');
-				
-				// TODO: Adjust value.
-			}
 		}
 	}).add();
 }

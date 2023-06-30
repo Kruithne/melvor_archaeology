@@ -39,7 +39,7 @@
 	"MOD_KA_ITEM_DESC_SHOVEL": "A shovel used for digging up artifacts.",
 
 	"MOD_KA_ITEM_NAME_SKILLCAPE": "Archaeology Skillcape",
-	"MOD_KA_ITEM_DESC_SKILLCAPE": "-10% digsite excavation time, +100% GP from Archaeology, and increases chance of finding pristine artifacts.",
+	"MOD_KA_ITEM_DESC_SKILLCAPE": "-10% digsite excavation time, +100% GP from Archaeology, and increases chance of finding artifacts.",
 
 	"MOD_KA_BUTTON_COMPLETE_CHALLENGE": "Complete Challenge",
 	"MOD_KA_CHALLENGE_TEXT": "To the landlubber who finds this, here be ye challenge:",
@@ -56,8 +56,6 @@
 	"MOD_KA_ROYAL_RIDDLE_HEADER": "To unlock the chest, riddle me this:",
 	"MOD_KA_ROYAL_RIDDLE_ERROR": "Incorrect combination",
 	"MOD_KA_ROYAL_RIDDLE_0": "How many [melvorD:Carrot] do I need to cook <b>{mod*3}</b> [melvorD:Carrot_Cake]?",
-
-	"MOD_KA_ITEM_ARTIFACT_PRISTINE": "${item} (Pristine)",
 
 	"MOD_KA_ITEM_ARTIFACT_DESERT_1": "Placeholder Artifact 1",
 	"MOD_KA_ITEM_DESC_ARTIFACT_DESERT_1": "Placeholder Artifact 1 Description",

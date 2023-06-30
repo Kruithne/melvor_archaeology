@@ -28,32 +28,27 @@
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Desert_1",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Desert_1_Pristine"
+							"quantity_max": 1
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Desert_2",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Desert_2_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Desert_3",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Desert_3_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Desert_4",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Desert_4_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Desert_5",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Desert_5_Pristine"
+							"quantity_max": 1						
 						}
 					]
 				},
@@ -95,32 +90,27 @@
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Jungle_1",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Jungle_1_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Jungle_2",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Jungle_2_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Jungle_3",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Jungle_3_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Jungle_4",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Jungle_4_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Jungle_5",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Jungle_5_Pristine"
+							"quantity_max": 1						
 						}
 					]
 				},
@@ -162,32 +152,27 @@
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Castle_1",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Castle_1_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Castle_2",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Castle_2_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Castle_3",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Castle_3_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Castle_4",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Castle_4_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Castle_5",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Castle_5_Pristine"
+							"quantity_max": 1						
 						}
 					]
 				},
@@ -229,32 +214,27 @@
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Volcanic_1",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Volcanic_1_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Volcanic_2",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Volcanic_2_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Volcanic_3",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Volcanic_3_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Volcanic_4",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Volcanic_4_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Volcanic_5",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Volcanic_5_Pristine"
+							"quantity_max": 1						
 						}
 					]
 				},
@@ -296,32 +276,27 @@
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Barrows_1",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Barrows_1_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Barrows_2",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Barrows_2_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Barrows_3",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Barrows_3_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Barrows_4",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Barrows_4_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Barrows_5",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Barrows_5_Pristine"
+							"quantity_max": 1						
 						}
 					]
 				},
@@ -363,32 +338,27 @@
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Pirate_1",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Pirate_1_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Pirate_2",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Pirate_2_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Pirate_3",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Pirate_3_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Pirate_4",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Pirate_4_Pristine"
+							"quantity_max": 1						
 						},
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Pirate_5",
 							"quantity_min": 1,
-							"quantity_max": 1,
-							"pristine_variant": "kru_archaeology:Archaeology_Artifact_Pirate_5_Pristine"
+							"quantity_max": 1						
 						}
 					]
 				},

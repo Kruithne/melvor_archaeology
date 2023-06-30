@@ -36,9 +36,9 @@
 					<div v-else>
 						<!-- Digsite Unlocked UI -->
 						<div class="ka-col mt-2 mb-4">
-							<!-- Pristine Collection -->
+							<!-- Artifact Collection -->
 							<div class="ka-col align-items-center mb-2">
-								<span class="font-size-sm">Pristine Artifact Collection</span>
+								<span class="font-size-sm">Artifact Collection</span>
 								<div class="row">
 									<div class="bank-item no-bg btn-light pointer-enabled m-1 resize-32" v-for="item_id in digsite.collection">
 										<img class="bank-img p-2 resize-32" :src="state.get_item_icon(item_id)" v-if="digsite.state.unlocked_artifacts.includes(item_id)">

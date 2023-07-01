@@ -59,6 +59,14 @@
 						"quantity_min": 1,
 						"quantity_max": 1
 					}]
+				},
+				{
+					"chance": "1",
+					"items": [{
+						"id": "melvorD:Bones",
+						"quantity_min": 10,
+						"quantity_max": 100
+					}]
 				}
 			]
 		},
@@ -120,6 +128,14 @@
 						"id": "kru_archaeology:Archaeology_Curiosity_Jungle",
 						"quantity_min": 1,
 						"quantity_max": 1
+					}]
+				},
+				{
+					"chance": "1",
+					"items": [{
+						"id": "melvorD:Bones",
+						"quantity_min": 50,
+						"quantity_max": 300
 					}]
 				}
 			]
@@ -183,6 +199,14 @@
 						"quantity_min": 1,
 						"quantity_max": 1
 					}]
+				},
+				{
+					"chance": "1",
+					"items": [{
+						"id": "melvorD:Bones",
+						"quantity_min": 200,
+						"quantity_max": 600
+					}]
 				}
 			]
 		},
@@ -244,6 +268,14 @@
 						"id": "kru_archaeology:Archaeology_Curiosity_Volcanic",
 						"quantity_min": 1,
 						"quantity_max": 1
+					}]
+				},
+				{
+					"chance": "1",
+					"items": [{
+						"id": "melvorD:Bones",
+						"quantity_min": 500,
+						"quantity_max": 1200
 					}]
 				}
 			]
@@ -307,6 +339,14 @@
 						"quantity_min": 1,
 						"quantity_max": 1
 					}]
+				},
+				{
+					"chance": "1",
+					"items": [{
+						"id": "melvorD:Bones",
+						"quantity_min": 800,
+						"quantity_max": 2200
+					}]
 				}
 			]
 		},
@@ -368,6 +408,14 @@
 						"id": "kru_archaeology:Archaeology_Curiosity_Pirate",
 						"quantity_min": 1,
 						"quantity_max": 1
+					}]
+				},
+				{
+					"chance": "1",
+					"items": [{
+						"id": "melvorD:Bones",
+						"quantity_min": 1100,
+						"quantity_max": 3100
 					}]
 				}
 			]

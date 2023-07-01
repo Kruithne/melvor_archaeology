@@ -323,9 +323,17 @@
 				{
 					"chance": "1",
 					"items": [{
-						"id": "melvorD:Bones",
-						"quantity_min": 500,
-						"quantity_max": 1200
+						"id": "melvorD:Big_Bones",
+						"quantity_min": 160,
+						"quantity_max": 400
+					}]
+				},
+				{
+					"chance": "0.8",
+					"items": [{
+						"id": "melvorD:Ash",
+						"quantity_min": 100,
+						"quantity_max": 500
 					}]
 				}
 			]

@@ -465,6 +465,14 @@
 						"quantity_min": 300,
 						"quantity_max": 1000
 					}]
+				},
+				{
+					"chance": "0.8",
+					"items": [{
+						"id": "melvorD:Pirate_Booty",
+						"quantity_min": 1,
+						"quantity_max": 3
+					}]
 				}
 			]
 		}

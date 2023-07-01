@@ -82,6 +82,9 @@ const state = ui.createStore({
 			gp_mod += 0.1;
 		}
 
+		if (has_skillcape_equipped())
+			gp_mod += 1;
+
 		return Math.floor(gp * gp_mod);
 	},
 
@@ -133,7 +136,7 @@ const state = ui.createStore({
 			state.active_digsite.state.active = false;
 
 		digsite_state.active = true;
-		digsite_state.ticks_remaining = digsite.duration;
+		digsite_state.ticks_remaining = get_digsite_duration_mod(digsite.duration);
 		state.active_digsite = digsite;
 	},
 
@@ -401,7 +404,7 @@ function process_digsite_tick(digsite) {
 
 	digsite_state.ticks_remaining--;
 	if (digsite_state.ticks_remaining <= 0) {
-		digsite_state.ticks_remaining = digsite.duration;
+		digsite_state.ticks_remaining = get_digsite_duration_mod(digsite.duration);
 
 		try {
 			complete_digsite(digsite);
@@ -430,7 +433,11 @@ function complete_digsite(digsite) {
 	}
 
 	for (const loot_slot of digsite.loot) {
-		if (Math.random() >= loot_slot.chance)
+		let chance = loot_slot.chance;
+		if (item.type === 'Artifact' && has_skillcape_equipped())
+			chance += 0.1;
+
+		if (Math.random() >= chance)
 			continue;
 
 		const item = loot_slot.items[Math.floor(Math.random() * loot_slot.items.length)];
@@ -465,6 +472,15 @@ function update_digsite_requirements() {
 		requirement.classList.remove('text-success', 'text-danger');
 		requirement.classList.add(state.get_requirement_class(id, value));
 	}
+}
+
+function get_digsite_duration_mod(duration) {
+	return has_skillcape_equipped() ? duration * 0.9 : duration;
+}
+
+function has_skillcape_equipped() {
+	const skillcape = game.items.getObjectByID('kru_archaeology:Archaeology_Skillcape');
+	return game.combat.player.equipment.checkForItem(skillcape);
 }
 
 const bankPanelRegex = /^kru_archaeology:Archaeology_Curiosity_([a-z]+)$/i;

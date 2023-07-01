@@ -356,7 +356,7 @@
 				{
 					"chance": "0.8",
 					"items": [{
-						"id": "melvorD:Ash",
+						"id": "melvorF:Ash",
 						"quantity_min": 100,
 						"quantity_max": 500
 					}]

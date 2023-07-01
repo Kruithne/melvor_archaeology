@@ -10,8 +10,8 @@
 			"requirements": {
 				"level": 1,
 				"gold": 5000,
-				"melvorD:Bones": 128,
-				"melvorD:Magic_Bones": 5
+				"melvorD:Normal_Logs": 150,
+				"melvorD:Bronze_Bar": 100
 			},
 			"pet": "kru_archaeology:Archaeology_Pet_Desert",
 			"collection": [
@@ -89,9 +89,9 @@
 			"mastery": 40,
 			"requirements": {
 				"level": 15,
-				"gold": 5000,
-				"melvorD:Bones": 128,
-				"melvorD:Magic_Bones": 5
+				"gold": 10000,
+				"melvorD:Oak_Logs": 250,
+				"melvorD:Iron_Bar": 200
 			},
 			"pet": "kru_archaeology:Archaeology_Pet_Jungle",
 			"collection": [
@@ -184,9 +184,9 @@
 			"mastery": 85,
 			"requirements": {
 				"level": 30,
-				"gold": 5000,
-				"melvorD:Bones": 128,
-				"melvorD:Magic_Bones": 5
+				"gold": 30000,
+				"melvorD:Willow_Logs": 350,
+				"melvorD:Steel_Bar": 300
 			},
 			"pet": "kru_archaeology:Archaeology_Pet_Castle",
 			"collection": [
@@ -294,9 +294,9 @@
 			"mastery": 150,
 			"requirements": {
 				"level": 50,
-				"gold": 5000,
-				"melvorD:Bones": 128,
-				"melvorD:Magic_Bones": 5
+				"gold": 75000,
+				"melvorD:Teak_Logs": 550,
+				"melvorD:Mithril_Bar": 500
 			},
 			"pet": "kru_archaeology:Archaeology_Pet_Volcanic",
 			"collection": [
@@ -372,9 +372,9 @@
 			"mastery": 200,
 			"requirements": {
 				"level": 70,
-				"gold": 5000,
-				"melvorD:Bones": 128,
-				"melvorD:Magic_Bones": 5
+				"gold": 115000,
+				"melvorD:Maple_Logs": 750,
+				"melvorD:Adamanite_Bar": 700
 			},
 			"pet": "kru_archaeology:Archaeology_Pet_Barrows",
 			"collection": [
@@ -462,9 +462,9 @@
 			"mastery": 250,
 			"requirements": {
 				"level": 90,
-				"gold": 5000,
-				"melvorD:Bones": 128,
-				"melvorD:Magic_Bones": 5
+				"gold": 300000,
+				"melvorD:Yew_Logs": 950,
+				"melvorD:Runite_Bar": 900
 			},
 			"pet": "kru_archaeology:Archaeology_Pet_Pirate",
 			"collection": [

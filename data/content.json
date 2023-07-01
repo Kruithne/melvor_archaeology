@@ -219,6 +219,16 @@
 					}]
 				},
 				{
+					"chance": "0.1",
+					"items": [
+						{
+							"id": "melvorF:Chest_Of_Gems",
+							"quantity_min": 1,
+							"quantity_max": 1
+						}
+					]
+				},
+				{
 					"chance": "0.4",
 					"items": [
 						{

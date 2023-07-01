@@ -147,6 +147,31 @@
 						"quantity_min": 50,
 						"quantity_max": 300
 					}]
+				},
+				{
+					"chance": "0.6",
+					"items": [
+						{
+							"id": "melvorD:Blood_Rune",
+							"quantity_min": 100,
+							"quantity_max": 1000
+						},
+						{
+							"id": "melvorD:Death_Rune",
+							"quantity_min": 100,
+							"quantity_max": 1000
+						},
+						{
+							"id": "melvorD:Chaos_Rune",
+							"quantity_min": 100,
+							"quantity_max": 1000
+						},
+						{
+							"id": "melvorD:Ancient_Rune",
+							"quantity_min": 100,
+							"quantity_max": 1000
+						}
+					]
 				}
 			]
 		},
@@ -223,6 +248,16 @@
 					"items": [
 						{
 							"id": "melvorF:Chest_Of_Gems",
+							"quantity_min": 1,
+							"quantity_max": 1
+						}
+					]
+				},
+				{
+					"chance": "0.01",
+					"items": [
+						{
+							"id": "melvorF:Ring_Of_Wealth",
 							"quantity_min": 1,
 							"quantity_max": 1
 						}
@@ -395,6 +430,26 @@
 						"quantity_min": 800,
 						"quantity_max": 2200
 					}]
+				},
+				{
+					"chance": "0.6",
+					"items": [
+						{
+							"id": "melvorF:Small_Urn",
+							"quantity_min": 1,
+							"quantity_max": 10
+						}
+					]
+				},
+				{
+					"chance": "0.4",
+					"items": [
+						{
+							"id": "melvorF:Medium_Urn",
+							"quantity_min": 1,
+							"quantity_max": 5
+						}
+					]
 				}
 			]
 		},
@@ -472,6 +527,14 @@
 						"id": "melvorD:Pirate_Booty",
 						"quantity_min": 1,
 						"quantity_max": 3
+					}]
+				},
+				{
+					"chance": "0.01",
+					"items": [{
+						"id": "melvorF:Shipwheel",
+						"quantity_min": 1,
+						"quantity_max": 1
 					}]
 				}
 			]

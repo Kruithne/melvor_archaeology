@@ -23,7 +23,7 @@
 			],
 			"loot": [
 				{
-					"chance": 0.3,
+					"chance": 0.1,
 					"items": [
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Desert_1",
@@ -103,7 +103,7 @@
 			],
 			"loot": [
 				{
-					"chance": 0.3,
+					"chance": 0.1,
 					"items": [
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Jungle_1",
@@ -198,7 +198,7 @@
 			],
 			"loot": [
 				{
-					"chance": 0.3,
+					"chance": 0.1,
 					"items": [
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Castle_1",
@@ -308,7 +308,7 @@
 			],
 			"loot": [
 				{
-					"chance": 0.3,
+					"chance": 0.1,
 					"items": [
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Volcanic_1",
@@ -386,7 +386,7 @@
 			],
 			"loot": [
 				{
-					"chance": 0.3,
+					"chance": 0.1,
 					"items": [
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Barrows_1",
@@ -476,7 +476,7 @@
 			],
 			"loot": [
 				{
-					"chance": 0.3,
+					"chance": 0.1,
 					"items": [
 						{
 							"id": "kru_archaeology:Archaeology_Artifact_Pirate_1",

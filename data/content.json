@@ -3,12 +3,12 @@
 		"digsite_desert": {
 			"name": "MOD_KA_DIGSITE_DESERT",
 			"icon": "digsite_desert",
-			"duration": 200,
-			"xp": 5000,
-			"gp": 100,
+			"duration": 600000,
+			"xp": 1000,
+			"gp": 11000,
 			"mastery": 43,
 			"requirements": {
-				"level": 10,
+				"level": 1,
 				"gold": 5000,
 				"melvorD:Bones": 128,
 				"melvorD:Magic_Bones": 5
@@ -65,12 +65,12 @@
 		"digsite_jungle": {
 			"name": "MOD_KA_DIGSITE_JUNGLE",
 			"icon": "digsite_jungle",
-			"duration": 200,
-			"xp": 5000,
-			"gp": 100,
+			"duration": 1800000,
+			"xp": 11000,
+			"gp": 60000,
 			"mastery": 43,
 			"requirements": {
-				"level": 10,
+				"level": 15,
 				"gold": 5000,
 				"melvorD:Bones": 128,
 				"melvorD:Magic_Bones": 5
@@ -127,12 +127,12 @@
 		"digsite_castle": {
 			"name": "MOD_KA_DIGSITE_CASTLE",
 			"icon": "digsite_castle",
-			"duration": 200,
-			"xp": 5000,
-			"gp": 100,
+			"duration": 3600000,
+			"xp": 34800,
+			"gp": 240000,
 			"mastery": 43,
 			"requirements": {
-				"level": 10,
+				"level": 30,
 				"gold": 5000,
 				"melvorD:Bones": 128,
 				"melvorD:Magic_Bones": 5
@@ -189,12 +189,12 @@
 		"digsite_volcanic": {
 			"name": "MOD_KA_DIGSITE_VOLCANIC",
 			"icon": "digsite_volcanic",
-			"duration": 200,
-			"xp": 5000,
-			"gp": 100,
+			"duration": 7200000,
+			"xp": 120000,
+			"gp": 510000,
 			"mastery": 43,
 			"requirements": {
-				"level": 10,
+				"level": 50,
 				"gold": 5000,
 				"melvorD:Bones": 128,
 				"melvorD:Magic_Bones": 5
@@ -251,12 +251,12 @@
 		"digsite_barrows": {
 			"name": "MOD_KA_DIGSITE_BARROWS",
 			"icon": "digsite_barrows",
-			"duration": 200,
-			"xp": 5000,
-			"gp": 100,
+			"duration": 10800000,
+			"xp": 261000,
+			"gp": 1020000,
 			"mastery": 43,
 			"requirements": {
-				"level": 10,
+				"level": 70,
 				"gold": 5000,
 				"melvorD:Bones": 128,
 				"melvorD:Magic_Bones": 5
@@ -313,12 +313,12 @@
 		"digsite_pirate": {
 			"name": "MOD_KA_DIGSITE_PIRATE",
 			"icon": "digsite_pirate",
-			"duration": 200,
-			"xp": 5000,
-			"gp": 100,
+			"duration": 14400000,
+			"xp": 600000,
+			"gp": 2200000,
 			"mastery": 43,
 			"requirements": {
-				"level": 10,
+				"level": 90,
 				"gold": 5000,
 				"melvorD:Bones": 128,
 				"melvorD:Magic_Bones": 5

@@ -72,27 +72,7 @@
 					"chance": "0.2",
 					"items": [
 						{
-							"id": "melvorD:Topaz",
-							"quantity_min": 1,
-							"quantity_max": 10
-						},
-						{
-							"id": "melvorD:Sapphire",
-							"quantity_min": 1,
-							"quantity_max": 7
-						},
-						{
-							"id": "melvorD:Ruby",
-							"quantity_min": 1,
-							"quantity_max": 5
-						},
-						{
-							"id": "melvorD:Emerald",
-							"quantity_min": 1,
-							"quantity_max": 3
-						},
-						{
-							"id": "melvorD:Diamond",
+							"id": "melvorF:Chest_Of_Gems",
 							"quantity_min": 1,
 							"quantity_max": 1
 						}

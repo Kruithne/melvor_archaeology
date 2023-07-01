@@ -237,6 +237,26 @@
 						"quantity_min": 200,
 						"quantity_max": 600
 					}]
+				},
+				{
+					"chance": "0.4",
+					"items": [
+						{
+							"id": "melvorD:Bronze_Arrows",
+							"quantity_min": 100,
+							"quantity_max": 300
+						},
+						{
+							"id": "melvorD:Iron_Arrows",
+							"quantity_min": 100,
+							"quantity_max": 300
+						},
+						{
+							"id": "melvorD:Steel_Arrows",
+							"quantity_min": 100,
+							"quantity_max": 300
+						}
+					]
 				}
 			]
 		},

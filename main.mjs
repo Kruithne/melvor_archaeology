@@ -209,14 +209,9 @@ const state = ui.createStore({
 					continue;
 
 				const item = game.items.getObjectByID(loot_item.id);
-				const item_found = game.stats.itemFindCount(item);
-
-				const item_name = item_found ? item.name : getLangString('THIEVING_UNDISCOVERED_ITEM');
-				const item_icon = item_found ? item.media : cdnMedia('assets/media/main/question.svg');
-
 				const item_qty = loot_item.quantity_min === loot_item.quantity_max ? loot_item.quantity_min : `${loot_item.quantity_min}-${loot_item.quantity_max}`;
 
-				entries.push({ qty: item_qty, name: item_name, icon: item_icon });
+				entries.push({ qty: item_qty, name: item.name, icon: item.media });
 			}
 		}
 

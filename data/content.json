@@ -6,7 +6,7 @@
 			"duration": 12000,
 			"xp": 1000,
 			"gp": 11000,
-			"mastery": 43,
+			"mastery": 15,
 			"requirements": {
 				"level": 1,
 				"gold": 5000,
@@ -86,7 +86,7 @@
 			"duration": 36000,
 			"xp": 11000,
 			"gp": 60000,
-			"mastery": 43,
+			"mastery": 40,
 			"requirements": {
 				"level": 15,
 				"gold": 5000,
@@ -181,7 +181,7 @@
 			"duration": 72000,
 			"xp": 34800,
 			"gp": 240000,
-			"mastery": 43,
+			"mastery": 85,
 			"requirements": {
 				"level": 30,
 				"gold": 5000,
@@ -291,7 +291,7 @@
 			"duration": 144000,
 			"xp": 120000,
 			"gp": 510000,
-			"mastery": 43,
+			"mastery": 150,
 			"requirements": {
 				"level": 50,
 				"gold": 5000,
@@ -369,7 +369,7 @@
 			"duration": 216000,
 			"xp": 261000,
 			"gp": 1020000,
-			"mastery": 43,
+			"mastery": 200,
 			"requirements": {
 				"level": 70,
 				"gold": 5000,
@@ -459,7 +459,7 @@
 			"duration": 288000,
 			"xp": 600000,
 			"gp": 2200000,
-			"mastery": 43,
+			"mastery": 250,
 			"requirements": {
 				"level": 90,
 				"gold": 5000,

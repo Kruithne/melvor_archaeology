@@ -3,7 +3,7 @@
 		"digsite_desert": {
 			"name": "MOD_KA_DIGSITE_DESERT",
 			"icon": "digsite_desert",
-			"duration": 600000,
+			"duration": 12000,
 			"xp": 1000,
 			"gp": 11000,
 			"mastery": 43,
@@ -65,7 +65,7 @@
 		"digsite_jungle": {
 			"name": "MOD_KA_DIGSITE_JUNGLE",
 			"icon": "digsite_jungle",
-			"duration": 1800000,
+			"duration": 36000,
 			"xp": 11000,
 			"gp": 60000,
 			"mastery": 43,
@@ -127,7 +127,7 @@
 		"digsite_castle": {
 			"name": "MOD_KA_DIGSITE_CASTLE",
 			"icon": "digsite_castle",
-			"duration": 3600000,
+			"duration": 72000,
 			"xp": 34800,
 			"gp": 240000,
 			"mastery": 43,
@@ -189,7 +189,7 @@
 		"digsite_volcanic": {
 			"name": "MOD_KA_DIGSITE_VOLCANIC",
 			"icon": "digsite_volcanic",
-			"duration": 7200000,
+			"duration": 144000,
 			"xp": 120000,
 			"gp": 510000,
 			"mastery": 43,
@@ -251,7 +251,7 @@
 		"digsite_barrows": {
 			"name": "MOD_KA_DIGSITE_BARROWS",
 			"icon": "digsite_barrows",
-			"duration": 10800000,
+			"duration": 216000,
 			"xp": 261000,
 			"gp": 1020000,
 			"mastery": 43,
@@ -313,7 +313,7 @@
 		"digsite_pirate": {
 			"name": "MOD_KA_DIGSITE_PIRATE",
 			"icon": "digsite_pirate",
-			"duration": 14400000,
+			"duration": 288000,
 			"xp": 600000,
 			"gp": 2200000,
 			"mastery": 43,

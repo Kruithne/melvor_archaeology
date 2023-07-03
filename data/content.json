@@ -1,6 +1,6 @@
 {
 	"loot_tables": {
-		"test": [
+		"kru_archaeology:Archaeology_Curiosity_Barrows": [
 			{
 				"item": "melvorD:Old_Boot",
 				"chance": 0.5,

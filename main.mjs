@@ -331,11 +331,12 @@ const state = ui.createStore({
 
 		Swal.getConfirmButton().addEventListener('click', () => {
 			if (game.bank.checkForItems([{ item: challenge_item, quantity: challenge.amount } ])) {
+				const curiosity_item = game.items.getObjectByID('kru_archaeology:Archaeology_Curiosity_Pirate');
 				game.bank.removeItemQuantityByID(challenge.item_id, challenge.amount);
-				game.bank.removeItemQuantityByID('kru_archaeology:Archaeology_Curiosity_Pirate', 1);
+				game.bank.removeItemQuantity(curiosity_item, 1);
 				state.active_challenge = null;
 
-				// TODO: Reward treasure and show reward modal.
+				loot_curiosity(curiosity_item);
 			} else {
 				notify_error('MOD_KA_CHALLENGE_ERROR', 'assets/svg/item_challenge_scroll.svg');
 			}
@@ -394,7 +395,11 @@ function passiveTick() {
 }
 
 /** Process the loot table for a curiosity. */
-function loot_curiosity(loot_table) {
+function loot_curiosity(curiosity_item) {
+	const loot_table = state.content.loot_tables[curiosity_item.id];
+	if (!loot_table)
+		return;
+
 	const cumulative = 0.0;
 	const cumulative_weights = [];
 
@@ -417,36 +422,23 @@ function loot_curiosity(loot_table) {
 		loot.set(entry.item_id, (loot.get(entry.item_id) || 0) + quantity);
 	}
 
-	for (const [item_id, quantity] of loot) {
+	const modal_entries = [];
+	for (const [item_id, item_qty] of loot) {
 		const item = game.items.getObjectByID(item_id);
-		game.bank.addItem(item, quantity, false, true);
+		game.bank.addItem(item, item_qty, false, true);
 
-		// TODO: Add to modal.
-	}
-
-	/*const entries = [];
-
-	for (const loot_slot of digsite.loot) {
-		for (const loot_item of loot_slot.items) {
-			if (loot_item.hide_from_drops)
-				continue;
-
-			const item = game.items.getObjectByID(loot_item.id);
-			const item_qty = loot_item.quantity_min === loot_item.quantity_max ? loot_item.quantity_min : `${loot_item.quantity_min}-${loot_item.quantity_max}`;
-
-			entries.push({ qty: item_qty, name: item.name, icon: item.media });
-		}
+		entries.push({ qty: item_qty, name: item.name, icon: item.media });
 	}
 
 	addModalToQueue({
-		title: digsite.name,
-		html: entries.map(entry => `<h5 class="font-w600 mb-1">${entry.qty}x <img class="skill-icon-xs" src="${entry.icon}"> ${entry.name}</h5>`).join(''),
-		imageUrl: state.get_svg(digsite.icon),
+		title: curiosity_item.name,
+		html: modal_entries.map(entry => `<h5 class="font-w600 mb-1">You gained <span class="text-success">${formatNumber(entry.qty)}</span> <img class="skill-icon-xs" src="${entry.icon}"> ${entry.name}</h5>`).join(''),
+		imageUrl: curiosity_item.media,
 		imageWidth: 64,
 		imageHeight: 64,
-		imageAlt: getLangString('SKILL_NAME_Archaeology'),
+		imageAlt: curiosity_item.name,
 		allowOutsideClick: false,
-	});*/
+	});
 }
 
 /** Process a tick for the active digsite. */
@@ -568,10 +560,8 @@ function render_offline_modal() {
 	const header = `<h5 class="font-w400 mb-1">${templateLangString('MOD_KA_OFFLINE_PROGRESS', { amount: offline_progress.excavations })}</h5>`;
 
 	for (const [item_id, item_qty] of Object.entries(offline_progress.items)) {
-		const item_name = get_localized_item_name(item_id);
-		const item_icon = game.items.getObjectByID(item_id).media;
-
-		entries.push({ qty: item_qty, name: item_name, icon: item_icon });
+		const item = game.items.getObjectByID(item_id);
+		entries.push({ qty: item_qty, name: item.name, icon: item.media });
 	}
 
 	if (skill.level > offline_progress.start_level)
@@ -910,9 +900,10 @@ class KAPuzzleBox extends HTMLElement {
 
 	reward() {
 		Swal.close();
-		game.bank.removeItemQuantityByID('kru_archaeology:Archaeology_Curiosity_Jungle', 1);
+		const curiosity_item = game.items.getObjectByID('kru_archaeology:Archaeology_Curiosity_Jungle');
+		game.bank.removeItemQuantity(curiosity_item, 1);
 
-		// TODO: Reward player and show reward modal.
+		loot_curiosity(curiosity_item);
 	}
 
 	handle_slot_click($piece) {
@@ -1045,8 +1036,10 @@ class KAVolcanicChest extends HTMLElement {
 				this.active = false;
 				setTimeout(() => {
 					Swal.close();
-					game.bank.removeItemQuantityByID('kru_archaeology:Archaeology_Curiosity_Volcanic', 1);
-					// TODO: Reward the player and show modal.
+
+					const curiosity_item = game.items.getObjectByID('kru_archaeology:Archaeology_Curiosity_Volcanic');
+					game.bank.removeItemQuantity(curiosity_item, 1);
+					loot_curiosity(curiosity_item);
 				}, 1000);
 			} else {
 				this.throttle = true;
@@ -1200,10 +1193,12 @@ class KARoyalChest extends HTMLElement {
 	check_combination() {
 		const combination = parseInt(this.combination.join('').replace(/^0+/, ''));
 		if (combination === this.riddle_answer) {
-			game.bank.removeItemQuantityByID('kru_archaeology:Archaeology_Curiosity_Castle', 1);
 			Swal.close();
 
-			// TODO: Add reward to and show modal.
+			const curiosity_item = game.items.getObjectByID('kru_archaeology:Archaeology_Curiosity_Castle');
+			game.bank.removeItemQuantity(curiosity_item, 1);
+
+			loot_curiosity(curiosity_item);
 		} else {
 			notify_error('MOD_KA_ROYAL_RIDDLE_ERROR', 'assets/svg/item_royal_jewelry_box.svg');
 		}
@@ -1284,9 +1279,11 @@ class KAChallengeWheel extends HTMLElement {
 
 	reward() {
 		Swal.close();
-		game.bank.removeItemQuantityByID('kru_archaeology:Archaeology_Curiosity_Barrows', 1);
 
-		// TODO: Add actual reward + modal.
+		const curiosity_item = game.items.getObjectByID('kru_archaeology:Archaeology_Curiosity_Castle');
+		game.bank.removeItemQuantity(curiosity_item, 1);
+
+		loot_curiosity(curiosity_item);
 	}
 }
 

@@ -427,7 +427,7 @@ function loot_curiosity(curiosity_item) {
 		const item = game.items.getObjectByID(item_id);
 		game.bank.addItem(item, item_qty, false, true);
 
-		entries.push({ qty: item_qty, name: item.name, icon: item.media });
+		modal_entries.push({ qty: item_qty, name: item.name, icon: item.media });
 	}
 
 	addModalToQueue({

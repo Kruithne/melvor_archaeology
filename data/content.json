@@ -83,7 +83,7 @@
 					}]
 				},
 				{
-					"chance": "1",
+					"chance": 1,
 					"items": [{
 						"id": "melvorD:Bones",
 						"quantity_min": 10,
@@ -91,7 +91,7 @@
 					}]
 				},
 				{
-					"chance": "0.2",
+					"chance": 0.2,
 					"items": [
 						{
 							"id": "melvorF:Chest_Of_Gems",
@@ -163,7 +163,7 @@
 					}]
 				},
 				{
-					"chance": "1",
+					"chance": 1,
 					"items": [{
 						"id": "melvorD:Bones",
 						"quantity_min": 50,
@@ -171,7 +171,7 @@
 					}]
 				},
 				{
-					"chance": "0.6",
+					"chance": 0.6,
 					"items": [
 						{
 							"id": "melvorD:Blood_Rune",
@@ -258,7 +258,7 @@
 					}]
 				},
 				{
-					"chance": "1",
+					"chance": 1,
 					"items": [{
 						"id": "melvorD:Bones",
 						"quantity_min": 200,
@@ -266,7 +266,7 @@
 					}]
 				},
 				{
-					"chance": "0.1",
+					"chance": 0.1,
 					"items": [
 						{
 							"id": "melvorF:Chest_Of_Gems",
@@ -276,7 +276,7 @@
 					]
 				},
 				{
-					"chance": "0.01",
+					"chance": 0.0,
 					"items": [
 						{
 							"id": "melvorF:Ring_Of_Wealth",
@@ -286,7 +286,7 @@
 					]
 				},
 				{
-					"chance": "0.4",
+					"chance": 0.4,
 					"items": [
 						{
 							"id": "melvorD:Bronze_Arrows",
@@ -368,7 +368,7 @@
 					}]
 				},
 				{
-					"chance": "1",
+					"chance": 1,
 					"items": [{
 						"id": "melvorD:Big_Bones",
 						"quantity_min": 160,
@@ -376,7 +376,7 @@
 					}]
 				},
 				{
-					"chance": "0.8",
+					"chance": 0.8,
 					"items": [{
 						"id": "melvorF:Ash",
 						"quantity_min": 100,
@@ -446,7 +446,7 @@
 					}]
 				},
 				{
-					"chance": "1",
+					"chance": 1,
 					"items": [{
 						"id": "melvorD:Bones",
 						"quantity_min": 800,
@@ -454,7 +454,7 @@
 					}]
 				},
 				{
-					"chance": "0.6",
+					"chance": 0.6,
 					"items": [
 						{
 							"id": "melvorF:Small_Urn",
@@ -464,7 +464,7 @@
 					]
 				},
 				{
-					"chance": "0.4",
+					"chance": 0.4,
 					"items": [
 						{
 							"id": "melvorF:Medium_Urn",
@@ -536,7 +536,7 @@
 					}]
 				},
 				{
-					"chance": "1",
+					"chance": 1,
 					"items": [{
 						"id": "melvorD:Raw_Skeleton_Fish",
 						"quantity_min": 300,
@@ -544,7 +544,7 @@
 					}]
 				},
 				{
-					"chance": "0.8",
+					"chance": 0.8,
 					"items": [{
 						"id": "melvorD:Pirate_Booty",
 						"quantity_min": 1,
@@ -552,7 +552,7 @@
 					}]
 				},
 				{
-					"chance": "0.01",
+					"chance": 0.01,
 					"items": [{
 						"id": "melvorF:Shipwheel",
 						"quantity_min": 1,

@@ -1280,7 +1280,7 @@ class KAChallengeWheel extends HTMLElement {
 	reward() {
 		Swal.close();
 
-		const curiosity_item = game.items.getObjectByID('kru_archaeology:Archaeology_Curiosity_Castle');
+		const curiosity_item = game.items.getObjectByID('kru_archaeology:Archaeology_Curiosity_Barrows');
 		game.bank.removeItemQuantity(curiosity_item, 1);
 
 		loot_curiosity(curiosity_item);

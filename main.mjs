@@ -400,7 +400,7 @@ function loot_curiosity(curiosity_item) {
 	if (!loot_table)
 		return;
 
-	const cumulative = 0.0;
+	let cumulative = 0.0;
 	const cumulative_weights = [];
 
 	for (const entry of loot_table) {

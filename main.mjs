@@ -739,6 +739,24 @@ async function load_pets(ctx) {
 	}
 }
 
+function hook_cheat_code() {
+	const $bank_search = document.getElementsByName('searchTextbox')[0];
+	if (!$bank_search)
+		return;
+
+	$bank_search.addEventListener('keyup', (e) => {
+		// Check if the contents of the search boxes matches "it belongs in a museum" in any case.
+		// If it does, clear the search box and add all curiosities to the bank.
+
+		if (e.target.value.toLowerCase() === 'it belongs in a museum') {
+			e.target.value = '';
+
+			for (const variant of ['Desert', 'Jungle', 'Castle', 'Barrows', 'Pirate', 'Volcanic'])
+				game.bank.addItemByID('kru_archaeology:Archaeology_Curiosity_' + variant, 1, false, false);
+		}
+	});
+}
+
 export async function setup(ctx) {
 	await patch_localization(ctx);
 	patch_save_data(ctx);
@@ -808,6 +826,8 @@ export async function setup(ctx) {
 		render_offline_modal(ctx);
 
 		$bank_options.remove();
+
+		hook_cheat_code();
 	});
 }
 

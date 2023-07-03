@@ -436,6 +436,7 @@ function complete_digsite(digsite) {
 
 			chance += (digsite.state.mastery_xp / DIGSITE_RANKS[DIGSITE_RANKS.length - 1]) * 0.2;
 		}
+
 		if (item.type === 'Artifact' && has_skillcape_equipped())
 			chance += 0.1;
 
@@ -774,7 +775,6 @@ class ArchaeologySkill extends Skill {
 		super(namespace, 'Archaeology', game);
 		this.renderQueue = new ArchaeologySkillRenderQueue();
 		this._media = 'assets/svg/archaeology.svg';
-		this.actions = [];
 	}
 
 	onLevelUp(oldLevel, newLevel) {

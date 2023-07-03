@@ -404,7 +404,7 @@ function loot_curiosity(curiosity_item) {
 	const cumulative_weights = [];
 
 	for (const entry of loot_table) {
-		cumulative += entry.weight;
+		cumulative += entry.chance;
 		cumulative_weights.push(cumulative);
 	}
 
@@ -419,7 +419,7 @@ function loot_curiosity(curiosity_item) {
 		const entry = loot_table[index];
 		const quantity = Math.floor(Math.random() * (entry.quantity_max - entry.quantity_min + 1)) + entry.quantity_min;
 
-		loot.set(entry.item_id, (loot.get(entry.item_id) || 0) + quantity);
+		loot.set(entry.item, (loot.get(entry.item) || 0) + quantity);
 	}
 
 	const modal_entries = [];

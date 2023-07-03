@@ -411,7 +411,7 @@ function loot_curiosity(curiosity_item) {
 	const loot = new Map();
 	for (let i = 0; i < 10; i++) {
 		const roll = Math.random() * cumulative;
-		const index = cumulative_weights.findIndex(weight => weight <= roll);
+		const index = cumulative_weights.findIndex(weight => weight > roll);
 
 		if (index === -1)
 			continue;

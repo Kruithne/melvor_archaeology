@@ -393,6 +393,62 @@ function passiveTick() {
 		process_digsite_tick(state.active_digsite);
 }
 
+/** Process the loot table for a curiosity. */
+function loot_curiosity(loot_table) {
+	const cumulative = 0.0;
+	const cumulative_weights = [];
+
+	for (const entry of loot_table) {
+		cumulative += entry.weight;
+		cumulative_weights.push(cumulative);
+	}
+
+	const loot = new Map();
+	for (let i = 0; i < 10; i++) {
+		const roll = Math.random() * cumulative;
+		const index = cumulative_weights.findIndex(weight => weight <= roll);
+
+		if (index === -1)
+			continue;
+
+		const entry = loot_table[index];
+		const quantity = Math.floor(Math.random() * (entry.quantity_max - entry.quantity_min + 1)) + entry.quantity_min;
+
+		loot.set(entry.item_id, (loot.get(entry.item_id) || 0) + quantity);
+	}
+
+	for (const [item_id, quantity] of loot) {
+		const item = game.items.getObjectByID(item_id);
+		game.bank.addItem(item, quantity, false, true);
+
+		// TODO: Add to modal.
+	}
+
+	/*const entries = [];
+
+	for (const loot_slot of digsite.loot) {
+		for (const loot_item of loot_slot.items) {
+			if (loot_item.hide_from_drops)
+				continue;
+
+			const item = game.items.getObjectByID(loot_item.id);
+			const item_qty = loot_item.quantity_min === loot_item.quantity_max ? loot_item.quantity_min : `${loot_item.quantity_min}-${loot_item.quantity_max}`;
+
+			entries.push({ qty: item_qty, name: item.name, icon: item.media });
+		}
+	}
+
+	addModalToQueue({
+		title: digsite.name,
+		html: entries.map(entry => `<h5 class="font-w600 mb-1">${entry.qty}x <img class="skill-icon-xs" src="${entry.icon}"> ${entry.name}</h5>`).join(''),
+		imageUrl: state.get_svg(digsite.icon),
+		imageWidth: 64,
+		imageHeight: 64,
+		imageAlt: getLangString('SKILL_NAME_Archaeology'),
+		allowOutsideClick: false,
+	});*/
+}
+
 /** Process a tick for the active digsite. */
 function process_digsite_tick(digsite) {
 	const digsite_state = digsite.state;

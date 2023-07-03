@@ -1,4 +1,26 @@
 {
+	"loot_tables": {
+		"test": [
+			{
+				"item": "melvorD:Old_Boot",
+				"chance": 0.5,
+				"quantity_min": 1,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorD:Shell",
+				"chance": 0.5,
+				"quantity_min": 1,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorD:Mithril_Bar",
+				"chance": 0.1,
+				"quantity_min": 1,
+				"quantity_max": 10
+			}
+		]
+	},
 	"digsites": {
 		"digsite_desert": {
 			"name": "MOD_KA_DIGSITE_DESERT",

@@ -636,11 +636,7 @@ function mastery_level_from_xp(xp) {
 
 /** Resolves a localized name for an item. */
 function get_localized_item_name(id) {
-	const colon_index = id.indexOf(':');
-	if (colon_index !== -1)
-		id = id.substring(colon_index + 1);
-
-	return getLangString('ITEM_NAME_' + id);
+	return game.items.getObjectByID(id).name;
 }
 
 /** Patches the global fetchLanguageJSON() fn so we can load and inject our own

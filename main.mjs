@@ -429,6 +429,7 @@ function complete_digsite(digsite) {
 
 	for (const loot_slot of digsite.loot) {
 		let chance = loot_slot.chance;
+		const item = loot_slot.items[Math.floor(Math.random() * loot_slot.items.length)];
 		if (item.type === 'Artifact') {
 			if (has_skillcape_equipped())
 				chance += 0.1;

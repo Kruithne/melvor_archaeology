@@ -774,6 +774,7 @@ class ArchaeologySkill extends Skill {
 		super(namespace, 'Archaeology', game);
 		this.renderQueue = new ArchaeologySkillRenderQueue();
 		this._media = 'assets/svg/archaeology.svg';
+		this.actions = [];
 	}
 
 	onLevelUp(oldLevel, newLevel) {

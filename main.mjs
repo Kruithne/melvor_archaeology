@@ -443,7 +443,6 @@ function complete_digsite(digsite) {
 		if (Math.random() >= chance)
 			continue;
 
-		const item = loot_slot.items[Math.floor(Math.random() * loot_slot.items.length)];
 		const item_qty = Math.floor(Math.random() * (item.quantity_max - item.quantity_min + 1)) + item.quantity_min;
 
 		if (item.type === 'Artifact') {
@@ -775,6 +774,7 @@ class ArchaeologySkill extends Skill {
 		super(namespace, 'Archaeology', game);
 		this.renderQueue = new ArchaeologySkillRenderQueue();
 		this._media = 'assets/svg/archaeology.svg';
+		this.actions = [];
 	}
 
 	onLevelUp(oldLevel, newLevel) {

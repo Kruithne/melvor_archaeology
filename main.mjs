@@ -1,7 +1,3 @@
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
-
 // Development quick-reload. Remove before release!
 window.addEventListener('keydown', (e) => {
 	if (e.key === 'F5')
@@ -228,14 +224,7 @@ const state = ui.createStore({
 
 	/** Load the skill state from mod settings. */
 	load_state(ctx) {
-		// TODO: Swap this when mod is on mod.io
-		//const state = ctx.characterStorage.getItem('state');
-
-		const tmp_state_file = path.join(os.tmpdir(), 'archaeology_state.json');
-		if (!fs.existsSync(tmp_state_file))
-			return;
-		
-		const save_state = JSON.parse(fs.readFileSync(tmp_state_file, 'utf8'));
+		const save_state = ctx.characterStorage.getItem('state');
 		if (save_state) {			
 			if (save_state.digsites) {
 				for (const [digsite_id, digsite_data] of Object.entries(save_state.digsites)) {
@@ -266,8 +255,6 @@ const state = ui.createStore({
 
 	/** Persist the skill state to mod settings. */
 	save_state(ctx) {
-		// TODO: Swap this when mod is on mod.io
-
 		const digsites = {};
 		for (const [digsite_id, digsite_data] of Object.entries(state.content.digsites))
 			digsites[digsite_id] = digsite_data.state;
@@ -279,10 +266,7 @@ const state = ui.createStore({
 			active_riddle_mod: state.active_riddle_mod,
 		};
 
-		const tmp_state_file = path.join(os.tmpdir(), 'archaeology_state.json');
-		fs.writeFileSync(tmp_state_file, JSON.stringify(save_state));
-
-		//ctx.characterStorage.setItem('state', save_state);
+		ctx.characterStorage.setItem('state', save_state);
 	},
 
 	/** Shows the interaction modal for the genie lamp curiosity. */

@@ -1,25 +1,382 @@
 {
 	"loot_tables": {
-		"kru_archaeology:Archaeology_Curiosity_Barrows": [
+		"kru_archaeology:Archaeology_Curiosity_Pirate": [
 			{
-				"item": "melvorD:Old_Boot",
-				"chance": 0.5,
-				"quantity_min": 1,
+				"item": "melvorD:Whale",
+				"chance": 0.2,
+				"quantity_min": 20,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Amulet_of_Fishing",
+				"chance": 0.05,
+				"quantity_min": 5,
 				"quantity_max": 1
 			},
 			{
-				"item": "melvorD:Shell",
-				"chance": 0.5,
-				"quantity_min": 1,
-				"quantity_max": 1
+				"item": "melvorD:Silver_Bar",
+				"chance": 0.2,
+				"quantity_min": 20,
+				"quantity_max": 50
 			},
 			{
-				"item": "melvorD:Mithril_Bar",
+				"item": "melvorD:Gold_Bar",
+				"chance": 0.2,
+				"quantity_min": 20,
+				"quantity_max": 50
+			},
+			{
+				"item": "melvorD:Garum_Herb",
 				"chance": 0.1,
+				"quantity_min": 10,
+				"quantity_max": 10
+			},
+			{
+				"item": "melvorD:Sourweed_Herb",
+				"chance": 0.1,
+				"quantity_min": 10,
+				"quantity_max": 10
+			},
+			{
+				"item": "melvorD:Mantalyme_Herb",
+				"chance": 0.1,
+				"quantity_min": 10,
+				"quantity_max": 10
+			},
+			{
+				"item": "melvorD:Lemontyle_Herb",
+				"chance": 0.1,
+				"quantity_min": 10,
+				"quantity_max": 10
+			},
+			{
+				"item": "melvorD:Oxilyme_Herb",
+				"chance": 0.1,
+				"quantity_min": 10,
+				"quantity_max": 10
+			},
+			{
+				"item": "melvorD:Pirates_Lost_Ring",
+				"chance": 0.05,
+				"quantity_min": 5,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorD:Ancient_Ring_Of_Skills",
+				"chance": 0.01,
 				"quantity_min": 1,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorD:Ancient_Ring_Of_Mastery",
+				"chance": 0.01,
+				"quantity_min": 1,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorD:Dragon_Throwing_Knife",
+				"chance": 0.3,
+				"quantity_min": 30,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Amulet_of_Torture",
+				"chance": 0.03,
+				"quantity_min": 3,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorD:Ancient_Sword",
+				"chance": 0.01,
+				"quantity_min": 1,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorD:Sunset_Rapier",
+				"chance": 0.01,
+				"quantity_min": 1,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorD:Dragon_Sword",
+				"chance": 0.2,
+				"quantity_min": 20,
+				"quantity_max": 10
+			},
+			{
+				"item": "melvorD:Rune_Sword",
+				"chance": 0.2,
+				"quantity_min": 20,
 				"quantity_max": 10
 			}
+		],		
+		"kru_archaeology:Archaeology_Curiosity_Barrows": [
+			{
+				"item": "melvorD:Bone_Necklace",
+				"chance": 0.05,
+				"quantity_min": 1,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorD:Gold_Bar",
+				"chance": 0.1,
+				"quantity_min": 10,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Silver_Bar",
+				"chance": 0.1,
+				"quantity_min": 10,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Sapphire",
+				"chance": 0.6,
+				"quantity_min": 60,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Ruby",
+				"chance": 0.6,
+				"quantity_min": 60,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Topaz",
+				"chance": 0.6,
+				"quantity_min": 60,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Emerald",
+				"chance": 0.6,
+				"quantity_min": 60,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Diamond",
+				"chance": 0.6,
+				"quantity_min": 60,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Bones",
+				"chance": 0.7,
+				"quantity_min": 70,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Big_Bones",
+				"chance": 0.6,
+				"quantity_min": 60,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Magic_Bones",
+				"chance": 0.4,
+				"quantity_min": 40,
+				"quantity_max": 50
+			},
+			{
+				"item": "melvorD:Jewel_of_Rhaelyx",
+				"chance": 0.01,
+				"quantity_min": 1,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorD:Mysterious_Stone",
+				"chance": 0.7,
+				"quantity_min": 5,
+				"quantity_max": 15
+			}
+		],
+		"kru_archaeology:Archaeology_Curiosity_Castle": [
+			{
+				"item": "melvorD:Gold_Bar",
+				"chance": 0.1,
+				"quantity_min": 10,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Silver_Bar",
+				"chance": 0.1,
+				"quantity_min": 10,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Sapphire",
+				"chance": 0.6,
+				"quantity_min": 60,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Ruby",
+				"chance": 0.6,
+				"quantity_min": 60,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Topaz",
+				"chance": 0.6,
+				"quantity_min": 60,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Emerald",
+				"chance": 0.6,
+				"quantity_min": 60,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Diamond",
+				"chance": 0.6,
+				"quantity_min": 60,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Circlet_of_Rhaelyx",
+				"chance": 0.01,
+				"quantity_min": 1,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorF:Knights_Cape",
+				"chance": 0.05,
+				"quantity_min": 5,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorF:Knights_Sigil",
+				"chance": 0.05,
+				"quantity_min": 5,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorF:Prayer_Scroll",
+				"chance": 0.1,
+				"quantity_min": 10,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorF:Ring_Of_Wealth",
+				"chance": 0.01,
+				"quantity_min": 1,
+				"quantity_max": 1
+			}
+		],
+		"kru_archaeology:Archaeology_Curiosity_Volcanic": [
+			{
+				"item": "melvorD:Diamond",
+				"chance": 0.4,
+				"quantity_min": 40,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Copper_Ore",
+				"chance": 0.7,
+				"quantity_min": 70,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Tin_Ore",
+				"chance": 0.7,
+				"quantity_min": 70,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Iron_Ore",
+				"chance": 0.7,
+				"quantity_min": 70,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Coal_Ore",
+				"chance": 0.7,
+				"quantity_min": 70,
+				"quantity_max": 1000
+			},
+			{
+				"item": "melvorD:Gold_Ore",
+				"chance": 0.7,
+				"quantity_min": 70,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Mithril_Ore",
+				"chance": 0.7,
+				"quantity_min": 70,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Adamantite_Ore",
+				"chance": 0.7,
+				"quantity_min": 70,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Runite_Ore",
+				"chance": 0.7,
+				"quantity_min": 70,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Dragonite_Ore",
+				"chance": 0.7,
+				"quantity_min": 70,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Dragon_Bones",
+				"chance": 0.5,
+				"quantity_min": 50,
+				"quantity_max": 10
+			}
+		],
+		"kru_archaeology:Archaeology_Curiosity_Jungle": [
+			{
+				"item": "melvorD:Emerald",
+				"chance": 0.4,
+				"quantity_min": 40,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Bone_Necklace",
+				"chance": 0.05,
+				"quantity_min": 1,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorD:Mystic_Air_Staff",
+				"chance": 0.1,
+				"quantity_min": 1,
+				"quantity_max": 1
+			},
+			{
+				"item": "melvorD:Chaos_Rune",
+				"chance": 0.6,
+				"quantity_min": 60,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Blood_Rune",
+				"chance": 0.6,
+				"quantity_min": 60,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Ancient_Rune",
+				"chance": 0.6,
+				"quantity_min": 60,
+				"quantity_max": 100
+			},
+			{
+				"item": "melvorD:Death_Rune",
+				"chance": 0.6,
+				"quantity_min": 60,
+				"quantity_max": 100
+			}
 		]
+		
 	},
 	"digsites": {
 		"digsite_desert": {

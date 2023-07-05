@@ -456,14 +456,15 @@ function complete_digsite(digsite) {
 	for (const loot_slot of digsite.loot) {
 		let chance = loot_slot.chance;
 		const item = loot_slot.items[Math.floor(Math.random() * loot_slot.items.length)];
-		if (item.type === 'Artifact') {
+		const game_item = game.items.getObjectByID(item.id);
+		if (game_item.type === 'Artifact') {
 			if (has_skillcape_equipped())
 				chance += 0.1;
 
 			chance += (digsite.state.mastery_xp / DIGSITE_RANKS[DIGSITE_RANKS.length - 1]) * 0.2;
 		}
 
-		if (item.type === 'Artifact' && has_skillcape_equipped())
+		if (game_item.type === 'Artifact' && has_skillcape_equipped())
 			chance += 0.1;
 
 		if (Math.random() >= chance)
@@ -471,10 +472,10 @@ function complete_digsite(digsite) {
 
 		const item_qty = Math.floor(Math.random() * (item.quantity_max - item.quantity_min + 1)) + item.quantity_min;
 
-		if (item.type === 'Artifact') {
+		if (game_item.type === 'Artifact') {
 			const artifacts = digsite.state.unlocked_artifacts;
 			if (!artifacts.includes(item.id))
-				artifacts.push(item.id);
+			artifacts.push(item.id);
 
 			if (artifacts.length === digsite.collection.length)
 				game.petManager.unlockPetByID(digsite.pet);
@@ -769,6 +770,9 @@ export async function setup(ctx) {
 	await ctx.gameData.addPackage('data.json');
 
 	patch_bank_set_item();
+
+	window._state = state;
+	window.complete_digsite = complete_digsite;
 
 	ctx.onCharacterLoaded(() => {
 		state.load_state(ctx);

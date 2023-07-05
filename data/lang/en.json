@@ -56,6 +56,9 @@
 	"MOD_KA_ROYAL_RIDDLE_HEADER": "To unlock the chest, riddle me this:",
 	"MOD_KA_ROYAL_RIDDLE_ERROR": "Incorrect combination",
 	"MOD_KA_ROYAL_RIDDLE_0": "How many [melvorD:Carrot] do I need to cook <b>{mod*3}</b> [melvorD:Carrot_Cake]?",
+	"MOD_KA_ROYAL_RIDDLE_1": "How many [melvorD:Adamantite_Bar] do I need to smith <b>{mod*2}</b> [melvorD:Adamant_Helmet]?",
+	"MOD_KA_ROYAL_RIDDLE_2": "How many [melvorD:Coal_Ore] do I need to smelt <b>{mod*8}</b> [melvorD:Runite_Bar]?",
+	"MOD_KA_ROYAL_RIDDLE_3": "How much [melvorD:Leather] do I need to brew <b>{mod*3}</b> [melvorF:Crafting_Potion_I]?",
 
 	"MOD_KA_ITEM_ARTIFACT_DESERT_1": "Canopic Jar",
 	"MOD_KA_ITEM_DESC_ARTIFACT_DESERT_1": "An alabaster jar used to store the organs of the deceased.",

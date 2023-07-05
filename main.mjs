@@ -1087,7 +1087,7 @@ class KAVolcanicChest extends HTMLElement {
 	}
 }
 
-const MAX_RIDDLE_INDEX = 0;
+const MAX_RIDDLE_INDEX = 3;
 class KARoyalChest extends HTMLElement {
 	constructor() {
 		super();

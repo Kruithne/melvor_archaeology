@@ -820,6 +820,8 @@ class ArchaeologySkill extends Skill {
 	onLevelUp(oldLevel, newLevel) {
 		if (!is_offline)
 			update_digsite_requirements();
+
+		super.onLevelUp(oldLevel, newLevel);
 	}
 }
 

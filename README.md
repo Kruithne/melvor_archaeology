@@ -4,6 +4,8 @@
 
 This is my submission for the [2023 Melvor Idle Mod Contest](https://store.steampowered.com/news/app/1267910/view/3683429000349567517).
 
+[You can view the submission on mod.io here.](https://github.com/Kruithne/melvor_archaeology)
+
 ### Design Goals
 - Implement a new skill to the game that's rooted in the theme of RuneScape.
 - Keep things simple enough that they can be implemented in a short amount of time and don't overwhelm the player.

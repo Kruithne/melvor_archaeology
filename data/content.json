@@ -432,7 +432,7 @@
 					]
 				},
 				{
-					"chance": 0.3,
+					"chance": 0.1,
 					"items": [{
 						"id": "kru_archaeology:Archaeology_Curiosity_Desert",
 						"quantity_min": 1,
@@ -512,7 +512,7 @@
 					]
 				},
 				{
-					"chance": 0.3,
+					"chance": 0.1,
 					"items": [{
 						"id": "kru_archaeology:Archaeology_Curiosity_Jungle",
 						"quantity_min": 1,
@@ -607,7 +607,7 @@
 					]
 				},
 				{
-					"chance": 0.3,
+					"chance": 0.1,
 					"items": [{
 						"id": "kru_archaeology:Archaeology_Curiosity_Castle",
 						"quantity_min": 1,
@@ -717,7 +717,7 @@
 					]
 				},
 				{
-					"chance": 0.3,
+					"chance": 0.1,
 					"items": [{
 						"id": "kru_archaeology:Archaeology_Curiosity_Volcanic",
 						"quantity_min": 1,
@@ -795,7 +795,7 @@
 					]
 				},
 				{
-					"chance": 0.3,
+					"chance": 0.1,
 					"items": [{
 						"id": "kru_archaeology:Archaeology_Curiosity_Barrows",
 						"quantity_min": 1,
@@ -885,7 +885,7 @@
 					]
 				},
 				{
-					"chance": 0.3,
+					"chance": 0.1,
 					"items": [{
 						"id": "kru_archaeology:Archaeology_Curiosity_Pirate",
 						"quantity_min": 1,
